@@ -1,0 +1,17 @@
+title: "FIT-NISSEN PT"
+email: "info@fit-nissen.nl"
+description: "Personal Training op maat – kracht, conditie & gezondheid"
+baseurl: ""
+url: "https://fit-nissen.nl"
+theme: jekyll-theme-text
+logo: "/assets/logo.png"
+
+nav:
+  - title: "Home"
+    url: /
+  - title: "Over mij"
+    url: /over/
+  - title: "Training"
+    url: /training/
+  - title: "Contact"
+    url: /contact/
