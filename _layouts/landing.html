@@ -175,4 +175,22 @@ article_header:
   </div>
 </div>
 
+{% assign posts_section = page.data.sections | where: "title", "Posts" | first %}
+{% if posts_section %}
+  <section class="posts-section" style="background-color: {{ posts_section.background_color }}; color: white; padding: 2rem 1rem;">
+    <div class="container">
+      <h2>{{ posts_section.title }}</h2>
+      <p>{{ posts_section.excerpt }}</p>
+      <div class="post-list">
+        {% for post in site.posts limit: 3 %}
+          <article class="post" style="margin-bottom: 1.5rem;">
+            <h3><a href="{{ post.url }}" style="color: #fff;">{{ post.title }}</a></h3>
+            <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+
 {{ content }}
