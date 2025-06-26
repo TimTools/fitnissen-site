@@ -11,10 +11,10 @@ article_header:
   <div class="heros">
     {% assign posts_section = page.data.sections | where: "title", "Posts" | first %}
     {% if posts_section %}
-      <section class="posts-section" style="background-color: {{ posts_section.background_color }}; color: white; padding: 2rem 1rem;">
+      <section class="posts-section" style="background-image: url({{ _url }}); background-color: {{ _section.background_color }};">
         <div class="container">
-          <h2>{{ posts_section.title }}</h2>
-          <p>{{ posts_section.excerpt }}</p>
+          <!-- <h2>{{ posts_section.title }}</h2>
+          <p>{{ posts_section.excerpt }}</p> -->
           <div class="post-list">
             {% for post in site.posts limit: 3 %}
               <article class="post" style="margin-bottom: 1.5rem;">
