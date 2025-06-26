@@ -37,15 +37,15 @@ timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for
 repository: TimTools/fitnissen-site
 repository_tree: master
 
-nav:
-  - title: "Home"
-    url: /
-  - title: "Over mij"
-    url: /over/
-  - title: "Training"
-    url: /training/
-  - title: "Contact"
-    url: /contact/
+# nav:
+#   - title: "Home"
+#     url: /
+#   - title: "Over mij"
+#     url: /over/
+#   - title: "Training"
+#     url: /training/
+#   - title: "Contact"
+#     url: /contact/
 
 ## => Paths
 ##############################
