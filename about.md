@@ -1,12 +1,15 @@
 ---
 layout: landing
+mode: immersive
+header:
+  theme: dark
 titles:
   en      : &EN       About me
   en-GB   : *EN
   en-US   : *EN
   en-CA   : *EN
   en-AU   : *EN
-  nl      : &NL  Over mij
+  nl      : &NL       Over mij
   nl-NL   : *NL
   nl-BE   : *NL
 key: page-about
@@ -14,10 +17,10 @@ key: page-about
 article_header:
   height: 100vh
   theme: dark
-  background_color: "#0a2340"
+  type: overlay
   background_image:
-    gradient: "linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .6))"
-    src: /assets/header.jpg
+    gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
+    src: /assets/images/persoonlijkeaanpak.jpg
 
 data:
   sections:
