@@ -1,24 +1,25 @@
-# header:
-#   - titles:
-#       # @start locale config
-#       en      : &EN       About me
-#       en-GB   : *EN
-#       en-US   : *EN
-#       en-CA   : *EN
-#       en-AU   : *EN
-#       zh-Hans : &ZH_HANS  About me
-#       zh      : *ZH_HANS
-#       # @end locale config
-#     url: /about.html
+header:
+  - titles:
+      # @start locale config
+      en      : &EN       About me
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      nl      : &NL  Over mij
+      nl-NL   : *NL
+      nl-BE   : *NL
+      # @end locale config
+    url: /about.html
 
-#   - titles:
-#       # @start locale config
-#       en      : &EN       Contact
-#       en-GB   : *EN
-#       en-US   : *EN
-#       en-CA   : *EN
-#       en-AU   : *EN
-#       zh-Hans : &ZH_HANS  Contact
-#       zh      : *ZH_HANS
-#       # @end locale config
-#     url: /contact.html
+  - titles:
+      # @start locale config
+      en      : &EN       Contact
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  Contact
+      zh      : *ZH_HANS
+      # @end locale config
+    url: /contact.html
