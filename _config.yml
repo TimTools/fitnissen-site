@@ -22,10 +22,10 @@ text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 title: "FIT-NISSEN PT"
 email: "info@fit-nissen.nl"
-description: "Personal Training op maat – kracht, conditie & gezondheid"
+description: "Personal Training op maat!"
 baseurl: ""
 url: "https://fit-nissen.nl"
-logo: "/assets/logo.png"
+logo: "/assets/images/logo.svg"
 
 ## => Language and Timezone
 ##############################
