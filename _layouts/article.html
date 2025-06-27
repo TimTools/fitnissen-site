@@ -1,6 +1,5 @@
 ---
 layout: landing
-type: article
 ---
 
 {%- include snippets/assign.html
@@ -8,7 +7,7 @@ type: article
   source0=layout.sharing source1=page.sharing -%}
 {%- assign _sharing = __return -%}
 
-<div class="layout--landing">
+<div class="layout--article">
   {%- include article/top/custom.html -%}
 
   <div class="article__content" itemprop="articleBody">{{ content }}</div>
