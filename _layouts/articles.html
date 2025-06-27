@@ -1,8 +1,11 @@
 ---
-layout: landing
-type: webpage
-
+layout: page
+header: true
+full_width: true
 article_header:
+  type: overlay
+  align: center
+  height: 80vh
 ---
 
 {%- assign _page_articles_data_source = page.articles.data_source | default: layout.articles.data_source -%}
