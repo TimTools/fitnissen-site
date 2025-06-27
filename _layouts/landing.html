@@ -1,37 +1,14 @@
 ---
 layout: page
-header: true
+header: false
 full_width: true
 article_header:
   type: overlay
   align: center
   height: 80vh
 ---
-
 <div class="layout--landing">
   <div class="heros">
-
-    {% assign posts_section = page.data.sections | where: "title", "Posts" | first %}
-    {% if posts_section %}
-      {% include snippets/get-nav-url.html path=posts_section.image.src %}
-      {% assign _url = __return %}
-
-      <section class="posts-section" style="background-image: url({{ _url }}); background-color: {{ posts_section.background_color }}; color: white; padding: 3rem 0;">
-        <div class="container">
-          <h2>{{ posts_section.title }}</h2>
-          <p>{{ posts_section.excerpt }}</p>
-          <div class="post-list">
-            {% for post in site.posts limit: 3 %}
-              <article class="post" style="margin-bottom: 2rem;">
-                <h3><a href="{{ post.url }}" style="color: #fff;">{{ post.title }}</a></h3>
-                <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
-              </article>
-            {% endfor %}
-          </div>
-        </div>
-      </section>
-    {% endif %}
-
   {%- for _section in page.data.sections -%}
     {%- include snippets/get-nav-url.html path=_section.background_image.src -%}
     {%- assign _url = __return -%}
