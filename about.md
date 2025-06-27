@@ -23,9 +23,3 @@ data:
   sections:
     - title: "Zoals je ziet is dit onderdeel van de site nog niet af."    
 ---
-
-# Just say something about yourself. :+1:
-
-# {% highlight javascript %}
-# (() => console.log('hello, world!'))();
-# {% endhighlight %}
