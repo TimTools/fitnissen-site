@@ -1,22 +1,15 @@
 ---
-layout: article
-title: Page - Single
-permalink: /page/single.html
-key: page-single
-cover: /docs/assets/images/axure/page-single.jpg
+layout: page
+header: true
+full_width: true
+article_header:
+  height: 100vh
+  theme: dark
+  background_color: "#0a2340"
+  background_image:
+    gradient: "linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .6))"
+    src: /assets/header.jpg
 ---
-
-A post with a single column.
-
-<!--more-->
-
-**front matter:**
-
-    ---
-    layout: article
-    title: Page - Single
-    ---
-
 
 {%- include snippets/assign.html
   target = site.data.variables.default.page.sharing
