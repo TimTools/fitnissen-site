@@ -5,7 +5,7 @@ article_header:
   type: cover
   image:
     gradient: "linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .6))"
-    src: /screenshot.jpg
+    src: /assets/images/persoonlijkeaanpak.jpg
   height: 100vh
   theme: dark
   background_color: "#0a2340"
