@@ -1,5 +1,6 @@
 ---
 layout: landing
+type: webpage
 ---
 
 {%- assign _page_articles_data_source = page.articles.data_source | default: layout.articles.data_source -%}
@@ -33,7 +34,7 @@ layout: landing
 
 {%- if _articles -%}
 
-  <div class="layout--landing">
+  <div class="layout--articles">
 
     {%- if _type == 'grid' -%}
       {%- if page.articles.size == 'sm' -%}
