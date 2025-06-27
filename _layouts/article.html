@@ -1,10 +1,8 @@
 ---
 layout: landing
-header: true
-full_width: true
 article_header:
-  type: overlay
-  height: 80vh
+data:
+  sections:
 ---
 
 {%- include snippets/assign.html
@@ -12,60 +10,20 @@ article_header:
   source0=layout.sharing source1=page.sharing -%}
 {%- assign _sharing = __return -%}
 
-<div class="layout--landing">
-  <div class="heros">
-  {%- for _section in page.data.sections -%}
-    {%- include snippets/get-nav-url.html path=_section.background_image.src -%}
-    {%- assign _url = __return -%}
-    {%- if _section.theme == 'light' -%}
-      <section class="hero hero--center hero--light" id="hero-{{ forloop.index }}"
-    {%- elsif _section.theme == 'dark' -%}
-      <section class="hero hero--center hero--dark" id="hero-{{ forloop.index }}"
-    {%- else -%}
-      <section class="hero hero--center" id="hero-{{ forloop.index }}"
-    {%- endif -%}
-    {%- if _section.background_color -%}
-        style="background-image: url({{ _url }}); background-color: {{ _section.background_color }};">
-    {%- else -%}
-        style="background-image: url({{ _url }});">
-    {%- endif -%}
-
-        <div class="hero__content">
-          <div class="mb-5">
-
-            <h3>{{ _section.title }}</h3>
-              {%- if _section.excerpt-%}
-            <p>{{ _section.excerpt }}</p>
-            {%- endif -%}
-
-            {%- if _section.actions -%}
-              <ul class="menu">
-              {%- for _action in _section.actions -%}
-                {%- include snippets/get-nav-url.html path=_action.url -%}
-                {%- assign _url = __return -%}
-                {%- assign _type = _action.type | default: 'outline-info' -%}
-                <li><a class="button button--{{ _type }} button--pill button--lg" href="{{ _url }}">{{ _action.text }}</a></li>
-              {%- endfor -%}
-              </ul>
-            {%- endif -%}
-
-          </div>
-        </div>
-
+<div class="layout--article">
   {%- include article/top/custom.html -%}
 
-    <div class="article__content" itemprop="articleBody">{{ content }}</div>
+  <div class="article__content" itemprop="articleBody">{{ content }}</div>
 
-    {%- if _sharing -%}
-      <section class="article__sharing d-print-none">{%- include sharing.html -%}</section>
-    {%- endif -%}
+  {%- if _sharing -%}
+    <section class="article__sharing d-print-none">{%- include sharing.html -%}</section>
+  {%- endif -%}
 
-    <div class="d-print-none">
-      {%- include article-footer.html -%}
-      {%- include article-section-navigator.html -%}
-    </div>
-  {%- endfor -%}
+  <div class="d-print-none">
+    {%- include article-footer.html -%}
+    {%- include article-section-navigator.html -%}
   </div>
+
 </div>
 
 <script>
