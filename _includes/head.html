@@ -3,26 +3,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
 <style>
-  #hero-1:before {
-    height: 50vh !important;
-    background-size: cover !important;
-    background-position: center center !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparante achtergrond */
-    padding: 2rem;
-    border-radius: 1rem;
-    backdrop-filter: blur(4px);
+  #hero-1 {
+    position: relative;
   }
+
+  #hero-1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparante overlay */
+    backdrop-filter: blur(4px);
+    z-index: 0;
+  }
+
   #hero-1 .hero__content {
+    position: relative;
+    z-index: 1;
     background-color: rgba(0, 0, 0, 0.4); /* Semi-transparante achtergrond */
     padding: 2rem;
     border-radius: 1rem;
     backdrop-filter: blur(4px);
   }
 </style>
+
 
 {%- include snippets/get-article-title.html article=page -%}
 <title>{%- if __return -%}{{ __return }} - {{ site.title }}{%- else -%}{{ site.title }}{%- endif -%}</title>
