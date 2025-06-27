@@ -1,0 +1,28 @@
+---
+layout: landing-article
+title: Artikelen
+permalink: /articles/
+article_header:
+  height: 60vh
+  theme: dark
+  background_color: "#0a2340"
+  background_image:
+    gradient: "linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .6))"
+    src: /assets/header.jpg
+---
+<section class="articles-list" style="padding: 2rem;">
+  <div class="container">
+    <h2>Laatste artikelen</h2>
+    <ul style="list-style: none; padding: 0;">
+      {% for post in site.posts %}
+        <li style="margin-bottom: 2rem;">
+          <a href="{{ post.url | relative_url }}" style="text-decoration: none;">
+            <h3>{{ post.title }}</h3>
+            <p style="color: #666;">{{ post.date | date: "%d %B %Y" }}</p>
+            <p>{{ post.excerpt }}</p>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
