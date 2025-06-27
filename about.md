@@ -18,10 +18,14 @@ article_header:
   background_image:
     gradient: "linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .6))"
     src: /assets/header.jpg
+
+data:
+  sections:
+    - title: "Zoals je ziet is dit onderdeel van de site nog niet af."    
 ---
 
-Just say something about yourself. :+1:
+# Just say something about yourself. :+1:
 
-{% highlight javascript %}
-(() => console.log('hello, world!'))();
-{% endhighlight %}
+# {% highlight javascript %}
+# (() => console.log('hello, world!'))();
+# {% endhighlight %}
