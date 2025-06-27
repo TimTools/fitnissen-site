@@ -9,10 +9,6 @@
       {%- assign _site_author_itemtype = 'http://schema.org/Person' -%}
     {%- endif -%}
 
-    <div class="mb-5">
-
-    <h3>SOCIALS:</h3><p></p><ul class="menu"><li><a class="button button--outline-theme-dark button--pill button--lg" href="https://www.instagram.com/fitnissen_pt/"><i class="fab fa-instagram"></i> fitnissen_pt</a></li></ul></div>
-
     <div itemscope itemtype="{{ _site_author_itemtype }}">
       <meta itemprop="name" content="{{ _site_author.name }}">
       {%- assign _site_author_url = _site_author.url | default: '/'-%}
@@ -30,6 +26,7 @@
     {%- assign _locale_copyright_dates = __return -%}
     <div class="site-info mt-2">
       <div>
+        <h3>SOCIALS:</h3><p></p><ul class="menu"><li><a class="button button--outline-theme-dark button--pill button--lg" href="https://www.instagram.com/fitnissen_pt/"><i class="fab fa-instagram"></i> fitnissen_pt</a></li></ul>
         {%- include snippets/get-locale-string.html key='COPYRIGHT_DATES' -%}
         {%- assign _locale_copyright_dates = __return -%}
         © {{ site.title }} {{ _locale_copyright_dates }},
