@@ -8,7 +8,23 @@ type: article
   source0=layout.sharing source1=page.sharing -%}
 {%- assign _sharing = __return -%}
 
-<div class="layout--article">
+<div class="layout--landing">
+  <div class="heros">
+  {%- for _section in page.data.sections -%}
+    {%- include snippets/get-nav-url.html path=_section.background_image.src -%}
+    {%- assign _url = __return -%}
+    {%- if _section.theme == 'light' -%}
+      <section class="hero hero--center hero--light" id="hero-{{ forloop.index }}"
+    {%- elsif _section.theme == 'dark' -%}
+      <section class="hero hero--center hero--dark" id="hero-{{ forloop.index }}"
+    {%- else -%}
+      <section class="hero hero--center" id="hero-{{ forloop.index }}"
+    {%- endif -%}
+    {%- if _section.background_color -%}
+        style="background-image: url({{ _url }}); background-color: {{ _section.background_color }};">
+    {%- else -%}
+        style="background-image: url({{ _url }});">
+    {%- endif -%}
   {%- include article/top/custom.html -%}
 
   <div class="article__content" itemprop="articleBody">{{ content }}</div>
