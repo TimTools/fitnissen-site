@@ -183,7 +183,7 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: landing
+      layout: article
       sharing: true
       license: true
       aside:
