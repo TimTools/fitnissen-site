@@ -1,21 +1,23 @@
 ---
 layout: landing
 titles:
-  en      : &EN       About
+  en      : &EN       About me
   en-GB   : *EN
   en-US   : *EN
   en-CA   : *EN
   en-AU   : *EN
-  zh-Hans : &ZH_HANS  关于
-  zh      : *ZH_HANS
-  zh-CN   : *ZH_HANS
-  zh-SG   : *ZH_HANS
-  zh-Hant : &ZH_HANT  關於
-  zh-TW   : *ZH_HANT
-  zh-HK   : *ZH_HANT
-  ko      : &KO       소개
-  ko-KR   : *KO
+  nl      : &NL  Over mij
+  nl-NL   : *NL
+  nl-BE   : *NL
 key: page-about
+
+article_header:
+  height: 100vh
+  theme: dark
+  background_color: "#0a2340"
+  background_image:
+    gradient: "linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .6))"
+    src: /assets/header.jpg
 ---
 
 Just say something about yourself. :+1:
