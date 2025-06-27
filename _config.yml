@@ -20,7 +20,7 @@ plugins:
 ##############################
 text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
-title: "FIT-NISSEN PT"
+title: "FIT-NISSEN Personal Training"
 email: "info@fit-nissen.nl"
 description: "Personal Training op maat!"
 baseurl: ""
