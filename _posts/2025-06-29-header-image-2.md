@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: landing
 title: Page - Article Header Overlay Background Image (Immersive + Translucent Header)
 header:
   theme: dark
