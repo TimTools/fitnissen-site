@@ -1,11 +1,10 @@
 ---
-layout: landing
+layout: article
 mode: immersive
 header:
   theme: dark
 title_html: "Persoonlijke training op maat"
 article_header:
-  actions: &main_actions
   height: 100vh
   theme: dark
   type: overlay
