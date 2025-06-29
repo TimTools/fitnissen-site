@@ -1,25 +1,14 @@
 ---
-layout: landing
-mode: immersive
-header:
-  theme: dark
-title_html: "Persoonlijke training op maat"
-article_header:
-  actions: &main_actions
-  height: 100vh
-  theme: dark
-  type: overlay
-  background_image:
-    gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
-    src: https://www.fit-nissen.nl/assets/images/header.jpg
+layout: page
+type: article
 ---
-
+{%- include head.html -%}
 {%- include snippets/assign.html
   target = site.data.variables.default.page.sharing
   source0=layout.sharing source1=page.sharing -%}
 {%- assign _sharing = __return -%}
 
-<div class="layout--articles">
+<div class="layout--article">
   {%- include article/top/custom.html -%}
 
   <div class="article__content" itemprop="articleBody">{{ content }}</div>
@@ -28,10 +17,10 @@ article_header:
     <section class="article__sharing d-print-none">{%- include sharing.html -%}</section>
   {%- endif -%}
 
-  <!-- <div class="d-print-none">
+  <div class="d-print-none">
     {%- include article-footer.html -%}
     {%- include article-section-navigator.html -%}
-  </div> -->
+  </div>
 
 </div>
 
