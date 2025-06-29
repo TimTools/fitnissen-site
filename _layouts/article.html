@@ -12,9 +12,6 @@ article_header:
   background_image:
     gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
     src: https://www.fit-nissen.nl/assets/images/header.jpg
-    
-data:
-  sections:
 ---
 
 {%- include snippets/assign.html
@@ -22,7 +19,7 @@ data:
   source0=layout.sharing source1=page.sharing -%}
 {%- assign _sharing = __return -%}
 
-<div class="layout--landing">
+<div class="layout--articles">
   {%- include article/top/custom.html -%}
 
   <div class="article__content" itemprop="articleBody">{{ content }}</div>
