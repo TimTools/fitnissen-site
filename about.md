@@ -25,7 +25,7 @@ data:
       theme: dark
       type: cover
       excerpt: |
-        Hoi! Mijn naam is **Tim Nissen**, ik ben {% assign birth_date = '1993-03-18' | date: '%s' %}{% assign now = 'now' | date: '%s' %}{% assign seconds_in_year = 31556952 %}{% assign age = now | minus: birth_date | divided_by: seconds_in_year | floor %}{{ age }} jaar oud en woon sinds kort samen met mijn vriendin en ons vrolijke hondje in het mooie Overloon.<br>  
+        Hoi! Mijn naam is Tim, ik ben {% assign birth_date = '1993-03-18' | date: '%s' %}{% assign now = 'now' | date: '%s' %}{% assign seconds_in_year = 31556952 %}{% assign age = now | minus: birth_date | divided_by: seconds_in_year | floor %}{{ age }} jaar oud en woon sinds kort samen met mijn vriendin en ons vrolijke hondje in het mooie Overloon.<br>  
         In het dagelijks leven werk ik als **DevOps engineer bij de Rabobank** — een functie waarin ik met plezier bezig ben met structuur, procesoptimalisatie en continue verbetering.<br><br>
 
         Naast mijn werk heb ik een grote passie voor **sport, gezondheid en persoonlijke groei**.<br>  
