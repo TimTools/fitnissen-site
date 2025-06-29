@@ -41,7 +41,7 @@ repository_tree: master
 ##############################
 paths:
   root    : "https://www.fit-nissen.nl/" # title link url, "/" (default)
-  home    : "/" # home layout url, "/" (default)
+  home    : "https://www.fit-nissen.nl/" # home layout url, "/" (default)
   archive : "/archive.html" # "/archive.html" (default)
   rss     : "/feed.xml" # "/feed.xml" (default)
 
