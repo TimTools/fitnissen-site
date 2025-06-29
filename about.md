@@ -3,7 +3,7 @@ layout: landing
 mode: immersive
 header:
   theme: dark
-title: Over mij!
+title: ABOUT ME!
 permalink: /about.html
 key: page-about
 
@@ -18,7 +18,7 @@ article_header:
     
 data:
   sections:
-    - title: "Wie ben ik?"
+    - title: ">Whoami"
       height: 100vh
       theme: dark
       type: cover
