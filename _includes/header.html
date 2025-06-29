@@ -8,9 +8,9 @@
     <div class="main">
       <div class="header__title">
         <div class="header__brand">
-          {%- include svg/logo.svg -%}
+          {%- include /assets/svg/logo.svg -%}
             <a href="/">
-              <img src="assets/faviconold.png" height="32px" width="32px" alt="logo">
+              <img src="/assets/faviconold.png" height="32px" width="32px" alt="logo">
             </a>
           {%- assign _paths_root = site.paths.root | default: site.data.variables.default.paths.root  -%}
           {%- include snippets/get-nav-url.html path=_paths_root -%}
