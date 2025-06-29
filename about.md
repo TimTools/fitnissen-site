@@ -6,7 +6,7 @@ header:
 title: ABOUT ME
 title_html: "Persoonlijke training op maat"
 excerpt: >
-  "IT'S NOT ABOUT WHO YOU ARE, BUT WHO YOU WANT TO BECOME."
+  "IT'S NOT ABOUT WHO YOU ARE, BUT ABOUT WHO YOU WANT TO BECOME."
 permalink: /about.html
 key: page-about
 article_header:
