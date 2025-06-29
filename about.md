@@ -1,3 +1,4 @@
+---
 layout: landing
 mode: immersive
 header:
