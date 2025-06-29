@@ -183,7 +183,8 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: article
+      layout: landing
+      mode: immersive
       sharing: true
       license: true
       aside:
@@ -191,7 +192,6 @@ defaults:
       show_edit_on_github: false
       show_subscribe: true
       pageview: true
-
 
 ## => Plugins
 ##############################
