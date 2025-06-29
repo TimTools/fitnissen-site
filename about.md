@@ -16,7 +16,7 @@ article_header:
   type: overlay
   background_image:
     gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
-    src: /assets/header.jpg
+    src: /assets/images/header.jpg
     
 data:
   sections:
@@ -33,6 +33,6 @@ data:
       actions: *main_actions
       background_image:
         gradient: 'linear-gradient(135deg, rgba(34, 139, 87, 0.4), rgba(139, 34, 139, 0.4))'
-        src: "/assets/images/persoonlijkeaanpak.jpg"
+        src: "/assets/images/training.jpg"
         full_width: true
 ---
