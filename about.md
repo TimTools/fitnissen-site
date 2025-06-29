@@ -3,10 +3,12 @@ layout: landing
 mode: immersive
 header:
   theme: dark
-title: ABOUT ME!
+title: ABOUT ME
+title_html: "Persoonlijke training op maat"
+excerpt: >
+  "IT'S NOT ABOUT WHO YOU ARE, BUT WHO YOU WANT TO BECOME."
 permalink: /about.html
 key: page-about
-
 article_header:
   actions: &main_actions
   height: 100vh
@@ -18,7 +20,7 @@ article_header:
     
 data:
   sections:
-    - title: ">Whoami"
+    - title: ">WHOAMI"
       height: 100vh
       theme: dark
       type: cover
