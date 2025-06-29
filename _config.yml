@@ -40,10 +40,10 @@ repository_tree: master
 ## => Paths
 ##############################
 paths:
-  root    : "https://www.fit-nissen.nl/" # title link url, "/" (default)
-  home    : "https://www.fit-nissen.nl/" # home layout url, "/" (default)
-  archive : "/archive.html" # "/archive.html" (default)
-  rss     : "/feed.xml" # "/feed.xml" (default)
+  root    : # title link url, "/" (default)
+  home    : # home layout url, "/" (default)
+  archive : # "/archive.html" (default)
+  rss     : # "/feed.xml" (default)    
 
 ## => Post
 ##############################
@@ -187,10 +187,12 @@ defaults:
       sharing: true
       license: false
       aside:
-        toc: false
+        toc: true
       show_edit_on_github: false
       show_subscribe: true
-      pageview: false
+      pageview: true
+      comment: true
+      full_width: true
 
 ## => Plugins
 ##############################

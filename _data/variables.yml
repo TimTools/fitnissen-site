@@ -3,10 +3,10 @@ default:
   highlight_theme: default
   lang: en
   paths:
-    root: https://www.fit-nissen.nl/
-    home: https://www.fit-nissen.nl/
-    archive:  https://www.fit-nissen.nl/archive.html
-    rss:  https://www.fit-nissen.nl/feed.xml
+    root: /
+    home: /
+    archive:  /archive.html
+    rss:  /feed.xml
   mathjax: false
   mathjax_autoNumber: false
   mermaid: false
@@ -16,11 +16,11 @@ default:
   sources: bootcdn
 
   page:
-    mode: normal
-    type: webpage
+    mode: immersive
+    type: landing
     article_header:
-      align: left
-      theme: light
+      # align: left
+      theme: dark
     articles:
       show_cover: true
       show_excerpt: false
@@ -36,7 +36,7 @@ default:
     sharing: false
     comment: true
     license: false
-    pageview: false
+    pageview: true
     search: default
 
 sources:
