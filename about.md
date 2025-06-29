@@ -25,21 +25,21 @@ data:
       theme: dark
       type: cover
       excerpt: |
-        Hoi! Mijn naam is Tim, ik ben {% assign birth_date = '1993-03-18' | date: '%s' %}{% assign now = 'now' | date: '%s' %}{% assign seconds_in_year = 31556952 %}{% assign age = now | minus: birth_date | divided_by: seconds_in_year | floor %}{{ age }} jaar oud en woon sinds kort samen met mijn vriendin en ons vrolijke hondje in het mooie Overloon.<br>  
-        In het dagelijks leven werk ik als **DevOps engineer bij de Rabobank** — een functie waarin ik met plezier bezig ben met structuur, procesoptimalisatie en continue verbetering.<br><br>
+        Hoi! Mijn naam is Tim, ik ben {% include age.html %} jaar oud en woon sinds kort samen met mijn vriendin en ons vrolijke hondje in het mooie Overloon.<br>  
+        In het dagelijks leven werk ik als DevOps/Cloud Engineer — een functie waarin ik met plezier bezig ben met structuur, procesoptimalisatie en continue verbetering.<br><br>
 
-        Naast mijn werk heb ik een grote passie voor **sport, gezondheid en persoonlijke groei**.<br>  
+        Naast mijn werk heb ik een grote passie voor sport, gezondheid en persoonlijke groei.<br>  
         Van Olympisch gewichtheffen en powerliften tot voetbal, fitness, skiën en sinds kort ook mountainbiken — ik haal veel voldoening uit fysieke uitdagingen én de weg ernaartoe.<br>  
         Bewegen is voor mij niet alleen een uitlaatklep, maar een manier om mezelf elke dag een beetje beter te maken.<br><br>
 
         Juist door al die jaren ervaring weet ik inmiddels dat progressie niet draait om perfectie of extremen.<br>  
         Het draait om beginnen — ook al is het klein — en stap voor stap bouwen aan iets wat écht bij je past.<br>  
-        **Want echte vooruitgang zit niet in extremen, maar in consistentie.**<br><br>
+        <strong>Want echte vooruitgang zit niet in extremen, maar in consistentie.</strong><br><br>
 
         Diezelfde toewijding neem ik mee in de manier waarop ik anderen begeleid.<br>  
         Geen opgelegde schema’s of quick fixes, maar duurzame verandering met oog voor jouw situatie en doelen.<br>  
         Daarom ben ik momenteel volop bezig met de <strong>Milo Performance & Education PT-opleiding</strong>, waarmee ik mijn kennis verder verdiep.<br>  
-        Zo kan ik mijn klanten nog gerichter ondersteunen met **persoonlijk en effectief advies** op het gebied van training, voeding en leefstijl.<br><br>
+        Zo kan ik mijn klanten nog gerichter ondersteunen met persoonlijk en effectief advies op het gebied van training, voeding en leefstijl.<br><br>
   
       actions: *main_actions
       background_image:

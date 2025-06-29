@@ -1,0 +1,5 @@
+{% assign birth_date = '1993-03-18' | date: '%s' %}
+{% assign now = 'now' | date: '%s' %}
+{% assign seconds_in_year = 31556952 %}
+{% assign age = now | minus: birth_date | divided_by: seconds_in_year | floor %}
+{{ age }}
