@@ -1,30 +1,43 @@
 ---
 layout: landing
+mode: immersive
+header:
+  theme: dark
+title_html: "Persoonlijke training op maat"
+article_header:
+  actions: &main_actions
+  height: 100vh
+  theme: dark
+  type: overlay
+  background_image:
+    gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
+    src: https://www.fit-nissen.nl/assets/images/header.jpg
+    
+data:
+  sections:
 ---
 
-{% if page.article_header or page.header %}
-  {% include page__header.html %}
-{% endif %}
+{%- include snippets/assign.html
+  target = site.data.variables.default.page.sharing
+  source0=layout.sharing source1=page.sharing -%}
+{%- assign _sharing = __return -%}
 
-<main class="page__content" role="main">
-  <article class="article">
-    <div class="article__main container">
-      <header class="article__header">
-        <h1 class="article__title">{{ page.title }}</h1>
-        {% if page.date %}
-          <p class="article__meta">{{ page.date | date: "%B %d, %Y" }}</p>
-        {% endif %}
-      </header>
+<div class="layout--landing">
+  {%- include article/top/custom.html -%}
 
-      <div class="article__body">
-        {{ content }}
-      </div>
+  <div class="article__content" itemprop="articleBody">{{ content }}</div>
 
-      {% if page.tags %}
-        <footer class="article__footer">
-          <p class="article__tags">Tags: {{ page.tags | join: ", " }}</p>
-        </footer>
-      {% endif %}
-    </div>
-  </article>
-</main>
+  {%- if _sharing -%}
+    <section class="article__sharing d-print-none">{%- include sharing.html -%}</section>
+  {%- endif -%}
+
+  <!-- <div class="d-print-none">
+    {%- include article-footer.html -%}
+    {%- include article-section-navigator.html -%}
+  </div> -->
+
+</div>
+
+<script>
+  {%- include scripts/article.js -%}
+</script>
