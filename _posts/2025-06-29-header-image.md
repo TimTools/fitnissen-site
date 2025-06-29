@@ -1,8 +1,5 @@
 ---
-layout: article
-mode: immersive
-header:
-  theme: dark
+title: Post with Header Image
 title_html: "Persoonlijke training op maat"
 article_header:
   height: 100vh
