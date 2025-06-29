@@ -24,7 +24,7 @@ title: "FIT-NISSEN PT"
 email: "info@fit-nissen.nl"
 description: "Personal Training op maat!"
 baseurl: ""
-url: "https://fit-nissen.nl"
+url: "https://www.fit-nissen.nl"
 logo: "/assets/images/logo.svg"
 
 ## => Language and Timezone
@@ -184,14 +184,13 @@ defaults:
       type: posts
     values:
       layout: landing
-      mode: immersive
       sharing: true
-      license: true
+      license: false
       aside:
         toc: true
       show_edit_on_github: false
       show_subscribe: true
-      pageview: true
+      pageview: false
 
 ## => Plugins
 ##############################
