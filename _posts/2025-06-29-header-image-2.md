@@ -1,6 +1,7 @@
 ---
 layout: landing
 title: Page - Article Header Overlay Background Image (Immersive + Translucent Header)
+mode: immersive
 header:
   theme: dark
 article_header:
