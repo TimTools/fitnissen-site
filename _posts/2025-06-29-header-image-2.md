@@ -1,5 +1,5 @@
 ---
-layout: landing
+layout: page
 title: Page - Article Header Overlay Background Image (Immersive + Translucent Header)
 mode: immersive
 header:
