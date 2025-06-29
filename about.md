@@ -5,15 +5,10 @@ header:
   theme: dark
 title: Over mij!
 permalink: /about.html
+key: page-about
 
 article_header:
   actions: &main_actions
-    - text: Get started!
-      type: outline-theme-dark
-      url: /contact.html
-    - text: More info
-      type: outline-theme-dark
-      url: /info.html
   height: 100vh
   theme: dark
   type: overlay
@@ -38,3 +33,4 @@ data:
         gradient: 'linear-gradient(135deg, rgba(34, 139, 87, 0.4), rgba(139, 34, 139, 0.4))'
         src: "/assets/images/persoonlijkeaanpak.jpg"
         full_width: true
+---
