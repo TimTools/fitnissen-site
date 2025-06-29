@@ -3,10 +3,10 @@ default:
   highlight_theme: default
   lang: en
   paths:
-    root: /
-    home: /
-    archive:  /archive.html
-    rss:  /feed.xml
+    root: https://www.fit-nissen.nl/
+    home: https://www.fit-nissen.nl/
+    archive:  https://www.fit-nissen.nl/archive.html
+    rss:  https://www.fit-nissen.nl/feed.xml
   mathjax: false
   mathjax_autoNumber: false
   mermaid: false
@@ -32,7 +32,7 @@ default:
     show_tags: true
     show_author_profile: false
     show_subscribe: false
-    full_width: false
+    full_width: true
     sharing: false
     comment: true
     license: false
