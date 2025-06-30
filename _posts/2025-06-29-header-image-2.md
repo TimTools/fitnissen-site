@@ -1,5 +1,6 @@
 ---
 layout: article
+full_width: true
 title: Page - Article Header Overlay Background Image (Immersive + Translucent Header)
 mode: immersive
 header:
