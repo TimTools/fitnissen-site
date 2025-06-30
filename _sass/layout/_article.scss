@@ -1,29 +1,23 @@
-.article__sharing {
-  margin: map-get($spacers, 4) 0;
-}
-.article__section-navigator {
-  padding-top: map-get($spacers, 3);
-  margin: map-get($spacers, 4) 0 map-get($spacers, 3) 0;
-  word-wrap: break-word;
-  @include split-line(top, 4px);
-  & > .previous, & > .next {
-    width: 50%;
-    & > span {
-      font-weight: map-get($base, font-weight-bold);
-      color: $text-color-l;
-    }
-    & > a {
+.layout--landing {
+  .heros {
+    max-width: map-get($layout, content-max-width) * 2;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .hero {
+    img {
       display: block;
-      @include link-colors($text-color, $main-color-1);
+      width: 100%;
+      margin: 0 auto;
     }
   }
-  & > .previous {
-    float: left;
-    padding-right: map-get($spacers, 2);
+  .hero__content {
+    margin-bottom: 0;
   }
-  & > .next {
-    float: right;
-    padding-left: map-get($spacers, 2);
-    text-align: right;
+  .hero__cover {
+    max-width: map-get($layout, content-max-width);
+  }
+  .hero__cover--full-width {
+    max-width: none;
   }
 }
