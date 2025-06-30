@@ -1,3 +1,12 @@
 /* start custom scss snippet */
+.page__header {
+  text-align: left !important;
+  align-items: flex-start !important;
+}
+
+.page__header .hero__content {
+  align-items: flex-start;
+  text-align: left;
+}
 
 /* end custom scss snippet */
