@@ -13,7 +13,6 @@ excerpt: >
 article_header:
   type: overlay
   theme: dark
-  align: center
   height: 100vh
   background_color: '#203028'
   background_image:
