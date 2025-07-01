@@ -1,14 +1,12 @@
 ---
+title: Welcome
 layout: article
 mode: immersive
 full_width: true
 header:
   theme: dark
 
-title: PERSOONLIJKE TRAINING OP MAAT
 title_html: "Persoonlijke training op maat"
-excerpt: >
-  "YOU DON'T HAVE TO BE EXTREME, YOU JUST NEED TO BE CONSISTENT!"
 
 article_header:
   type: overlay
