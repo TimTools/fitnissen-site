@@ -1,13 +1,13 @@
 ---
 title: First real post
+title_html: "Persoonlijke training op maat"
 tags: TeXt
 full_width: true
 header:
   theme: dark
 
-title_html: "Persoonlijke training op maat"
-excerpt: >
-  "YOU DON'T HAVE TO BE EXTREME, YOU JUST NEED TO BE CONSISTENT!"
+# excerpt: >
+#   "YOU DON'T HAVE TO BE EXTREME, YOU JUST NEED TO BE CONSISTENT!"
 
 article_header:
   type: overlay
@@ -28,6 +28,6 @@ article_header:
 ---
 
 
-First real post
+Komt de titel hier vandaan?
 
 <!--more-->
