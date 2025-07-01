@@ -22,9 +22,9 @@ article_header:
     - text: More info
       type: outline-theme-dark
       url: /info.html
-content_align: center
 ---
 
 <!--more-->
-Komt de titel hier vandaan?
-Hier komt de inhoud van de eerste echte post. Dit is een voorbeeld van hoe je een blogpost kunt schrijven in Jekyll met de TeXt-thema. Je kunt hier tekst, afbeeldingen, links en andere elementen toevoegen om je verhaal te vertellen.
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; text-align: center;">
+  Hier komt de inhoud van de eerste echte post. Dit is een voorbeeld van hoe je een blogpost kunt schrijven in Jekyll met de TeXt-thema. Je kunt hier tekst, afbeeldingen, links en andere elementen toevoegen om je verhaal te vertellen.
+</div>
