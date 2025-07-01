@@ -22,8 +22,6 @@ article_header:
     - text: More info
       type: outline-theme-dark
       url: /info.html
-placement:
-  selector: "body > div.root > div > div.page__main.js-page-main.page__main--immersive.page__viewport.full-width.cell.cell--auto > div > div.page__content > div.grid.grid--reverse > div.col-main.cell.cell--auto > article > div > div"
 ---
 
 <!--more-->
