@@ -1,7 +1,7 @@
 ---
 title: First real post
 title_html: "Persoonlijke training op maat"
-tags: TeXt
+tags: blogpost
 full_width: true
 header:
   theme: dark
@@ -15,13 +15,8 @@ article_header:
   background_image:
     gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
     src: /assets/images/header.jpg
-  actions:
-    - text: Get started!
-      type: outline-theme-dark
-      url: /contact.html
-    - text: More info
-      type: outline-theme-dark
-      url: /info.html
+excerpt: >
+  "Test"
 ---
 
 <!--more-->
