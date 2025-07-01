@@ -22,9 +22,9 @@ article_header:
     - text: More info
       type: outline-theme-dark
       url: /info.html
+placement:
+  selector: "body > div.root > div > div.page__main.js-page-main.page__main--immersive.page__viewport.full-width.cell.cell--auto > div > div.page__content > div.grid.grid--reverse > div.col-main.cell.cell--auto > article > div > div"
 ---
 
 <!--more-->
-<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; text-align: center;">
-  Hier komt de inhoud van de eerste echte post. Dit is een voorbeeld van hoe je een blogpost kunt schrijven in Jekyll met de TeXt-thema. Je kunt hier tekst, afbeeldingen, links en andere elementen toevoegen om je verhaal te vertellen.
-</div>
+Hier komt de inhoud van de eerste echte post. Dit is een voorbeeld van hoe je een blogpost kunt schrijven in Jekyll met de TeXt-thema. Je kunt hier tekst, afbeeldingen, links en andere elementen toevoegen om je verhaal te vertellen.
