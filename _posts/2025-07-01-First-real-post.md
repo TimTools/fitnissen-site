@@ -22,6 +22,7 @@ article_header:
     - text: More info
       type: outline-theme-dark
       url: /info.html
+content_align: center
 ---
 
 <!--more-->
