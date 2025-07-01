@@ -6,9 +6,6 @@ full_width: true
 header:
   theme: dark
 
-# excerpt: >
-#   "YOU DON'T HAVE TO BE EXTREME, YOU JUST NEED TO BE CONSISTENT!"
-
 article_header:
   type: overlay
   theme: dark
@@ -27,7 +24,6 @@ article_header:
       url: /info.html
 ---
 
-
-Komt de titel hier vandaan?
-
 <!--more-->
+Komt de titel hier vandaan?
+Hier komt de inhoud van de eerste echte post. Dit is een voorbeeld van hoe je een blogpost kunt schrijven in Jekyll met de TeXt-thema. Je kunt hier tekst, afbeeldingen, links en andere elementen toevoegen om je verhaal te vertellen.
