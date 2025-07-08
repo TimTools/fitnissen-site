@@ -19,6 +19,15 @@ article_header:
     src: /assets/images/header.jpg
 excerpt: >
   "Test"
+
+data:
+  sections:
+    - title: "Not for dreamers, but for those who put in the work!"
+      height: 100vh
+      theme: dark
+      type: cover
+      excerpt: |
+        Hier komt de inhoud van de eerste echte post. Dit is een voorbeeld van hoe je een blogpost kunt schrijven in Jekyll met de TeXt-thema. Je kunt hier tekst, afbeeldingen, links en andere elementen toevoegen om je verhaal te vertellen.  
 ---
 
 <!--more-->
