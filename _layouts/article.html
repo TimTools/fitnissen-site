@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: landing
 header: true
 mode: immersive
 full_width: true
@@ -9,23 +9,23 @@ full_width: true
   source0=layout.sharing source1=page.sharing -%}
 {%- assign _sharing = __return -%}
 
-<div class="page__main js-page-main page__main--immersive page__viewport full-width cell cell--auto"></div>
-<div class="layout--page">
-  {%- include article/top/custom.html -%}
+<main class="page__content" role="main">
+  <article class="article container">
+    <header class="article__header">
+      <h1>{{ page.title }}</h1>
+      {% if page.date %}
+        <p class="article__meta">{{ page.date | date: "%B %d, %Y" }}</p>
+      {% endif %}
+    </header>
 
-  <div class="article__content" itemprop="articleBody">{{ content }}</div>
+    <div class="article__body">
+      {{ content }}
+    </div>
 
-  {%- if _sharing -%}
-    <section class="article__sharing d-print-none">{%- include sharing.html -%}</section>
-  {%- endif -%}
-
-  <div class="d-print-none">
-    {%- include article-footer.html -%}
-    {%- include article-section-navigator.html -%}
-  </div>
-
-</div>
-
-<script>
-  {%- include scripts/article.js -%}
-</script>
+    {% if page.tags %}
+      <footer class="article__footer">
+        <p>Tags: {{ page.tags | join: ", " }}</p>
+      </footer>
+    {% endif %}
+  </article>
+</main>
