@@ -1,5 +1,5 @@
 ---
-layout: landing
+layout: page
 header: true
 mode: immersive
 full_width: true
@@ -9,9 +9,9 @@ full_width: true
   source0=layout.sharing source1=page.sharing -%}
 {%- assign _sharing = __return -%}
 
+<div class="page__main js-page-main page__main--immersive page__viewport full-width cell cell--auto"></div>
 <div class="layout--page">
   {%- include article/top/custom.html -%}
-  
 
   <div class="article__content" itemprop="articleBody">{{ content }}</div>
 
