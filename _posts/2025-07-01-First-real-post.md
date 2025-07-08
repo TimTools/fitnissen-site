@@ -1,7 +1,5 @@
 ---
 layout: post
-date: 2025-07-01 00:00:00 +0200
-categories: blog
 title: First real post
 title_html: "Persoonlijke training op maat"
 tags: blogpost
