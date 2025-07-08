@@ -1,6 +1,8 @@
 ---
-layout: post
+layout: landing
 mode: immersive
+aside:
+  toc: true
 title: First real post
 title_html: "Persoonlijke training op maat"
 tags: blogpost
