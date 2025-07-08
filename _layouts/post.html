@@ -1,0 +1,23 @@
+---
+layout: landing
+---
+
+<!-- Extend landing.html look -->
+<div class="page__main js-page-main page__main--immersive page__viewport full-width cell cell--auto">
+  <div class="hero hero--center hero--dark overlay"
+       style="background-image:linear-gradient(135deg, rgba(34, 139, 87, .4), rgba(139, 34, 139, .4)),url('/assets/images/header.jpg');
+              background-size: cover;
+              background-position: center;
+              min-height: 100vh;">
+    <div class="hero__content">
+      <div class="article__header">
+        <h1>{{ page.title }}</h1>
+      </div>
+      <p class="overlay__excerpt">{{ page.excerpt }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="page__content js-article-content">
+  {{ content }}
+</div>
