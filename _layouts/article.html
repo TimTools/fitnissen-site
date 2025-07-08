@@ -1,31 +1,22 @@
 ---
 layout: landing
-header: true
-mode: immersive
-full_width: true
 ---
-{%- include snippets/assign.html
-  target = site.data.variables.default.page.sharing
-  source0=layout.sharing source1=page.sharing -%}
-{%- assign _sharing = __return -%}
 
-<main class="page__content" role="main">
+{% if page.article_header or page.header %}
+  {% include page__header.html %}
+{% endif %}
+
+<main class="page__main js-page-main page__main--immersive page__viewport full-width cell cell--auto" role="main">
   <article class="article container">
     <header class="article__header">
       <h1>{{ page.title }}</h1>
       {% if page.date %}
-        <p class="article__meta">{{ page.date | date: "%B %d, %Y" }}</p>
+        <p class="article__meta"><i class="far fa-calendar-alt"></i> {{ page.date | date: "%B %d, %Y" }}</p>
       {% endif %}
     </header>
 
     <div class="article__body">
       {{ content }}
     </div>
-
-    {% if page.tags %}
-      <footer class="article__footer">
-        <p>Tags: {{ page.tags | join: ", " }}</p>
-      </footer>
-    {% endif %}
   </article>
 </main>
