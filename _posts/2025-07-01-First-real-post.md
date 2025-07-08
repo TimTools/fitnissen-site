@@ -1,6 +1,5 @@
 ---
 layout: landing
-mode: immersive
 type: article
 title: First real post
 title_html: "Persoonlijke training op maat"
