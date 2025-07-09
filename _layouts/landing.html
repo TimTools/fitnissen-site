@@ -11,7 +11,7 @@ article_header:
   align: center
   height: 80vh
 ---
-<div class="layout--landing" id="moreinfo">
+<div class="layout--landing">
   <div class="heros">
   {%- for _section in page.data.sections -%}
     {%- include snippets/get-nav-url.html path=_section.background_image.src -%}
@@ -29,7 +29,7 @@ article_header:
         style="background-image: url({{ _url }});">
     {%- endif -%}
 
-        <div class="hero__content">
+        <div class="hero__content" id="moreinfo">
           <div class="mb-5">
 
             <h3>{{ _section.title }}</h3>
@@ -52,7 +52,7 @@ article_header:
 
           {%- if _section.children -%}
             {%- assign _size = _section.children | size  -%}
-            <div class="grid--container" id="voordelen">
+            <div class="grid--container" id="benefits">
               <div class="grid grid--p-3">
 
                 {%- for child in _section.children -%}
