@@ -1,7 +1,20 @@
 header:
   - titles:
       # @start locale config
-      en      : &EN       About me
+      en      : &EN  Contact
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      nl      : &NL  Contact
+      nl-NL   : *NL
+      nl-BE   : *NL
+      # @end locale config
+    url: /contact
+
+  - titles:
+      # @start locale config
+      en      : &EN  About me
       en-GB   : *EN
       en-US   : *EN
       en-CA   : *EN
@@ -14,7 +27,7 @@ header:
 
   - titles:
       # @start locale config
-      en      : &EN       Blog
+      en      : &EN  Blog
       en-GB   : *EN
       en-US   : *EN
       en-CA   : *EN
