@@ -34,7 +34,7 @@ data:
         Kijk rustig rond, lees de blogs, en als je klaar bent om serieus aan jezelf te werken… weet je me te vinden.<br><br>
         Welkom. Let’s get to work!
       background_image:
-        gradient: 'linear-gradient(135deg, rgba(34, 139, 87, 0.4), rgba(139, 34, 139, 0.4))'
+        gradient: 'linear-gradient(135deg, rgba(34, 139, 87, 0.2), rgba(139, 34, 139, 0.2))'
         src: /assets/images/posts/2025-07-09-Nieuwe-website-online.png
         full_width: true        
 ---
