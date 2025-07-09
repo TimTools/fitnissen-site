@@ -10,7 +10,7 @@ excerpt: >
   YOU DON'T HAVE TO BE EXTREME,
   YOU JUST NEED TO BE CONSISTENT!
 permalink: /contact
-
+---
 ## Contact
 
 Wil je starten met personal training of heb je vragen? Neem gerust contact met me op:
