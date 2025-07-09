@@ -18,11 +18,11 @@ article_header:
     gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
     src: /assets/images/header.jpg
 excerpt: >
-  Na een week flink zweten en hard werken is het eindelijk zover: mijn nieuwe website is online!
+  
 
 data:
   sections:
-    - title: "Not for dreamers, but for those who put in the work!"
+    - title: ""
       height: 100vh
       theme: dark
       type: cover
