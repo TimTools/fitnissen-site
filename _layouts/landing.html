@@ -16,13 +16,16 @@ article_header:
   {%- for _section in page.data.sections -%}
     {%- include snippets/get-nav-url.html path=_section.background_image.src -%}
     {%- assign _url = __return -%}
+    {%- assign section_classes = 'hero hero--center' -%}
     {%- if _section.theme == 'light' -%}
-      <section class="hero hero--center hero--light" id="hero-{{ forloop.index }}"
+      {%- assign section_classes = section_classes | append: ' hero--light' -%}
     {%- elsif _section.theme == 'dark' -%}
-      <section class="hero hero--center hero--dark" id="hero-{{ forloop.index }}"
-    {%- else -%}
-      <section class="hero hero--center" id="hero-{{ forloop.index }}"
+      {%- assign section_classes = section_classes | append: ' hero--dark' -%}
     {%- endif -%}
+    {%- if _section.background_image.full_width == true -%}
+      {%- assign section_classes = section_classes | append: ' hero--fullwidth' -%}
+    {%- endif -%}
+    <section class="{{ section_classes }}" id="hero-{{ forloop.index }}"
     {%- if _section.background_color -%}
         style="background-image: url({{ _url }}); background-color: {{ _section.background_color }};">
     {%- else -%}
