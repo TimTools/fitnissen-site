@@ -3,28 +3,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
 <style>
-  *, 
-  *::before, 
-  *::after {
-    box-sizing: border-box;
-  }
-
   html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
   }
 
+  .heros,
+  .hero,
+  .hero--center,
   #hero-1 {
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem 2rem;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    max-width: 100%;
+  }
+
+  #hero-1 {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
   }
 
   #hero-1::before {
@@ -36,15 +41,16 @@
     width: 100%;
     z-index: 0;
     backdrop-filter: blur(4px);
-    background-color: rgba(0, 0, 0, 0.4); /* Donkere overlay */
+    background-color: rgba(0, 0, 0, 0.4);
   }
 
   #hero-1 .hero__content {
-      position: relative;
-      color: #fff;
-      text-align: center;
-      width: 100%;
-      box-sizing: border-box;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 </style>
 
