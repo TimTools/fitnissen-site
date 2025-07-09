@@ -14,16 +14,34 @@ article_header:
     gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
     src: /assets/images/header.jpg
 ---
+{% assign articles = site.sample_page %}
 <section class="articles-list" style="padding: 2rem;">
   <div class="container">
-    <h2>Laatste posts</h2>
+    <h2>Articles - Item (Cover + Excerpt + Read More + Info)</h2>
     <ul style="list-style: none; padding: 0;">
-      {% for post in site.posts %}
-        <li style="margin-bottom: 2rem;">
-          <a href="{{ post.url | relative_url }}" style="text-decoration: none;">
-            <h3>{{ post.title }}</h3>
-            <p style="color: #666;">{{ post.date | date: "%d %B %Y" }}</p>
-            <p style="color: #000000;">{{ post.excerpt }}</p>
+      {% for article in articles %}
+        <li style="margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 2rem;">
+          <a href="{{ article.url | relative_url }}" style="text-decoration: none;">
+            {% if article.cover %}
+              <img src="{{ article.cover | relative_url }}" alt="{{ article.title }}" style="max-width: 100%; height: auto; margin-bottom: 1rem;">
+            {% endif %}
+            <h3>{{ article.title }}</h3>
+            {% if article.excerpt %}
+              <p style="color: #000000;">{{ article.excerpt }}</p>
+            {% endif %}
+            <p>
+              <a href="{{ article.url | relative_url }}" style="color: #228B57; font-weight: bold;">Lees meer &rarr;</a>
+            </p>
+            {% if article.date or article.author %}
+              <p style="color: #666; font-size: 0.9em;">
+                {% if article.date %}
+                  {{ article.date | date: "%d %B %Y" }}
+                {% endif %}
+                {% if article.author %}
+                  &mdash; {{ article.author }}
+                {% endif %}
+              </p>
+            {% endif %}
           </a>
         </li>
       {% endfor %}
