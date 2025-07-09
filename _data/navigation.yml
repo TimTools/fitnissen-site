@@ -10,7 +10,20 @@ header:
       nl-NL   : *NL
       nl-BE   : *NL
       # @end locale config
-    url: /about.html
+    url: /about
+
+  - titles:
+      # @start locale config
+      en      : &EN       Blog
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      nl      : &NL  Blog
+      nl-NL   : *NL
+      nl-BE   : *NL
+      # @end locale config
+    url: /blog    
 
   # - titles:
   #     # @start locale config
