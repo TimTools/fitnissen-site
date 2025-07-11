@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: 
+Disallow: /cgi-bin/
+Disallow: /assets/
+Disallow: /_sass/
+Disallow: /tools/
+Disallow: /_posts/
+Disallow: /_layouts/
+Disallow: /_includes/
+Disallow: /_data/
+Sitemap: https://www.fit-nissen.nl/sitemap.xml
