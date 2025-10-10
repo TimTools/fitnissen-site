@@ -1,10 +1,11 @@
 <!-- _includes/intake.html -->
 <style>
-  /* wrapper en card-styling — past in dark theme */
+  /* wrapper en card-styling (standaard) */
   .intake-embed-outer {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 1.25rem;
+    box-sizing: border-box;
   }
 
   .intake-card {
@@ -16,46 +17,63 @@
     border: 1px solid rgba(255,255,255,0.04);
   }
 
-  /* aspect-ratio container: start met 16:9 maar allow to switch when child reports height */
   .intake-ratio {
     position: relative;
     width: 100%;
-    padding-top: 55%; /* ~16:9-ish; later we set padding-top:0 when child reports actual height */
+    padding-top: 55%;
   }
 
   .intake-iframe {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    border: 0;
-    display: block;
+    border: 0; display: block; background: transparent;
+  }
+
+  .intake-footer {
+    text-align: center; margin-top: .8rem; color: rgba(255,255,255,0.65); font-size:.95rem;
+  }
+
+  /* small responsive tweaks */
+  @media (max-width:600px){
+    .intake-embed-outer { padding: .6rem; }
+    .intake-ratio { padding-top: 70%; }
+  }
+
+  /* ===== full-bleed variant: gebruik dit wanneer de parent sectie full width is ===== */
+  /* Dit zorgt dat de embed de volledige viewport-breedte gebruikt en gecentreerd is */
+  .hero--fullwidth .intake-embed-outer,
+  .intake-embed-outer.full-bleed {
+    max-width: none;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 0;
+  }
+
+  /* verwijder card visual chrome bij full-bleed zodat het naadloos aansluit */
+  .hero--fullwidth .intake-card,
+  .intake-embed-outer.full-bleed .intake-card {
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
     background: transparent;
   }
 
-  /* kleine badge-link onder de kaart */
-  .intake-footer {
-    text-align: center;
-    margin-top: .8rem;
-    color: rgba(255,255,255,0.6);
-    font-size: .95rem;
-  }
-
-  /* optionele scrollbar styling (webkit); mocht browser scrollbar tonen */
-  .intake-card::-webkit-scrollbar { width: 10px; }
-  .intake-card::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 10px; }
+  /* als je overflow wilt voorkomen */
+  .intake-embed-outer.full-bleed { overflow: hidden; }
 </style>
 
-<div class="intake-embed-outer">
+<div class="intake-embed-outer" id="intakeEmbedOuter">
   <div class="intake-card" id="intakeCard">
     <div class="intake-ratio" id="intakeRatio">
-      <iframe
-        id="intakeIframe"
-        class="intake-iframe"
-        src="https://intake.myotherfiles.nl/?embed=1"
-        title="Intake formulier - Fit Nissen"
-        loading="lazy"
-        allow="clipboard-read; clipboard-write; microphone; camera; geolocation; encrypted-media"
-        sandbox="allow-forms allow-scripts allow-same-origin allow-popups"
-      ></iframe>
+      <iframe id="intakeIframe"
+              class="intake-iframe"
+              src="https://intake.myotherfiles.nl/?embed=1"
+              title="Intake formulier - Fit Nissen"
+              loading="lazy"
+              allow="clipboard-read; clipboard-write; microphone; camera; geolocation; encrypted-media"
+              sandbox="allow-forms allow-scripts allow-same-origin allow-popups">
+      </iframe>
     </div>
   </div>
 
@@ -66,64 +84,113 @@
 
 <script>
 (function () {
-  var iframe = document.getElementById('intakeIframe');
-  var ratio = document.getElementById('intakeRatio');
-  var allowedOrigin = 'https://intake.myotherfiles.nl'; // pas aan als nodig
+  const iframe = document.getElementById('intakeIframe');
+  const ratio = document.getElementById('intakeRatio');
+  const outer = document.getElementById('intakeEmbedOuter');
 
-  // Stuur thema naar de ingesloten pagina direct na laden
+  const allowedChildOrigin = 'https://intake.myotherfiles.nl';
+  const accentColor = '#1f7a4a';
+  const textColorDark = '#e6eef3';
+  const textColorLight = '#222222';
+
+  // Detecteer of de include in een full-width parent zit (bijv. theme voegt hero--fullwidth toe)
+  function enableFullBleedIfNeeded() {
+    // zoek ancestor met class 'hero--fullwidth'
+    let el = outer;
+    let isFull = false;
+    while (el) {
+      if (el.classList && el.classList.contains('hero--fullwidth')) { isFull = true; break; }
+      el = el.parentElement;
+    }
+    // of gedwongen class op de include zelf
+    if (outer.classList.contains('full-bleed')) isFull = true;
+
+    if (isFull) {
+      outer.classList.add('full-bleed');
+      // verwijder de inner padding die we hadden
+      // zorg dat parent achtergrond doorloopt (optioneel)
+    }
+  }
+
+  enableFullBleedIfNeeded();
+
+  // bepaal thema gebaseerd op de BRON-pagina (data-bs-theme / localStorage / prefers-color-scheme)
+  function detectHostTheme() {
+    let theme = document.documentElement.getAttribute('data-bs-theme') || localStorage.getItem('theme');
+    if (!theme) {
+      theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    return theme;
+  }
+
+  // Stuur thema naar child
   function sendTheme() {
-    var themePayload = {
+    const theme = detectHostTheme();
+    const payload = {
       type: 'setTheme',
-      theme: 'dark',
-      accent: '#1f7a4a',        // hoofdkleur van je site
-      textColor: '#e6eef3'
+      theme: theme,
+      accent: accentColor,
+      textColor: theme === 'dark' ? textColorDark : textColorLight
     };
-    // probeer meerdere keren (iframe heeft soms tijd nodig)
     try {
-      iframe.contentWindow.postMessage(JSON.stringify(themePayload), allowedOrigin);
+      iframe.contentWindow.postMessage(JSON.stringify(payload), allowedChildOrigin);
     } catch (e) { /* ignore */ }
   }
 
-  // Vraag initial height/zet theme na load
-  iframe.addEventListener('load', function () {
-    // vraag hoogte op bij child
+  // Vraag height op bij child
+  function requestChildHeight() {
     try {
-      iframe.contentWindow.postMessage(JSON.stringify({ type: 'requestHeight' }), allowedOrigin);
-      sendTheme();
+      iframe.contentWindow.postMessage(JSON.stringify({ type: 'requestHeight' }), allowedChildOrigin);
     } catch (e) {}
-  });
+  }
 
-  // Luister naar berichten van de iframe (height / bevestiging)
+  // Luister berichten van child
   window.addEventListener('message', function (e) {
-    // alleen vertrouw berichten van de ingestelde origin
-    if (e.origin !== allowedOrigin) return;
-
-    var data;
+    if (allowedChildOrigin !== '*' && e.origin !== allowedChildOrigin) return;
+    let data;
     try { data = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data; } catch (err) { return; }
-
     if (!data || !data.type) return;
 
     if (data.type === 'setHeight' && data.height) {
-      // gebruik px waarde
-      var h = parseInt(data.height, 10);
+      const h = parseInt(data.height, 10);
       if (!isNaN(h)) {
-        ratio.style.paddingTop = '0'; // stop aspect ratio
-        iframe.style.height = h + 'px';
+        ratio.style.paddingTop = '0';
         iframe.style.position = 'relative';
+        iframe.style.height = h + 'px';
       }
     }
 
     if (data.type === 'ackTheme') {
-      // optioneel: child bevestigt thema-apply; je kunt hier UI veranderen
-      console.log('Embed bevestigt thema:', data.theme);
+      console.log('Embed child accepted theme:', data.theme);
     }
   }, false);
 
-  // fallback: na 2s nog geen bericht -> maak vaste min-height (voorkomt te klein)
+  // Bij load: vraag height en stuur thema
+  iframe.addEventListener('load', function () {
+    setTimeout(function () {
+      requestChildHeight();
+      sendTheme();
+    }, 120);
+  });
+
+  // fallback height
   setTimeout(function () {
     if (iframe && (!iframe.style.height || iframe.style.height === '')) {
       iframe.style.height = '820px';
     }
   }, 2000);
+
+  // optionele polling korte periode voor dynamische content
+  var heightInterval = setInterval(function () { requestChildHeight(); }, 2000);
+  setTimeout(function () { clearInterval(heightInterval); }, 20000);
+
+  // stuur thema direct
+  sendTheme();
+
+  // luister op host theme changes (als gebruiker togglet)
+  window.addEventListener('storage', function (e) {
+    if (e.key === 'theme') sendTheme();
+  });
+
 })();
 </script>
