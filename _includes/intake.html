@@ -47,15 +47,26 @@
 
   // Stuur thema naar child (probeer meerdere keren als child nog niet klaar is)
   function sendTheme() {
+    // bepaal het actuele thema van de BRON-pagina (de parent/host). We respecteren in volgorde:
+    // 1) expliciete data-bs-theme attribuut op <html>
+    // 2) opgeslagen voorkeur in localStorage
+    // 3) systeem voorkeur (prefers-color-scheme)
+    let theme = document.documentElement.getAttribute('data-bs-theme') || localStorage.getItem('theme');
+    if (!theme) {
+      theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // pas accent/textColor aan afhankelijk van thema (je kunt andere kleuren kiezen)
     const payload = {
       type: 'setTheme',
-      theme: 'dark',
-      accent: accentColor,
-      textColor: textColor
+      theme: theme,
+      accent: theme === 'dark' ? accentColor : accentColor,
+      textColor: theme === 'dark' ? textColor : '#222222'
     };
     try {
       iframe.contentWindow.postMessage(JSON.stringify(payload), allowedChildOrigin);
     } catch(e){}
+  }
   }
 
   // Vraag child om hoogte
