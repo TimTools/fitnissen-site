@@ -1,38 +1,129 @@
 <!-- _includes/intake.html -->
-<div class="intake-embed-wrapper" style="max-width:1200px;margin:0 auto;padding:1rem;">
-  <div style="position:relative;padding-top:56.25%;"> <!-- 16:9 verhouding; pas aan -->
-    <iframe id="intake-iframe"
-            src="https://intake.myotherfiles.nl/"
-            title="Intake formulier"
-            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.12);"
-            allow="microphone;clipboard-read;clipboard-write"
-            loading="lazy"
-            sandbox="allow-scripts allow-forms allow-same-origin allow-popups">
-    </iframe>
+<style>
+  /* wrapper en card-styling — past in dark theme */
+  .intake-embed-outer {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1.25rem;
+  }
+
+  .intake-card {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(8, 10, 14, 0.25);
+    background: linear-gradient(180deg, rgba(20,22,24,0.88), rgba(12,14,16,0.95));
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  /* aspect-ratio container: start met 16:9 maar allow to switch when child reports height */
+  .intake-ratio {
+    position: relative;
+    width: 100%;
+    padding-top: 55%; /* ~16:9-ish; later we set padding-top:0 when child reports actual height */
+  }
+
+  .intake-iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    border: 0;
+    display: block;
+    background: transparent;
+  }
+
+  /* kleine badge-link onder de kaart */
+  .intake-footer {
+    text-align: center;
+    margin-top: .8rem;
+    color: rgba(255,255,255,0.6);
+    font-size: .95rem;
+  }
+
+  /* optionele scrollbar styling (webkit); mocht browser scrollbar tonen */
+  .intake-card::-webkit-scrollbar { width: 10px; }
+  .intake-card::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 10px; }
+</style>
+
+<div class="intake-embed-outer">
+  <div class="intake-card" id="intakeCard">
+    <div class="intake-ratio" id="intakeRatio">
+      <iframe
+        id="intakeIframe"
+        class="intake-iframe"
+        src="https://intake.myotherfiles.nl/?embed=1"
+        title="Intake formulier - Fit Nissen"
+        loading="lazy"
+        allow="clipboard-read; clipboard-write; microphone; camera; geolocation; encrypted-media"
+        sandbox="allow-forms allow-scripts allow-same-origin allow-popups"
+      ></iframe>
+    </div>
   </div>
 
-  <noscript style="display:block;margin-top:.8rem;">
-    De ingebedde intake werkt het beste met JavaScript ingeschakeld. <a href="https://intake.myotherfiles.nl/" target="_blank" rel="noopener">Open intake in nieuw venster</a>.
-  </noscript>
+  <div class="intake-footer">
+    Werkt de embed niet? <a href="https://intake.myotherfiles.nl/" target="_blank" rel="noopener" style="color:#cfe9ff; text-decoration:underline;">Open intake in nieuw venster</a>
+  </div>
 </div>
 
 <script>
-  // Probeert iframe hoogte aan te passen als de externe pagina postMessage-height stuurt
-  (function() {
-    var iframe = document.getElementById('intake-iframe');
-    if (!iframe) return;
+(function () {
+  var iframe = document.getElementById('intakeIframe');
+  var ratio = document.getElementById('intakeRatio');
+  var allowedOrigin = 'https://intake.myotherfiles.nl'; // pas aan als nodig
 
-    window.addEventListener('message', function(e) {
-      // Zorg dat je hier het juiste origin controleert in productie:
-      // if (e.origin !== 'https://intake.myotherfiles.nl') return;
-      try {
-        var data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
-        if (data && data.type === 'setHeight' && data.height) {
-          iframe.style.height = (data.height + 20) + 'px';
-          // zet padding-top weg als je geen aspect-ratio meer wilt:
-          iframe.parentElement.style.paddingTop = '0';
-        }
-      } catch (err) { /* ignore */ }
-    }, false);
-  })();
+  // Stuur thema naar de ingesloten pagina direct na laden
+  function sendTheme() {
+    var themePayload = {
+      type: 'setTheme',
+      theme: 'dark',
+      accent: '#1f7a4a',        // hoofdkleur van je site
+      textColor: '#e6eef3'
+    };
+    // probeer meerdere keren (iframe heeft soms tijd nodig)
+    try {
+      iframe.contentWindow.postMessage(JSON.stringify(themePayload), allowedOrigin);
+    } catch (e) { /* ignore */ }
+  }
+
+  // Vraag initial height/zet theme na load
+  iframe.addEventListener('load', function () {
+    // vraag hoogte op bij child
+    try {
+      iframe.contentWindow.postMessage(JSON.stringify({ type: 'requestHeight' }), allowedOrigin);
+      sendTheme();
+    } catch (e) {}
+  });
+
+  // Luister naar berichten van de iframe (height / bevestiging)
+  window.addEventListener('message', function (e) {
+    // alleen vertrouw berichten van de ingestelde origin
+    if (e.origin !== allowedOrigin) return;
+
+    var data;
+    try { data = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data; } catch (err) { return; }
+
+    if (!data || !data.type) return;
+
+    if (data.type === 'setHeight' && data.height) {
+      // gebruik px waarde
+      var h = parseInt(data.height, 10);
+      if (!isNaN(h)) {
+        ratio.style.paddingTop = '0'; // stop aspect ratio
+        iframe.style.height = h + 'px';
+        iframe.style.position = 'relative';
+      }
+    }
+
+    if (data.type === 'ackTheme') {
+      // optioneel: child bevestigt thema-apply; je kunt hier UI veranderen
+      console.log('Embed bevestigt thema:', data.theme);
+    }
+  }, false);
+
+  // fallback: na 2s nog geen bericht -> maak vaste min-height (voorkomt te klein)
+  setTimeout(function () {
+    if (iframe && (!iframe.style.height || iframe.style.height === '')) {
+      iframe.style.height = '820px';
+    }
+  }, 2000);
+})();
 </script>
