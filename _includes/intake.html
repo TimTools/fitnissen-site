@@ -1,61 +1,31 @@
-<!-- _includes/intake.html -->
-<style>
-  /* wrapper en card-styling — past in dark theme */
-  .intake-embed-outer {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 1.25rem;
-  }
-
-  .intake-card {
-    position: relative;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 12px 30px rgba(8, 10, 14, 0.25);
-    background: linear-gradient(180deg, rgba(20,22,24,0.88), rgba(12,14,16,0.95));
-    border: 1px solid rgba(255,255,255,0.04);
-  }
-
-  /* aspect-ratio container: start met 16:9 maar allow to switch when child reports height */
-  .intake-ratio {
-    position: relative;
-    width: 100%;
-    padding-top: 55%; /* ~16:9-ish; later we set padding-top:0 when child reports actual height */
-  }
-
-  .intake-iframe {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    border: 0;
-    display: block;
-    background: transparent;
-  }
-
-  /* kleine badge-link onder de kaart */
-  .intake-footer {
-    text-align: center;
-    margin-top: .8rem;
-    color: rgba(255,255,255,0.6);
-    font-size: .95rem;
-  }
-
-  /* optionele scrollbar styling (webkit); mocht browser scrollbar tonen */
-  .intake-card::-webkit-scrollbar { width: 10px; }
-  .intake-card::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 10px; }
-</style>
-
+<!-- _includes/intake.html
+     Responsive embed include voor https://intake.myotherfiles.nl
+     - stuurt requestHeight en setTheme naar de child
+     - ontvangt setHeight en ackTheme van de child
+     - past visuele styling toe zodat de embed naadloos in het dark theme past
+     - pas `parentOrigin` aan naar jouw GitHub Pages origin (bijv. https://jouwgebruikersnaam.github.io)
+-->
 <div class="intake-embed-outer">
+  <style>
+    .intake-embed-outer { max-width:1200px; margin:2rem auto; padding:1.25rem; }
+    .intake-card { position:relative; border-radius:14px; overflow:hidden; box-shadow:0 12px 30px rgba(8,10,14,0.28); background:linear-gradient(180deg, rgba(20,22,24,0.92), rgba(12,14,16,0.98)); border:1px solid rgba(255,255,255,0.04); }
+    .intake-ratio { position:relative; width:100%; padding-top:55%; transition:padding-top .25s ease; }
+    .intake-iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; display:block; background:transparent; }
+    .intake-footer { text-align:center; margin-top:.8rem; color:rgba(255,255,255,0.65); font-size:.95rem; }
+    /* small responsive tweaks */
+    @media (max-width:600px){ .intake-embed-outer{ padding: .6rem } .intake-ratio{ padding-top:70% } }
+  </style>
+
   <div class="intake-card" id="intakeCard">
     <div class="intake-ratio" id="intakeRatio">
-      <iframe
-        id="intakeIframe"
-        class="intake-iframe"
-        src="https://intake.myotherfiles.nl/?embed=1"
-        title="Intake formulier - Fit Nissen"
-        loading="lazy"
-        allow="clipboard-read; clipboard-write; microphone; camera; geolocation; encrypted-media"
-        sandbox="allow-forms allow-scripts allow-same-origin allow-popups"
-      ></iframe>
+      <iframe id="intakeIframe"
+              class="intake-iframe"
+              src="https://intake.myotherfiles.nl/?embed=1"
+              title="Intake formulier - Fit Nissen"
+              loading="lazy"
+              allow="clipboard-read; clipboard-write; microphone; camera; encrypted-media"
+              sandbox="allow-forms allow-scripts allow-same-origin allow-popups">
+      </iframe>
     </div>
   </div>
 
@@ -65,65 +35,75 @@
 </div>
 
 <script>
-(function () {
-  var iframe = document.getElementById('intakeIframe');
-  var ratio = document.getElementById('intakeRatio');
-  var allowedOrigin = 'https://intake.myotherfiles.nl'; // pas aan als nodig
+(function(){
+  // === PAS DIT AAN OP JOUW SITE ===
+  const parentOrigin = 'https://fitnissen.github.io'; // <-- zet hier jouw GitHub Pages origin
+  const accentColor = '#1f7a4a';
+  const textColor = '#e6eef3';
+  const allowedChildOrigin = 'https://intake.myotherfiles.nl';
 
-  // Stuur thema naar de ingesloten pagina direct na laden
+  const iframe = document.getElementById('intakeIframe');
+  const ratio = document.getElementById('intakeRatio');
+
+  // Stuur thema naar child (probeer meerdere keren als child nog niet klaar is)
   function sendTheme() {
-    var themePayload = {
+    const payload = {
       type: 'setTheme',
       theme: 'dark',
-      accent: '#1f7a4a',        // hoofdkleur van je site
-      textColor: '#e6eef3'
+      accent: accentColor,
+      textColor: textColor
     };
-    // probeer meerdere keren (iframe heeft soms tijd nodig)
     try {
-      iframe.contentWindow.postMessage(JSON.stringify(themePayload), allowedOrigin);
-    } catch (e) { /* ignore */ }
+      iframe.contentWindow.postMessage(JSON.stringify(payload), allowedChildOrigin);
+    } catch(e){}
   }
 
-  // Vraag initial height/zet theme na load
-  iframe.addEventListener('load', function () {
-    // vraag hoogte op bij child
+  // Vraag child om hoogte
+  function requestChildHeight() {
     try {
-      iframe.contentWindow.postMessage(JSON.stringify({ type: 'requestHeight' }), allowedOrigin);
-      sendTheme();
-    } catch (e) {}
-  });
+      iframe.contentWindow.postMessage(JSON.stringify({ type: 'requestHeight' }), allowedChildOrigin);
+    } catch(e){}
+  }
 
-  // Luister naar berichten van de iframe (height / bevestiging)
-  window.addEventListener('message', function (e) {
-    // alleen vertrouw berichten van de ingestelde origin
-    if (e.origin !== allowedOrigin) return;
-
-    var data;
-    try { data = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data; } catch (err) { return; }
-
+  // Handle berichten van child
+  window.addEventListener('message', function(e){
+    if (allowedChildOrigin !== '*' && e.origin !== allowedChildOrigin) return;
+    let data;
+    try { data = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data; } catch(err){ return; }
     if (!data || !data.type) return;
 
     if (data.type === 'setHeight' && data.height) {
-      // gebruik px waarde
-      var h = parseInt(data.height, 10);
-      if (!isNaN(h)) {
-        ratio.style.paddingTop = '0'; // stop aspect ratio
-        iframe.style.height = h + 'px';
+      const h = parseInt(data.height, 10);
+      if (!isNaN(h)){
+        // remove aspect-ratio padding and set explicit height
+        ratio.style.paddingTop = '0';
         iframe.style.position = 'relative';
+        iframe.style.height = h + 'px';
       }
     }
 
     if (data.type === 'ackTheme') {
-      // optioneel: child bevestigt thema-apply; je kunt hier UI veranderen
-      console.log('Embed bevestigt thema:', data.theme);
+      // child bevestigt thema: optioneel - je kunt hier extra styling toepassen
+      console.log('Embed child accepted theme:', data.theme);
     }
   }, false);
 
-  // fallback: na 2s nog geen bericht -> maak vaste min-height (voorkomt te klein)
-  setTimeout(function () {
-    if (iframe && (!iframe.style.height || iframe.style.height === '')) {
-      iframe.style.height = '820px';
-    }
-  }, 2000);
+  // Bij iframe load: vraag hoogte en stuur thema
+  iframe.addEventListener('load', function(){
+    // kleine timeout zodat child init kan afronden
+    setTimeout(function(){ requestChildHeight(); sendTheme(); }, 120);
+  });
+
+  // fallback: als child geen height terugstuurt, gebruik een redelijke min-height
+  setTimeout(function(){ if (!iframe.style.height || iframe.style.height === '') iframe.style.height = '820px'; }, 2000);
+
+  // optie: vraag periodiek height bij dynamische content (veilig en licht)
+  var heightInterval = setInterval(function(){ requestChildHeight(); }, 2000);
+  // stop interval na 20s — child zou dan fine-grained updates moeten sturen via postMessage
+  setTimeout(function(){ clearInterval(heightInterval); }, 20000);
+
+  // Stuur thema meteen (voor het geval de child al geladen is)
+  sendTheme();
+
 })();
 </script>
