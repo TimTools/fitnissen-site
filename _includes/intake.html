@@ -1,0 +1,38 @@
+<!-- _includes/intake.html -->
+<div class="intake-embed-wrapper" style="max-width:1200px;margin:0 auto;padding:1rem;">
+  <div style="position:relative;padding-top:56.25%;"> <!-- 16:9 verhouding; pas aan -->
+    <iframe id="intake-iframe"
+            src="https://intake.myotherfiles.nl/"
+            title="Intake formulier"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.12);"
+            allow="microphone;clipboard-read;clipboard-write"
+            loading="lazy"
+            sandbox="allow-scripts allow-forms allow-same-origin allow-popups">
+    </iframe>
+  </div>
+
+  <noscript style="display:block;margin-top:.8rem;">
+    De ingebedde intake werkt het beste met JavaScript ingeschakeld. <a href="https://intake.myotherfiles.nl/" target="_blank" rel="noopener">Open intake in nieuw venster</a>.
+  </noscript>
+</div>
+
+<script>
+  // Probeert iframe hoogte aan te passen als de externe pagina postMessage-height stuurt
+  (function() {
+    var iframe = document.getElementById('intake-iframe');
+    if (!iframe) return;
+
+    window.addEventListener('message', function(e) {
+      // Zorg dat je hier het juiste origin controleert in productie:
+      // if (e.origin !== 'https://intake.myotherfiles.nl') return;
+      try {
+        var data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+        if (data && data.type === 'setHeight' && data.height) {
+          iframe.style.height = (data.height + 20) + 'px';
+          // zet padding-top weg als je geen aspect-ratio meer wilt:
+          iframe.parentElement.style.paddingTop = '0';
+        }
+      } catch (err) { /* ignore */ }
+    }, false);
+  })();
+</script>
