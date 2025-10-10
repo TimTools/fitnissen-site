@@ -1,31 +1,38 @@
-<!-- _includes/intake.html
-     Responsive embed include voor https://intake.myotherfiles.nl
-     - stuurt requestHeight en setTheme naar de child
-     - ontvangt setHeight en ackTheme van de child
-     - past visuele styling toe zodat de embed naadloos in het dark theme past
-     - pas `parentOrigin` aan naar jouw GitHub Pages origin (bijv. https://jouwgebruikersnaam.github.io)
--->
-<div class="intake-embed-outer">
-  <style>
-    .intake-embed-outer { max-width:1200px; margin:2rem auto; padding:1.25rem; }
-    .intake-card { position:relative; border-radius:14px; overflow:hidden; box-shadow:0 12px 30px rgba(8,10,14,0.28); background:linear-gradient(180deg, rgba(20,22,24,0.92), rgba(12,14,16,0.98)); border:1px solid rgba(255,255,255,0.04); }
-    .intake-ratio { position:relative; width:100%; padding-top:55%; transition:padding-top .25s ease; }
-    .intake-iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; display:block; background:transparent; }
-    .intake-footer { text-align:center; margin-top:.8rem; color:rgba(255,255,255,0.65); font-size:.95rem; }
-    /* small responsive tweaks */
-    @media (max-width:600px){ .intake-embed-outer{ padding: .6rem } .intake-ratio{ padding-top:70% } }
-  </style>
-
-  <div class="intake-card" id="intakeCard">
-    <div class="intake-ratio" id="intakeRatio">
-      <iframe id="intakeIframe"
-              class="intake-iframe"
-              src="https://intake.myotherfiles.nl/?embed=1"
-              title="Intake formulier - Fit Nissen"
-              loading="lazy"
-              allow="clipboard-read; clipboard-write; microphone; camera; encrypted-media"
-              sandbox="allow-forms allow-scripts allow-same-origin allow-popups">
-      </iframe>
-    </div>
+<!-- _includes/intake.html -->
+<div class="intake-embed-wrapper" style="max-width:1200px;margin:0 auto;padding:1rem;">
+  <div style="position:relative;padding-top:56.25%;"> <!-- 16:9 verhouding; pas aan -->
+    <iframe id="intake-iframe"
+            src="https://intake.myotherfiles.nl/"
+            title="Intake formulier"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.12);"
+            allow="microphone;clipboard-read;clipboard-write"
+            loading="lazy"
+            sandbox="allow-scripts allow-forms allow-same-origin allow-popups">
+    </iframe>
   </div>
+
+  <noscript style="display:block;margin-top:.8rem;">
+    De ingebedde intake werkt het beste met JavaScript ingeschakeld. <a href="https://intake.myotherfiles.nl/" target="_blank" rel="noopener">Open intake in nieuw venster</a>.
+  </noscript>
 </div>
+
+<script>
+  // Probeert iframe hoogte aan te passen als de externe pagina postMessage-height stuurt
+  (function() {
+    var iframe = document.getElementById('intake-iframe');
+    if (!iframe) return;
+
+    window.addEventListener('message', function(e) {
+      // Zorg dat je hier het juiste origin controleert in productie:
+      // if (e.origin !== 'https://intake.myotherfiles.nl') return;
+      try {
+        var data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+        if (data && data.type === 'setHeight' && data.height) {
+          iframe.style.height = (data.height + 20) + 'px';
+          // zet padding-top weg als je geen aspect-ratio meer wilt:
+          iframe.parentElement.style.paddingTop = '0';
+        }
+      } catch (err) { /* ignore */ }
+    }, false);
+  })();
+</script>
