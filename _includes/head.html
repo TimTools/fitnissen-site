@@ -105,3 +105,39 @@
 <link rel="stylesheet" href="{{ _sources.font_awesome }}" >
 
 {%- include head/custom.html -%}
+
+<script>
+  (function() {
+    // 1. Check if the user has previously toggled the theme manually
+    var savedSkin = localStorage.getItem('tex-t-skin');
+    
+    // 2. Check the OS/Browser Preference
+    var osDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // Helper to set the theme
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    }
+
+    // 3. Logic: If no manual save, use OS. Otherwise use manual save.
+    if (savedSkin) {
+      applyTheme(savedSkin === 'dark');
+    } else {
+      applyTheme(osDark);
+      // Optional: Listen for OS changes while the page is open
+      if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+          if (!localStorage.getItem('tex-t-skin')) {
+            applyTheme(event.matches);
+          }
+        });
+      }
+    }
+  })();
+</script>

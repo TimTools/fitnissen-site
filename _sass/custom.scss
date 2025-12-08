@@ -1,3 +1,21 @@
-/* start custom scss snippet */
+/* Dynamic Hero: Switches based on OS Theme */
 
-/* end custom scss snippet */
+/* Default (Light Mode) */
+.hero--dynamic {
+  background-color: #ffffff;
+  color: #3e3e3e;
+}
+.hero--dynamic h3, .hero--dynamic h4 {
+  color: #222222;
+}
+
+/* Dark Mode Override */
+/* This activates when the <html> tag has class="dark" (added by our script) */
+html.dark .hero--dynamic {
+  background-color: #1a1c1e; /* Adjust to match your preferred dark grey */
+  color: #e6eef3;
+}
+html.dark .hero--dynamic h3, 
+html.dark .hero--dynamic h4 {
+  color: #ffffff;
+}

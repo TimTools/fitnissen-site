@@ -1,9 +1,8 @@
 ---
 layout: page
-header: true
 header:
-  theme: dark
-  background: '#333'
+  theme: null
+  background: transparent
 mode: immersive
 full_width: true
 article_header:
@@ -16,14 +15,24 @@ article_header:
   {%- include snippets/get-nav-url.html path=_section.background_image.src -%}
   {%- assign _url = __return -%}
   {%- assign section_classes = 'hero hero--center' -%}
+  
+  {%- comment -%} 
+    LOGIC UPDATE: 
+    If theme is 'light' or 'dark', force it. 
+    Otherwise, apply 'hero--dynamic' to follow OS settings. 
+  {%- endcomment -%}
   {%- if _section.theme == 'light' -%}
     {%- assign section_classes = section_classes | append: ' hero--light' -%}
   {%- elsif _section.theme == 'dark' -%}
     {%- assign section_classes = section_classes | append: ' hero--dark' -%}
+  {%- else -%}
+    {%- assign section_classes = section_classes | append: ' hero--dynamic' -%}
   {%- endif -%}
+
   {%- if _section.background_image.full_width == true -%}
     {%- assign section_classes = section_classes | append: ' hero--fullwidth' -%}
   {%- endif -%}
+
   <section class="{{ section_classes }}" id="hero-{{ forloop.index }}"
   {%- if _section.background_color -%}
       style="background-image: url({{ _url }}); background-color: {{ _section.background_color }};">
@@ -179,7 +188,6 @@ article_header:
     </section>
 {%- endfor -%}
 
-<!-- Layout container only around regular content -->
 <div class="layout--landing">
   {{ content }}
 </div>
