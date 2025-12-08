@@ -76,6 +76,36 @@
     max-width: 100%;
     box-sizing: border-box;
   }
+
+  /* --- FOOTER DARK MODE FIX --- */
+
+  /* 1. De footer container zelf */
+  html.dark .footer {
+    background-color: #0d1117 !important; /* Zeer donkergrijs */
+    color: #8b949e !important;             /* Gedempte witte tekst */
+    border-top: 1px solid #30363d;         /* Subtiel randje aan de bovenkant */
+  }
+
+  /* 2. Algemene links in de footer (Copyright, Jekyll, etc.) */
+  html.dark .footer a {
+    color: #58a6ff !important; /* Helder blauw voor links */
+    text-decoration: none;
+  }
+  html.dark .footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* 3. De Instagram knop repareren */
+  /* We dwingen de 'theme-dark' knop om wit te worden in dark mode */
+  html.dark .footer .button--outline-theme-dark {
+    color: #e6eef3 !important;       /* Witte tekst */
+    border-color: #e6eef3 !important;/* Witte rand */
+  }
+
+  html.dark .footer .button--outline-theme-dark:hover {
+    background-color: #e6eef3 !important; /* Witte achtergrond bij hover */
+    color: #0d1117 !important;            /* Zwarte tekst bij hover */
+  }
 </style>
 
 
