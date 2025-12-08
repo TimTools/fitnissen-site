@@ -76,42 +76,6 @@
     max-width: 100%;
     box-sizing: border-box;
   }
-
-  /* --- DYNAMIC THEME OVERRIDES --- */
-
-  /* 1. Forceer de body en landing wrapper naar donker als html.dark actief is */
-  html.dark body,
-  html.dark .layout--landing {
-    background-color: #141618 !important; /* Donkergrijs */
-    color: #e6eef3 !important;             /* Lichte tekst */
-  }
-
-  /* 2. Fix voor de Footer */
-  html.dark .page__footer {
-    background-color: #0d1117 !important; /* Iets donkerder dan body voor contrast */
-    color: #8b949e !important;             /* Gedempte tekstkleur */
-    border-top: 1px solid #30363d;         /* Subtiele rand */
-  }
-
-  html.dark .page__footer a {
-    color: #58a6ff !important;             /* Link kleur (blauwachtig) */
-  }
-
-  html.dark .page__footer strong {
-    color: #c9d1d9 !important;             /* Sterke tekst wit maken */
-  }
-
-  /* 3. Zorg dat de header transparant blijft of donker wordt */
-  html.dark .header {
-    background-color: rgba(20, 22, 24, 0.9); /* Semi-transparant donker */
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-
-  /* Bij immersive mode (zoals contact) moet de header soms transparant zijn */
-  html.dark .mode-immersive .header {
-    background-color: transparent;
-    border-bottom: none;
-  }
 </style>
 
 
