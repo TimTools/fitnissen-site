@@ -16,9 +16,9 @@ article_header:
   type: overlay  
   background_image:
     gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
-    src: ../assets/images/bike_compressed.jpeg
+    src: /../assets/images/bike_compressed.jpeg
 
-<!-- titles:
+titles:
   # @start locale config
   en      : &EN       Archive
   en-GB   : *EN
@@ -41,10 +41,10 @@ article_header:
   fr-FR   : *FR
   fr-LU   : *FR
   tr      : &TR       Arşivdekiler
-  # @end locale config -->
+  # @end locale config
 ---
 
-<div class="layout--archive js-all">
+<!-- <div class="layout--archive js-all">
   {%- include tags.html -%}
   <div class="js-result layout--archive__result d-none">
     {%- include article-list.html articles=site.posts type='brief' show_info=true reverse=true group_by='year' -%}
@@ -53,6 +53,6 @@ article_header:
 
 <script>
   {%- include scripts/archieve.js -%}
-</script>
+</script> -->
 
 {{ content }}
