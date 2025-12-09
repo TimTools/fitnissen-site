@@ -19,16 +19,36 @@
     border: 0;
     display: block;
     background: transparent;
-    min-height: 800px;
-    transition: height 0.2s ease-out; /* Smoother resize animation */
+    min-height: 600px;
+    transition: height 0.2s ease-out;
   }
   
+  /* 3. Footer Styling (Standaard / Light Mode) */
   .intake-footer {
     text-align: center; 
-    padding: 1.5rem; 
-    color: inherit; 
-    opacity: 0.7;
+    padding: 2rem 1rem; /* Iets meer ruimte */
+    color: #555;        /* Leesbaar grijs voor wit thema */
     font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  .intake-footer a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  /* 4. Footer Styling (Dark Mode) - FIX */
+  /* Wanneer de HTML tag class='dark' heeft (door ons script) */
+  html.dark .intake-footer {
+    color: #a0a0a0;     /* Lichtgrijs voor donkere achtergrond */
+  }
+  
+  html.dark .intake-footer a {
+    color: #58a6ff;     /* Helderblauw voor de link in dark mode */
+  }
+  
+  html.dark .intake-footer a:hover {
+    color: #ffffff;     /* Wit bij hover */
   }
 </style>
 
