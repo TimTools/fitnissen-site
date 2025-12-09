@@ -27,6 +27,19 @@ header:
 
   - titles:
       # @start locale config
+      en      : &EN  Niche
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      nl      : &NL  Niche
+      nl-NL   : *NL
+      nl-BE   : *NL
+      # @end locale config
+    url: /niche       
+
+  - titles:
+      # @start locale config
       en      : &EN  Blog
       en-GB   : *EN
       en-US   : *EN
