@@ -26,10 +26,10 @@
   /* 3. Footer Styling (Standaard / Light Mode) */
   .intake-footer {
     text-align: center; 
-    padding: 2.5rem 1rem; /* Iets meer ruimte */
+    padding: 2.5rem 1rem;
     color: #555555;       
     font-size: 0.9rem;
-    background-color: transparent; 
+    background-color: transparent !important; /* Altijd transparant */
     transition: all 0.3s ease;
   }
 
@@ -38,15 +38,13 @@
     text-decoration: underline;
   }
 
-  /* 4. Footer Styling (Dark Mode - BULLETPROOF FIX) */
-  
-  /* We forceren nu ook de BACKGROUND-COLOR naar donkergrijs (#141618) */
-  /* Dit lost de witte balk op */
+  /* 4. Footer Styling (Dark Mode) */
+  /* Door 'transparent' te gebruiken, neemt hij exact de kleur van de pagina over */
 
   /* A. Luister naar OS settings */
   @media (prefers-color-scheme: dark) {
     .intake-footer { 
-      background-color: #141618 !important; /* <--- DE OPLOSSING */
+      background-color: transparent !important; /* <--- AANGEPAST NAAR TRANSPARENT */
       color: #a0a0a0 !important; 
     }
     .intake-footer a { color: #58a6ff !important; }
@@ -55,7 +53,7 @@
 
   /* B. Luister naar HTML class */
   html.dark .intake-footer {
-    background-color: #141618 !important; /* <--- DE OPLOSSING */
+    background-color: transparent !important; /* <--- AANGEPAST NAAR TRANSPARENT */
     color: #a0a0a0 !important;
   }
   html.dark .intake-footer a {
@@ -64,7 +62,7 @@
 
   /* C. Luister naar geforceerde JS class (.is-dark) */
   .intake-full-bleed.is-dark .intake-footer {
-    background-color: #141618 !important; /* <--- DE OPLOSSING */
+    background-color: transparent !important; /* <--- AANGEPAST NAAR TRANSPARENT */
     color: #a0a0a0 !important;
   }
   .intake-full-bleed.is-dark .intake-footer a {
@@ -97,7 +95,7 @@
   const container = document.getElementById('intakeContainer');
   const allowedChildOrigin = 'https://intake.myotherfiles.nl';
 
-  // Configuatie
+  // Configuratie
   const layoutTheme = "{{ page.header.theme | default: page.article_header.theme }}";
   const accentColor = '#1f7a4a';
   const textColorDark = '#e6eef3';
@@ -123,14 +121,12 @@
   function sendTheme() {
     const theme = getActiveTheme();
     
-    // Update de container class (belangrijk voor de CSS selector hierboven)
     if (theme === 'dark') {
       container.classList.add('is-dark');
     } else {
       container.classList.remove('is-dark');
     }
 
-    // Stuur naar iframe
     const payload = {
       type: 'setTheme',
       theme: theme,
@@ -140,7 +136,6 @@
     try { iframe.contentWindow.postMessage(JSON.stringify(payload), allowedChildOrigin); } catch (e) { }
   }
 
-  // Hoogte aanpassen
   function requestChildHeight() {
     try { iframe.contentWindow.postMessage(JSON.stringify({ type: 'requestHeight' }), allowedChildOrigin); } catch (e) {}
   }
@@ -160,7 +155,6 @@
     setTimeout(sendTheme, 100);
   });
 
-  // Polling loops
   setInterval(requestChildHeight, 500);
   setInterval(sendTheme, 2000);
 
