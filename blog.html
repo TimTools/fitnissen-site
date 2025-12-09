@@ -27,8 +27,8 @@ article_header:
         <li style="margin-bottom: 2rem;">
           <a href="{{ post.url | relative_url }}" style="text-decoration: none;">
             <h3>{{ post.title }}</h3>
-            <p style="color: #666;">{{ post.date | date: "%d %B %Y" }}</p>
-            <p style="color: #666;">{{ post.excerpt }}</p>
+            <p class="text-muted">{{ post.date | date: "%d %B %Y" }}</p>
+            <p class="text-muted">{{ post.excerpt }}</p>
           </a>
         </li>
       {% endfor %}
