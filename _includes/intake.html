@@ -20,15 +20,39 @@
     display: block;
     background: transparent;
     min-height: 800px;
-    transition: height 0.2s ease-out; /* Smoother resize animation */
+    transition: height 0.2s ease-out;
   }
   
+  /* 3. Footer Styling (Standaard / Light Mode) */
   .intake-footer {
     text-align: center; 
-    padding: 1.5rem; 
-    color: inherit; 
-    opacity: 0.7;
+    padding: 2rem 1rem;
+    color: #555; 
     font-size: 0.9rem;
+    background-color: transparent !important; /* Voorkom witte balk */
+    transition: color 0.3s ease;
+  }
+
+  .intake-footer a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  /* 4. Footer Styling (Dark Mode) */
+  /* We checken nu op html.dark (OS) OF .is-dark (Geforceerd door JS) */
+  html.dark .intake-footer,
+  .intake-full-bleed.is-dark .intake-footer {
+    color: #a0a0a0 !important; /* Lichtgrijs tekst */
+  }
+  
+  html.dark .intake-footer a,
+  .intake-full-bleed.is-dark .intake-footer a {
+    color: #58a6ff !important; /* Blauwe link */
+  }
+  
+  html.dark .intake-footer a:hover,
+  .intake-full-bleed.is-dark .intake-footer a:hover {
+    color: #ffffff !important; /* Witte link bij hover */
   }
 </style>
 
@@ -44,13 +68,14 @@
   </iframe>
 
   <div class="intake-footer">
-    Werkt het bovenstaande formulier niet niet? <a href="https://intake.myotherfiles.nl/" target="_blank" rel="noopener" style="text-decoration:underline; color: inherit;">Open intake in nieuw venster</a>
+    Werkt het bovenstaande formulier niet niet? <a href="https://intake.myotherfiles.nl/" target="_blank" rel="noopener">Open intake in nieuw venster</a>
   </div>
 </div>
 
 <script>
 (function () {
   const iframe = document.getElementById('intakeIframe');
+  const container = document.getElementById('intakeContainer'); // Nodig voor de footer kleur styling
   const allowedChildOrigin = 'https://intake.myotherfiles.nl';
 
   // --- THEME CONFIGURATION ---
@@ -72,6 +97,16 @@
 
   function sendTheme() {
     const theme = getActiveTheme();
+    
+    // --- NIEUW: Update container class voor de footer tekst ---
+    // Dit zorgt dat de tekst lichtgrijs wordt als theme 'dark' is
+    if (theme === 'dark') {
+      container.classList.add('is-dark');
+    } else {
+      container.classList.remove('is-dark');
+    }
+
+    // Stuur thema naar iframe
     const payload = {
       type: 'setTheme',
       theme: theme,
@@ -95,7 +130,6 @@
 
     if (data.type === 'setHeight' && data.height) {
       const h = parseInt(data.height, 10);
-      // We add a small buffer (+20px) to prevent scrollbars from appearing due to rounding errors
       if (!isNaN(h) && h > 100) {
         iframe.style.height = (h + 20) + 'px';
       }
@@ -104,22 +138,12 @@
 
   // --- INITIALIZATION & LOOP ---
   iframe.addEventListener('load', function () {
-    // Immediate checks on load
     setTimeout(requestChildHeight, 100);
     setTimeout(sendTheme, 100);
   });
 
-  // START CONTINUOUS POLLING
-  // We check height every 500ms forever. This ensures that if validation errors
-  // appear or the user clicks "Next", the iframe grows automatically.
-  setInterval(function () { 
-    requestChildHeight(); 
-  }, 500);
-
-  // Send theme occasionally (in case user switches system mode while on page)
-  setInterval(function () {
-    sendTheme();
-  }, 2000);
+  setInterval(function () { requestChildHeight(); }, 500);
+  setInterval(function () { sendTheme(); }, 2000);
 
 })();
 </script>
