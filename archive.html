@@ -1,3 +1,33 @@
 ---
-layout: archive
+layout: landing
+mode: immersive
+header:
+  theme: dark
+title: ARCHIVE
+title_html: "Persoonlijke training op maat"
+<!-- permalink: /archive -->
+article_header:
+  <!-- actions: 
+    - text: Laatste posts!
+      url: blog#latest -->
+  height: 100vh
+  theme: null
+  type: overlay  
+  background_image:
+    gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
+    src: /assets/images/bike_compressed.jpeg
 ---
+<section class="archive-wrapper" style="padding: 4rem 1rem; min-height: 60vh;">
+  <div class="layout--archive js-all">
+    {%- include tags.html -%}
+    <div class="js-result layout--archive__result d-none">
+      {%- include article-list.html articles=site.posts type='brief' show_info=true reverse=true group_by='year' -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  {%- include scripts/archieve.js -%}
+</script>
+
+{{ content }}
