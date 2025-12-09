@@ -19,3 +19,59 @@ html.dark .hero--dynamic h3,
 html.dark .hero--dynamic h4 {
   color: #ffffff;
 }
+
+/* --- COMMENTS DARK MODE FIX --- */
+html.dark .page__comments {
+  background-color: #141618 !important; /* Zelfde kleur als body */
+  color: #e6eef3 !important;             /* Lichte tekst */
+}
+
+html.dark .page__comments h3,
+html.dark .page__comments h4 {
+  color: #ffffff !important;             /* Koppen wit */
+}
+
+/* --- FOOTER KNOP FIX --- */
+/* Zorg dat de knop in de footer eruitziet als de blauwe knoppen */
+
+html.dark .footer .button {
+  color: #58a6ff !important;        /* De blauwe tekstkleur */
+  border-color: #58a6ff !important; /* De blauwe rand */
+  background-color: transparent !important;
+}
+
+html.dark .footer .button:hover {
+  background-color: #58a6ff !important; /* Blauwe achtergrond bij hover */
+  color: #ffffff !important;            /* Witte tekst bij hover */
+  border-color: #58a6ff !important;
+}
+
+ /* --- FOOTER DARK MODE FIX --- */
+
+  /* 1. De footer container zelf */
+  html.dark .footer {
+    background-color: #0d1117 !important; /* Zeer donkergrijs */
+    color: #8b949e !important;             /* Gedempte witte tekst */
+    border-top: 1px solid #30363d;         /* Subtiel randje aan de bovenkant */
+  }
+
+  /* 2. Algemene links in de footer (Copyright, Jekyll, etc.) */
+  html.dark .footer a {
+    color: #58a6ff !important; /* Helder blauw voor links */
+    text-decoration: none;
+  }
+  html.dark .footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* 3. De Instagram knop repareren */
+  /* We dwingen de 'theme-dark' knop om wit te worden in dark mode */
+  html.dark .footer .button--outline-theme-dark {
+    color: #e6eef3 !important;       /* Witte tekst */
+    border-color: #e6eef3 !important;/* Witte rand */
+  }
+
+  html.dark .footer .button--outline-theme-dark:hover {
+    background-color: #e6eef3 !important; /* Witte achtergrond bij hover */
+    color: #0d1117 !important;            /* Zwarte tekst bij hover */
+  }
