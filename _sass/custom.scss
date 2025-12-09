@@ -31,6 +31,16 @@ html.dark .page__comments h4 {
   color: #ffffff !important;             /* Koppen wit */
 }
 
+/* --- BLOG DARK MODE FIX --- */
+html.dark .latest {
+  background-color: #141618 !important; /* Zelfde kleur als body */
+  color: #e6eef3 !important;             /* Lichte tekst */
+}
+
+html.dark .latest h3,
+html.dark .latest h4 {
+  color: #ffffff !important;             /* Koppen wit */
+}
 /* --- FOOTER KNOP FIX --- */
 /* Zorg dat de knop in de footer eruitziet als de blauwe knoppen */
 
