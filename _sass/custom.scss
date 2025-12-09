@@ -1,4 +1,8 @@
-/* Dynamic Hero: Switches based on OS Theme */
+/* ==========================================================================
+   CUSTOM SCSS - DARK MODE & THEME OVERRIDES
+   ========================================================================== */
+
+/* --- 1. DYNAMIC HERO (OS Theme Switch) --- */
 
 /* Default (Light Mode) */
 .hero--dynamic {
@@ -10,9 +14,8 @@
 }
 
 /* Dark Mode Override */
-/* This activates when the <html> tag has class="dark" (added by our script) */
 html.dark .hero--dynamic {
-  background-color: #1a1c1e; /* Adjust to match your preferred dark grey */
+  background-color: #1a1c1e; /* Donkergrijs */
   color: #e6eef3;
 }
 html.dark .hero--dynamic h3, 
@@ -20,182 +23,150 @@ html.dark .hero--dynamic h4 {
   color: #ffffff;
 }
 
-/* --- COMMENTS DARK MODE FIX --- */
-html.dark .page__comments {
-  background-color: #141618 !important; /* Zelfde kleur als body */
-  color: #e6eef3 !important;             /* Lichte tekst */
+/* --- 2. FOOTER FIXES --- */
+
+/* Footer container achtergrond en tekst */
+html.dark .footer {
+  background-color: #0d1117 !important;
+  color: #8b949e !important;
+  border-top: 1px solid #30363d;
 }
 
-html.dark .page__comments h3,
-html.dark .page__comments h4 {
-  color: #ffffff !important;             /* Koppen wit */
+/* Links in de footer */
+html.dark .footer a {
+  color: #58a6ff !important;
+  text-decoration: none;
+}
+html.dark .footer a:hover {
+  text-decoration: underline;
 }
 
-/* --- FOOTER KNOP FIX --- */
-/* Zorg dat de knop in de footer eruitziet als de blauwe knoppen */
+/* Instagram knop (outline-theme-dark) repareren */
+html.dark .footer .button--outline-theme-dark {
+  color: #e6eef3 !important;
+  border-color: #e6eef3 !important;
+}
+html.dark .footer .button--outline-theme-dark:hover {
+  background-color: #e6eef3 !important;
+  color: #0d1117 !important;
+}
 
+/* Algemene knoppen in footer gelijktrekken met blauwe thema */
 html.dark .footer .button {
-  color: #58a6ff !important;        /* De blauwe tekstkleur */
-  border-color: #58a6ff !important; /* De blauwe rand */
+  color: #58a6ff !important;
+  border-color: #58a6ff !important;
   background-color: transparent !important;
 }
-
 html.dark .footer .button:hover {
-  background-color: #58a6ff !important; /* Blauwe achtergrond bij hover */
-  color: #ffffff !important;            /* Witte tekst bij hover */
+  background-color: #58a6ff !important;
+  color: #ffffff !important;
   border-color: #58a6ff !important;
 }
 
- /* --- FOOTER DARK MODE FIX --- */
+/* --- 3. COMMENTS SECTIE FIXES --- */
 
-/* 1. De footer container zelf */
-html.dark .footer {
-background-color: #0d1117 !important; /* Zeer donkergrijs */
-color: #8b949e !important;             /* Gedempte witte tekst */
-border-top: 1px solid #30363d;         /* Subtiel randje aan de bovenkant */
-}
-
-/* 2. Algemene links in de footer (Copyright, Jekyll, etc.) */
-html.dark .footer a {
-color: #58a6ff !important; /* Helder blauw voor links */
-text-decoration: none;
-}
-html.dark .footer a:hover {
-text-decoration: underline;
-}
-
-/* 3. De Instagram knop repareren */
-/* We dwingen de 'theme-dark' knop om wit te worden in dark mode */
-html.dark .footer .button--outline-theme-dark {
-color: #e6eef3 !important;       /* Witte tekst */
-border-color: #e6eef3 !important;/* Witte rand */
-}
-
-html.dark .footer .button--outline-theme-dark:hover {
-background-color: #e6eef3 !important; /* Witte achtergrond bij hover */
-color: #0d1117 !important;            /* Zwarte tekst bij hover */
-}
-
-/* --- COMMENTS FIX --- */
-
-/* 1. Verberg de comments sectie als deze leeg is (verwijdert de balk) */
+/* Verberg de sectie volledig als deze leeg is (geen witte balk) */
 .page__comments:empty {
-display: none !important;
-padding: 0 !important;
-margin: 0 !important;
+  display: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-/* 2. Als er WEL comments zijn, zorg dat de achtergrond donker is */
+/* Als er wel comments zijn: donkere achtergrond */
 html.dark .page__comments {
-background-color: transparent !important; /* Laat de body kleur erdoorheen komen */
-border: none !important;
-color: #e6eef3 !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: #e6eef3 !important;
+}
+html.dark .page__comments h3,
+html.dark .page__comments h4 {
+  color: #ffffff !important;
 }
 
-/* --- BLOG / LAATSTE POSTS FIX (Dark Mode) --- */
+/* --- 4. BLOG / LAATSTE POSTS (Landing Page Lijst) --- */
 
-/* 1. De achtergrond van de hele sectie donker maken */
-/* We targeten specifiek de sectie met class .articles-list */
+/* Achtergrond donker maken */
 html.dark .articles-list,
 html.dark section#latest {
-  background-color: #141618 !important; /* De donkere site-achtergrond */
-  color: #e6eef3 !important;             /* Standaard lichte tekst */
+  background-color: #141618 !important;
+  color: #e6eef3 !important;
 }
 
-/* 2. Titel "Laatste posts" en artikel-titels wit maken */
+/* Titels wit maken */
 html.dark .articles-list h2,
 html.dark .articles-list h3 {
   color: #ffffff !important;
 }
 
-/* 3. Links (de klikbare titels) wit maken */
+/* Links wit maken */
 html.dark .articles-list a {
   color: #ffffff !important;
   text-decoration: none;
 }
-
-/* 4. Hover effect: blauw als je over de titel gaat */
 html.dark .articles-list a:hover h3 {
   color: #58a6ff !important;
   text-decoration: underline;
 }
 
-/* 5. DATUM FIX (De belangrijkste) */
-/* Omdat de datum in de HTML staat als <p style="color: #666">,
-   moeten we die kleur geforceerd overschrijven naar lichtgrijs. */
+/* Datum fix (overschrijft inline styles) */
 html.dark .articles-list p,
 html.dark .articles-list span {
-  color: #a0a0a0 !important; /* Lichtgrijs (leesbaar op donker) */
+  color: #a0a0a0 !important;
 }
 
-/* --- BLOG ARCHIEF / TAGS PAGINA FIX --- */
+/* --- 5. ARCHIEF / BLOG PAGINA (Nieuwe Fixes) --- */
 
-/* 1. De achtergrond van de archief sectie */
-/* Light mode (standaard) */
+/* Achtergrond van de wrapper */
 .archive-wrapper {
   background-color: #ffffff;
   color: #333;
 }
-
-/* Dark mode fix */
 html.dark .archive-wrapper {
-  background-color: #141618 !important; /* Site achtergrondkleur */
+  background-color: #141618 !important;
   color: #e6eef3 !important;
 }
 
-/* 2. De TAGS (knoppen bovenaan) */
-html.dark .tags .button {
+/* TAGS (Knoppen bovenaan) */
+html.dark .site-tags .button {
   background-color: transparent !important;
   border: 1px solid #58a6ff !important; /* Blauwe rand */
   color: #e6eef3 !important;             /* Witte tekst */
+  box-shadow: none !important;
 }
 
-html.dark .tags .button:hover,
-html.dark .tags .button--active {
-  background-color: #58a6ff !important; /* Blauw vlak bij hover/actief */
+/* Active/Hover state tags */
+html.dark .site-tags .button:hover,
+html.dark .site-tags .button.focus {
+  background-color: #58a6ff !important; /* Blauw gevuld */
+  color: #ffffff !important;
+  border-color: #58a6ff !important;
+}
+/* Teller in de actieve knop wit maken */
+html.dark .site-tags .button.focus .tag-button__count {
   color: #ffffff !important;
 }
 
-/* 3. De ARTIKEL LIJST (Titels en Datums) */
+/* ARTIKEL LIJST ITEMS */
 
-/* De jaartallen (bijv. '2025') */
+/* Jaartallen (2025) */
 html.dark .article-list__group-header {
-  color: #58a6ff !important; /* Blauw accent voor het jaar */
+  color: #58a6ff !important;
   border-bottom: 1px solid #30363d !important;
 }
 
-/* De artikel titels (links) */
-html.dark .article-list__item a {
-  color: #e6eef3 !important; /* Wit/Lichtgrijs */
-  text-decoration: none;
-}
-
-html.dark .article-list__item a:hover {
-  color: #58a6ff !important; /* Blauw bij hover */
-  text-decoration: underline;
-}
-
-/* De artikel datum en info */
-html.dark .article-list__item-info,
-html.dark .article-list__item-excerpt {
-  color: #a0a0a0 !important; /* Gedempt grijs */
-}
-
-/* Verwijder eventuele witte achtergrond op items */
-html.dark .article-list__item {
-  background-color: transparent !important;
-}
-
-/* Specifiek de class .item__header wit maken in dark mode */
+/* Titel van bericht (Nieuwe website...) */
 html.dark .item__header,
 html.dark a.item__header {
   color: #ffffff !important;
-  text-decoration: none;
+  text-decoration: none !important;
 }
-
-/* Blauw bij hoveren */
 html.dark .item__header:hover,
 html.dark a.item__header:hover {
   color: #58a6ff !important;
-  text-decoration: underline;
+  text-decoration: underline !important;
+}
+
+/* Datum (Jul 09) */
+html.dark .item__meta {
+  color: #a0a0a0 !important;
 }
