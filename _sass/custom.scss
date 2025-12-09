@@ -127,3 +127,61 @@ html.dark .articles-list p,
 html.dark .articles-list span {
   color: #a0a0a0 !important; /* Lichtgrijs (leesbaar op donker) */
 }
+
+/* --- BLOG ARCHIEF / TAGS PAGINA FIX --- */
+
+/* 1. De achtergrond van de archief sectie */
+/* Light mode (standaard) */
+.archive-wrapper {
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* Dark mode fix */
+html.dark .archive-wrapper {
+  background-color: #141618 !important; /* Site achtergrondkleur */
+  color: #e6eef3 !important;
+}
+
+/* 2. De TAGS (knoppen bovenaan) */
+html.dark .tags .button {
+  background-color: transparent !important;
+  border: 1px solid #58a6ff !important; /* Blauwe rand */
+  color: #e6eef3 !important;             /* Witte tekst */
+}
+
+html.dark .tags .button:hover,
+html.dark .tags .button--active {
+  background-color: #58a6ff !important; /* Blauw vlak bij hover/actief */
+  color: #ffffff !important;
+}
+
+/* 3. De ARTIKEL LIJST (Titels en Datums) */
+
+/* De jaartallen (bijv. '2025') */
+html.dark .article-list__group-header {
+  color: #58a6ff !important; /* Blauw accent voor het jaar */
+  border-bottom: 1px solid #30363d !important;
+}
+
+/* De artikel titels (links) */
+html.dark .article-list__item a {
+  color: #e6eef3 !important; /* Wit/Lichtgrijs */
+  text-decoration: none;
+}
+
+html.dark .article-list__item a:hover {
+  color: #58a6ff !important; /* Blauw bij hover */
+  text-decoration: underline;
+}
+
+/* De artikel datum en info */
+html.dark .article-list__item-info,
+html.dark .article-list__item-excerpt {
+  color: #a0a0a0 !important; /* Gedempt grijs */
+}
+
+/* Verwijder eventuele witte achtergrond op items */
+html.dark .article-list__item {
+  background-color: transparent !important;
+}
