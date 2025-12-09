@@ -26,11 +26,11 @@
   /* 3. Footer Styling (Standaard / Light Mode) */
   .intake-footer {
     text-align: center; 
-    padding: 2rem 1rem;
-    color: #555555;       /* Donkergrijs (voor witte achtergrond) */
+    padding: 2.5rem 1rem; /* Iets meer ruimte */
+    color: #555555;       
     font-size: 0.9rem;
-    background-color: transparent !important;
-    transition: color 0.3s ease;
+    background-color: transparent; 
+    transition: all 0.3s ease;
   }
 
   .intake-footer a {
@@ -38,28 +38,33 @@
     text-decoration: underline;
   }
 
-  /* 4. Footer Styling (Dark Mode - BULLETPROOF) */
+  /* 4. Footer Styling (Dark Mode - BULLETPROOF FIX) */
   
-  /* A. Luister direct naar OS/Browser instelling (CSS only fallback) */
+  /* We forceren nu ook de BACKGROUND-COLOR naar donkergrijs (#141618) */
+  /* Dit lost de witte balk op */
+
+  /* A. Luister naar OS settings */
   @media (prefers-color-scheme: dark) {
-    .intake-footer { color: #a0a0a0 !important; }
+    .intake-footer { 
+      background-color: #141618 !important; /* <--- DE OPLOSSING */
+      color: #a0a0a0 !important; 
+    }
     .intake-footer a { color: #58a6ff !important; }
     .intake-footer a:hover { color: #ffffff !important; }
   }
 
-  /* B. Luister naar de HTML class (Jekyll Theme toggle) */
+  /* B. Luister naar HTML class */
   html.dark .intake-footer {
+    background-color: #141618 !important; /* <--- DE OPLOSSING */
     color: #a0a0a0 !important;
   }
   html.dark .intake-footer a {
     color: #58a6ff !important;
   }
-  html.dark .intake-footer a:hover {
-    color: #ffffff !important;
-  }
 
-  /* C. Luister naar onze eigen geforceerde JS class (.is-dark) */
+  /* C. Luister naar geforceerde JS class (.is-dark) */
   .intake-full-bleed.is-dark .intake-footer {
+    background-color: #141618 !important; /* <--- DE OPLOSSING */
     color: #a0a0a0 !important;
   }
   .intake-full-bleed.is-dark .intake-footer a {
@@ -92,19 +97,19 @@
   const container = document.getElementById('intakeContainer');
   const allowedChildOrigin = 'https://intake.myotherfiles.nl';
 
-  // Configuatie ophalen uit Liquid
+  // Configuatie
   const layoutTheme = "{{ page.header.theme | default: page.article_header.theme }}";
   const accentColor = '#1f7a4a';
   const textColorDark = '#e6eef3';
   const textColorLight = '#222222';
 
   function getActiveTheme() {
-    // 1. Forceer als contact.html 'dark' of 'light' zegt
+    // 1. Forceer als contact.html settings heeft
     if (layoutTheme === 'dark' || layoutTheme === 'light') return layoutTheme;
     
     // 2. Anders: check OS of Thema knop
     let theme = document.documentElement.getAttribute('data-bs-theme') || localStorage.getItem('theme');
-    // Check of de HTML tag de class 'dark' heeft (door ons head-script)
+    // Check of de HTML tag de class 'dark' heeft
     if (!theme && document.documentElement.classList.contains('dark')) {
         theme = 'dark';
     }
@@ -118,10 +123,7 @@
   function sendTheme() {
     const theme = getActiveTheme();
     
-    // Debug log om te checken of het werkt (kijk in je browser console F12)
-    // console.log('Intake Theme Detected:', theme);
-
-    // Update de container class voor de footer tekst
+    // Update de container class (belangrijk voor de CSS selector hierboven)
     if (theme === 'dark') {
       container.classList.add('is-dark');
     } else {
