@@ -185,3 +185,17 @@ html.dark .article-list__item-excerpt {
 html.dark .article-list__item {
   background-color: transparent !important;
 }
+
+/* Specifiek de class .item__header wit maken in dark mode */
+html.dark .item__header,
+html.dark a.item__header {
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+/* Blauw bij hoveren */
+html.dark .item__header:hover,
+html.dark a.item__header:hover {
+  color: #58a6ff !important;
+  text-decoration: underline;
+}
