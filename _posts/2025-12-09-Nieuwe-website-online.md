@@ -10,7 +10,7 @@ header:
 
 article_header:
   type: overlay
-  theme: dark
+  theme: null
   align: center
   height: 100vh
   background_color: '#203028'
@@ -24,7 +24,7 @@ data:
   sections:
     - title: ""
       height: 100vh
-      theme: dark
+      theme: null
       type: cover
       excerpt: |
         Na een flinke tijd lang zweten — niet alleen in de gym, maar ook achter het scherm — is het zover: mijn nieuwe website is live! 💻🔥<br>
