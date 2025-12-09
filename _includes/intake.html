@@ -27,9 +27,9 @@
   .intake-footer {
     text-align: center; 
     padding: 2rem 1rem;
-    color: #555; 
+    color: #555555;       /* Donkergrijs (voor witte achtergrond) */
     font-size: 0.9rem;
-    background-color: transparent !important; /* Voorkom witte balk */
+    background-color: transparent !important;
     transition: color 0.3s ease;
   }
 
@@ -38,21 +38,35 @@
     text-decoration: underline;
   }
 
-  /* 4. Footer Styling (Dark Mode) */
-  /* We checken nu op html.dark (OS) OF .is-dark (Geforceerd door JS) */
-  html.dark .intake-footer,
+  /* 4. Footer Styling (Dark Mode - BULLETPROOF) */
+  
+  /* A. Luister direct naar OS/Browser instelling (CSS only fallback) */
+  @media (prefers-color-scheme: dark) {
+    .intake-footer { color: #a0a0a0 !important; }
+    .intake-footer a { color: #58a6ff !important; }
+    .intake-footer a:hover { color: #ffffff !important; }
+  }
+
+  /* B. Luister naar de HTML class (Jekyll Theme toggle) */
+  html.dark .intake-footer {
+    color: #a0a0a0 !important;
+  }
+  html.dark .intake-footer a {
+    color: #58a6ff !important;
+  }
+  html.dark .intake-footer a:hover {
+    color: #ffffff !important;
+  }
+
+  /* C. Luister naar onze eigen geforceerde JS class (.is-dark) */
   .intake-full-bleed.is-dark .intake-footer {
-    color: #a0a0a0 !important; /* Lichtgrijs tekst */
+    color: #a0a0a0 !important;
   }
-  
-  html.dark .intake-footer a,
   .intake-full-bleed.is-dark .intake-footer a {
-    color: #58a6ff !important; /* Blauwe link */
+    color: #58a6ff !important;
   }
-  
-  html.dark .intake-footer a:hover,
   .intake-full-bleed.is-dark .intake-footer a:hover {
-    color: #ffffff !important; /* Witte link bij hover */
+    color: #ffffff !important;
   }
 </style>
 
@@ -75,20 +89,26 @@
 <script>
 (function () {
   const iframe = document.getElementById('intakeIframe');
-  const container = document.getElementById('intakeContainer'); // Nodig voor de footer kleur styling
+  const container = document.getElementById('intakeContainer');
   const allowedChildOrigin = 'https://intake.myotherfiles.nl';
 
-  // --- THEME CONFIGURATION ---
+  // Configuatie ophalen uit Liquid
   const layoutTheme = "{{ page.header.theme | default: page.article_header.theme }}";
   const accentColor = '#1f7a4a';
   const textColorDark = '#e6eef3';
   const textColorLight = '#222222';
 
   function getActiveTheme() {
-    // 1. Force match with contact.html YAML if present
+    // 1. Forceer als contact.html 'dark' of 'light' zegt
     if (layoutTheme === 'dark' || layoutTheme === 'light') return layoutTheme;
-    // 2. Fallback: Detect global theme
+    
+    // 2. Anders: check OS of Thema knop
     let theme = document.documentElement.getAttribute('data-bs-theme') || localStorage.getItem('theme');
+    // Check of de HTML tag de class 'dark' heeft (door ons head-script)
+    if (!theme && document.documentElement.classList.contains('dark')) {
+        theme = 'dark';
+    }
+    // Fallback: OS check
     if (!theme) {
       theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
@@ -98,15 +118,17 @@
   function sendTheme() {
     const theme = getActiveTheme();
     
-    // --- NIEUW: Update container class voor de footer tekst ---
-    // Dit zorgt dat de tekst lichtgrijs wordt als theme 'dark' is
+    // Debug log om te checken of het werkt (kijk in je browser console F12)
+    // console.log('Intake Theme Detected:', theme);
+
+    // Update de container class voor de footer tekst
     if (theme === 'dark') {
       container.classList.add('is-dark');
     } else {
       container.classList.remove('is-dark');
     }
 
-    // Stuur thema naar iframe
+    // Stuur naar iframe
     const payload = {
       type: 'setTheme',
       theme: theme,
@@ -116,34 +138,29 @@
     try { iframe.contentWindow.postMessage(JSON.stringify(payload), allowedChildOrigin); } catch (e) { }
   }
 
-  // --- HEIGHT RESIZING ---
+  // Hoogte aanpassen
   function requestChildHeight() {
     try { iframe.contentWindow.postMessage(JSON.stringify({ type: 'requestHeight' }), allowedChildOrigin); } catch (e) {}
   }
 
   window.addEventListener('message', function (e) {
     if (allowedChildOrigin !== '*' && e.origin !== allowedChildOrigin) return;
+    let data; try { data = JSON.parse(e.data); } catch (err) { return; }
     
-    let data;
-    try { data = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data; } catch (err) { return; }
-    if (!data || !data.type) return;
-
-    if (data.type === 'setHeight' && data.height) {
+    if (data && data.type === 'setHeight' && data.height) {
       const h = parseInt(data.height, 10);
-      if (!isNaN(h) && h > 100) {
-        iframe.style.height = (h + 20) + 'px';
-      }
+      if (!isNaN(h) && h > 100) iframe.style.height = (h + 20) + 'px';
     }
   }, false);
 
-  // --- INITIALIZATION & LOOP ---
   iframe.addEventListener('load', function () {
     setTimeout(requestChildHeight, 100);
     setTimeout(sendTheme, 100);
   });
 
-  setInterval(function () { requestChildHeight(); }, 500);
-  setInterval(function () { sendTheme(); }, 2000);
+  // Polling loops
+  setInterval(requestChildHeight, 500);
+  setInterval(sendTheme, 2000);
 
 })();
 </script>
