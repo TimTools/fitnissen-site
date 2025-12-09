@@ -27,11 +27,11 @@ data:
       theme: dark
       type: cover
       excerpt: |
-        Na een week lang zweten — niet alleen in de gym, maar ook achter het scherm — is het zover: mijn nieuwe website is live! 💻🔥<br>
+        Na een flinke tijd lang zweten — niet alleen in de gym, maar ook achter het scherm — is het zover: mijn nieuwe website is live! 💻🔥<br>
         Met een frisse look, duidelijke structuur en inspirerende content wil ik je hier nog beter begeleiden op jouw weg naar resultaat.<br><br>
-        Of je nu net begint, vastloopt of toe bent aan een next level: deze site is jouw startpunt voor persoonlijke groei — fysiek én mentaal.<br><br>
+        Of je nu net begint, vastloopt of toe bent aan een next level: deze site is jouw startpunt voor persoonlijke groei. Fysiek én mentaal!<br><br>
         👊 Geen loze beloftes. Geen shortcuts. Alleen échte inzet, op maat gemaakt voor jou.<br>
-        Kijk rustig rond, lees de blogs, en als je klaar bent om serieus aan jezelf te werken… weet je me te vinden.<br><br>
+        Kijk rustig rond en als je klaar bent om serieus aan jezelf te werken… weet je me te vinden.<br><br>
         Welkom. Let’s get to work!
       background_image:
         gradient: 'linear-gradient(135deg, rgba(34, 139, 87, 0.2), rgba(139, 34, 139, 0.2))'
