@@ -76,49 +76,54 @@ background-color: #e6eef3 !important; /* Witte achtergrond bij hover */
 color: #0d1117 !important;            /* Zwarte tekst bij hover */
 }
 
-/* --- BLOG / ARTIKELEN LIJST FIX --- */
+/* --- COMMENTS FIX --- */
 
-/* 1. De achtergrond en tekst van de lijst donker maken */
-html.dark .articles-list,
-html.dark .layout--landing .articles-list {
-  background-color: #141618 !important; /* Zelfde donkergrijs als body */
-  color: #e6eef3 !important;
+/* 1. Verberg de comments sectie als deze leeg is (verwijdert de balk) */
+.page__comments:empty {
+display: none !important;
+padding: 0 !important;
+margin: 0 !important;
 }
 
-/* 2. Koppen (Laatste posts / Titel van bericht) wit maken */
+/* 2. Als er WEL comments zijn, zorg dat de achtergrond donker is */
+html.dark .page__comments {
+background-color: transparent !important; /* Laat de body kleur erdoorheen komen */
+border: none !important;
+color: #e6eef3 !important;
+}
+
+/* --- BLOG / LAATSTE POSTS FIX (Dark Mode) --- */
+
+/* 1. De achtergrond van de hele sectie donker maken */
+/* We targeten specifiek de sectie met class .articles-list */
+html.dark .articles-list,
+html.dark section#latest {
+  background-color: #141618 !important; /* De donkere site-achtergrond */
+  color: #e6eef3 !important;             /* Standaard lichte tekst */
+}
+
+/* 2. Titel "Laatste posts" en artikel-titels wit maken */
 html.dark .articles-list h2,
 html.dark .articles-list h3 {
   color: #ffffff !important;
 }
 
-/* 3. Links (De titels zijn links) wit of blauw maken */
+/* 3. Links (de klikbare titels) wit maken */
 html.dark .articles-list a {
   color: #ffffff !important;
+  text-decoration: none;
 }
+
+/* 4. Hover effect: blauw als je over de titel gaat */
 html.dark .articles-list a:hover h3 {
-  color: #58a6ff !important; /* Blauw bij hoveren */
+  color: #58a6ff !important;
   text-decoration: underline;
 }
 
-/* 4. FIX VOOR HARDCODED KLEUREN (De datum) */
-/* Omdat er style="color: #666" in je HTML staat, moeten we dit agressief overschrijven */
+/* 5. DATUM FIX (De belangrijkste) */
+/* Omdat de datum in de HTML staat als <p style="color: #666">,
+   moeten we die kleur geforceerd overschrijven naar lichtgrijs. */
 html.dark .articles-list p,
 html.dark .articles-list span {
-  color: #a0a0a0 !important; /* Lichtgrijs ipv donkergrijs */
-}
-
-
-/* --- COMMENTS DEFINITIEVE FIX --- */
-/* Dit vervangt je huidige comments blok om zeker te zijn dat de witte balk weg is */
-
-html.dark .page__comments {
-  background-color: transparent !important;
-  border-top: none !important;
-  height: auto;
-}
-
-/* Als de comments leeg zijn, probeer ze volledig in te klappen */
-.page__comments:empty,
-.page__comments {
-  min-height: 0 !important;
+  color: #a0a0a0 !important; /* Lichtgrijs (leesbaar op donker) */
 }
