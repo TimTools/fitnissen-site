@@ -43,15 +43,17 @@ titles:
   # @end locale config
 ---
 
-<!-- <div class="layout--archive js-all">
-  {%- include tags.html -%}
-  <div class="js-result layout--archive__result d-none">
-    {%- include article-list.html articles=site.posts type='brief' show_info=true reverse=true group_by='year' -%}
+<section class="archive-wrapper" style="padding: 4rem 1rem; min-height: 60vh;">
+  <div class="layout--archive js-all">
+    {%- include tags.html -%}
+    <div class="js-result layout--archive__result d-none">
+      {%- include article-list.html articles=site.posts type='brief' show_info=true reverse=true group_by='year' -%}
+    </div>
   </div>
-</div>
+</section>
 
 <script>
   {%- include scripts/archieve.js -%}
-</script> -->
+</script>
 
 {{ content }}
