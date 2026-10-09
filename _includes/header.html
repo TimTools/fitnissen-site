@@ -8,18 +8,17 @@
     <div class="main">
       <div class="header__title">
         <div class="header__brand">
-          <!-- {%- include svg/logo.svg -%} -->
-            <a href="/">
-              <img src="https://www.fit-nissen.nl/assets/faviconold.png" height="32px" width="32px" alt="logo">
-            </a>
-          {%- assign _paths_root = site.paths.root | default: site.data.variables.default.paths.root  -%}
+          {%- assign _paths_root = site.paths.root | default: site.data.variables.default.paths.root -%}
           {%- include snippets/get-nav-url.html path=_paths_root -%}
-          {%- if site.title -%}
-            <a title="{%- if site.description -%}{{ site.description }}{%- endif -%}" href="{{ __return }}">{{ site.title }}</a>
-          {%- endif -%}
+          <a class="header__brand-link" href="{{ __return }}" title="{%- if site.description -%}{{ site.description }}{%- else -%}{{ site.title }}{%- endif -%}">
+            <img src="{{ '/assets/favicon-96x96.png' | relative_url }}" height="32" width="32" alt="{{ site.title }}" class="header__brand-icon">
+            {%- if site.title -%}
+              <span class="header__brand-text">{{ site.title }}</span>
+            {%- endif -%}
+          </a>
         </div>
         {%- if site.search.provider -%}
-          <button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button>
+          <button class="button button--secondary button--circle search-button js-search-toggle" aria-label="Zoeken"><i class="fas fa-search"></i></button>
         {%- endif -%}
       </div>
       {%- if site.data.navigation.header -%}
@@ -37,9 +36,6 @@
               <li class="navigation__item"><a href="{{ _nav_url }}">{%- if _item.title -%}{{ _item.title }}{%- else -%}{{ __return }}{%- endif -%}</a></li>
             {%- endif -%}
           {%- endfor -%}
-          {%- if site.search.provider -%}
-            <li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li>
-          {%- endif -%}
         </ul>
       </nav>
       {%- endif -%}

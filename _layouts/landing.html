@@ -34,14 +34,29 @@ article_header:
     {%- assign section_classes = section_classes | append: ' hero--fullwidth' -%}
   {%- endif -%}
 
-  <section class="{{ section_classes }}" id="hero-{{ forloop.index }}"
-  {%- if _section.background_color -%}
-      style="background-image: url({{ _url }}); background-color: {{ _section.background_color }};">
-  {%- else -%}
-      style="background-image: url({{ _url }});">
+  {%- assign _bg_style = '' -%}
+  {%- if _section.background_image.gradient -%}
+    {%- assign _bg_style = _section.background_image.gradient -%}
+    {%- if _url -%}
+      {%- assign _bg_style = _bg_style | append: ', ' -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- if _url -%}
+    {%- assign _bg_style = _bg_style | append: 'url(' | append: _url | append: ')' -%}
   {%- endif -%}
 
-      <div class="hero__content" id="moreinfo">
+  <section class="{{ section_classes }}" id="hero-{{ forloop.index }}"
+  {%- if _bg_style != '' and _section.background_color -%}
+      style="background-image: {{ _bg_style }}; background-color: {{ _section.background_color }};">
+  {%- elsif _bg_style != '' -%}
+      style="background-image: {{ _bg_style }};">
+  {%- elsif _section.background_color -%}
+      style="background-color: {{ _section.background_color }};">
+  {%- else -%}
+      >
+  {%- endif -%}
+
+      <div class="hero__content"{% if forloop.first %} id="moreinfo"{% endif %}>
         <div class="mb-5">
 
           <h3>{{ _section.title }}</h3>

@@ -12,29 +12,33 @@ article_header:
   type: overlay
   theme: null
   align: center
-  height: 100vh
-  background_color: '#203028'
+  height: 42vh
+  background_color: '#0b0f17'
   background_image:
-    gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
+    gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.45), rgba(11, 15, 23, 0.75))'
     src: /assets/images/bike_compressed.jpg
 excerpt: >
-  
+  Na een flinke tijd lang zweten in de gym en achter het scherm is het zover: de vernieuwde Fit-Nissen website is live!
 
 data:
   sections:
-    - title: ""
-      height: 100vh
+    - title: "Nieuwe website online!"
+      height: 80vh
       theme: null
       type: cover
       excerpt: |
-        Na een flinke tijd lang zweten — niet alleen in de gym, maar ook achter het scherm — is het zover: mijn nieuwe website is live! 💻🔥<br>
-        Met een frisse look, duidelijke structuur en inspirerende content wil ik je hier nog beter begeleiden op jouw weg naar resultaat.<br><br>
-        Of je nu net begint, vastloopt of toe bent aan een next level: deze site is jouw startpunt voor persoonlijke groei. Fysiek én mentaal!<br><br>
-        👊 Geen loze beloftes. Geen shortcuts. Alleen échte inzet, op maat gemaakt voor jou.<br>
-        Kijk rustig rond en als je klaar bent om serieus aan jezelf te werken… weet je me te vinden.<br><br>
-        Welkom. Let’s get to work!
+        Na een flinke tijd lang zweten — niet alleen in de gym, maar ook achter het scherm — is het zover: mijn nieuwe website is live! 💻🔥<br><br>
+        Met een moderne look, heldere structuur en duidelijke focus wil ik je hier nog gerichter begeleiden op jouw weg naar resultaat in Overloon en omgeving.<br><br>
+        Of je nu net begint met krachttraining, vastloopt in je huidige routine of toe bent aan het next level: deze site is jouw startpunt voor persoonlijke groei. Fysiek én mentaal!<br><br>
+        👊 Geen loze beloftes. Geen shortcuts. Alleen échte inzet, wetenschappelijk onderbouwd en op maat gemaakt voor jou.<br><br>
+        Kijk rustig rond en als je klaar bent om serieus aan jezelf te bouwen… plan dan direct een gratis intake.<br><br>
+        <strong>Welkom. Let’s get to work!</strong>
+      actions:
+        - text: "Plan een gratis intake"
+          type: outline-theme-dark
+          url: /contact
       background_image:
-        gradient: 'linear-gradient(135deg, rgba(34, 139, 87, 0.2), rgba(139, 34, 139, 0.2))'
+        gradient: 'linear-gradient(135deg, rgba(11, 15, 23, 0.6), rgba(11, 15, 23, 0.85))'
         src: /assets/images/posts/2025-07-09-Nieuwe-website-online.png
         full_width: true        
 ---

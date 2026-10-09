@@ -1,15 +1,18 @@
 <!-- start custom head snippets -->
 
 <script>
-  (function() {
-    const birthDate = new Date('1993-03-18');
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
+  document.addEventListener('DOMContentLoaded', function() {
+    var ageEl = document.getElementById('myage');
+    if (ageEl) {
+      var birthDate = new Date('1993-03-18');
+      var today = new Date();
+      var age = today.getFullYear() - birthDate.getFullYear();
+      var monthDiff = today.getMonth() - birthDate.getMonth();
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      ageEl.textContent = age;
     }
-    document.getElementById('myage').textContent = age;
-  })();
+  });
 </script>
 <!-- end custom head snippets -->
