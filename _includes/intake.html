@@ -23,53 +23,25 @@
     transition: height 0.2s ease-out;
   }
   
-  /* 3. Footer Styling (Standaard / Light Mode) */
+  /* 3. Footer Styling */
   .intake-footer {
     text-align: center; 
-    padding: 2.5rem 1rem;
-    color: #555555;       /* Donkergrijs (leesbaar op wit) */
+    padding: 2.25rem 1rem 3rem 1rem;
+    color: var(--text-muted, #718096);
     font-size: 0.9rem;
-    background-color: transparent !important; /* Transparant zodat wit erdoorheen komt */
+    background-color: transparent !important;
     transition: all 0.3s ease;
   }
 
   .intake-footer a {
-    color: inherit;
+    color: var(--accent-primary, #10b981);
     text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s ease;
   }
 
-  /* 4. Footer Styling (Dark Mode) */
-  /* Alleen actief als de site écht in dark mode staat */
-
-  /* A. Luister naar OS settings */
-  @media (prefers-color-scheme: dark) {
-    .intake-footer { 
-      background-color: #141618 !important; /* Donkere achtergrond */
-      color: #a0a0a0 !important; 
-    }
-    .intake-footer a { color: #58a6ff !important; }
-    .intake-footer a:hover { color: #ffffff !important; }
-  }
-
-  /* B. Luister naar HTML class (Toggle) */
-  html.dark .intake-footer {
-    background-color: #141618 !important;
-    color: #a0a0a0 !important;
-  }
-  html.dark .intake-footer a {
-    color: #58a6ff !important;
-  }
-
-  /* C. Luister naar JS class (Geforceerd door script) */
-  .intake-full-bleed.is-dark .intake-footer {
-    background-color: #141618 !important;
-    color: #a0a0a0 !important;
-  }
-  .intake-full-bleed.is-dark .intake-footer a {
-    color: #58a6ff !important;
-  }
-  .intake-full-bleed.is-dark .intake-footer a:hover {
-    color: #ffffff !important;
+  .intake-footer a:hover {
+    color: var(--text-primary, #ffffff);
   }
 </style>
 
@@ -85,7 +57,7 @@
   </iframe>
 
   <div class="intake-footer">
-    Werkt het bovenstaande formulier niet? <a href="https://intake.myotherfiles.nl/" target="_blank" rel="noopener">Open intake in een nieuw venster</a>
+    Werkt het bovenstaande formulier niet? <a href="https://intake.myotherfiles.nl/" target="_blank" rel="noopener">Open intake in een nieuw venster &rarr;</a>
   </div>
 </div>
 
@@ -96,23 +68,29 @@
   const allowedChildOrigin = 'https://intake.myotherfiles.nl';
 
   // Kleuren configuratie
-  const accentColor = '#1f7a4a';
+  const accentColor = '#10b981';
   const textColorDark = '#e6eef3';
   const textColorLight = '#222222';
 
   function getActiveTheme() {
-    // --- WIJZIGING: We kijken NIET meer naar page.header.theme ---
-    // We willen dat het formulier de body volgt, niet de header.
-
-    // 1. Check lokale opslag of HTML class
-    let theme = document.documentElement.getAttribute('data-bs-theme') || localStorage.getItem('theme');
-    
-    // Check of de HTML tag de class 'dark' heeft (onze eerdere scripts)
-    if (!theme && document.documentElement.classList.contains('dark')) {
+    const html = document.documentElement;
+    // 1. Check data-theme attribute
+    let theme = html.getAttribute('data-theme');
+    // 2. Check classes
+    if (!theme) {
+      if (html.classList.contains('tex-t-skin-dark') || html.classList.contains('dark')) {
         theme = 'dark';
+      } else if (html.classList.contains('tex-t-skin-default')) {
+        theme = 'light';
+      }
     }
-    
-    // 2. Fallback: OS instelling
+    // 3. Check localStorage
+    if (!theme) {
+      const storedSkin = localStorage.getItem('tex-t-skin');
+      if (storedSkin === 'dark') theme = 'dark';
+      else if (storedSkin === 'default') theme = 'light';
+    }
+    // 4. Fallback: OS instelling
     if (!theme) {
       theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
@@ -158,8 +136,18 @@
     setTimeout(sendTheme, 100);
   });
 
+  // Observe theme changes on documentElement
+  if (window.MutationObserver) {
+    const observer = new MutationObserver(function() {
+      sendTheme();
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme', 'class']
+    });
+  }
+
   setInterval(requestChildHeight, 500);
   setInterval(sendTheme, 2000);
-
 })();
 </script>

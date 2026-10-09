@@ -19,19 +19,48 @@ article_header:
     src: /assets/images/bike_compressed.jpg
 ---
 
-<section id="latest" class="articles-list" style="padding: 2rem;">
-  <div class="container">
-    <h2>Laatste posts</h2>
-    <ul style="list-style: none; padding: 0;">
-      {% for post in site.posts %}
-        <li style="margin-bottom: 2rem;">
-          <a href="{{ post.url | relative_url }}" style="text-decoration: none;">
-            <h3>{{ post.title }}</h3>
-            <p class="text-muted">{{ post.date | date: "%d %B %Y" }}</p>
-            <p class="text-muted">{{ post.excerpt }}</p>
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
+<section id="latest" class="blog-overview-section">
+  <div class="blog-header">
+    <div>
+      <h2 class="blog-header-title">Laatste artikelen &amp; updates</h2>
+      <p class="blog-header-sub">Inzichten, praktische tips en verhalen over doelgerichte krachttraining en leefstijl.</p>
+    </div>
+  </div>
+
+  <div class="blog-grid">
+    {% for post in site.posts %}
+      <a href="{{ post.url | relative_url }}" class="blog-card">
+        {% if post.cover %}
+          <div class="blog-card-thumb-wrap">
+            <img src="{{ post.cover | relative_url }}" alt="{{ post.title }}" class="blog-card-thumb" loading="lazy">
+          </div>
+        {% else %}
+          <div class="blog-card-thumb-wrap" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 95, 70, 0.25));">
+            <span style="font-size: 2.5rem;">🏋️</span>
+          </div>
+        {% endif %}
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-date">{{ post.date | date: "%d %B %Y" }}</span>
+            {% if post.tags and post.tags.size > 0 %}
+              <span class="blog-card-tag">#{{ post.tags[0] }}</span>
+            {% endif %}
+          </div>
+          <h3 class="blog-card-title">{{ post.title }}</h3>
+          <p class="blog-card-excerpt">
+            {{ post.excerpt | strip_html | truncatewords: 24 }}
+          </p>
+          <span class="blog-card-link">
+            Lees artikel <span>&rarr;</span>
+          </span>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+
+  <div class="blog-cta-banner">
+    <h3>Klaar om jouw doelen waar te maken?</h3>
+    <p>Ontdek wat doelgerichte personal training voor jouw kracht en vitaliteit kan betekenen in een vrijblijvend kennismakingsgesprek.</p>
+    <a href="/contact" class="button button--primary button--pill button--lg">Plan jouw gratis intake</a>
   </div>
 </section>
