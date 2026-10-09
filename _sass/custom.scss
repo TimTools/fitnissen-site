@@ -24,7 +24,8 @@
 
 /* Light Theme Variables (Default for OS light mode or manual light choice) */
 :root,
-html[data-theme="light"] {
+html[data-theme="light"],
+html:not(.dark):not([data-theme="dark"]) {
   /* Surfaces & Backgrounds */
   --bg-primary: #f8fafc;
   --bg-secondary: #ffffff;
@@ -82,7 +83,7 @@ html[data-theme="light"] {
 }
 
 /* Explicit Dark Theme (When user selects dark or html has .dark / data-theme="dark") */
-html.dark,
+html.dark:not([data-theme="light"]),
 html[data-theme="dark"] {
   --bg-primary: #0b0f17;
   --bg-secondary: #111827;
@@ -299,13 +300,13 @@ html[data-theme="light"] .theme-logo--default,
 }
 
 /* 3. Dark Theme: show white logo on dark background */
-html.dark .theme-logo--dark,
+html.dark:not([data-theme="light"]) .theme-logo--dark,
 html[data-theme="dark"] .theme-logo--dark,
 :root[data-theme="dark"] .theme-logo--dark {
   display: inline-block !important;
 }
-html.dark .theme-logo--light,
-html.dark .theme-logo--default,
+html.dark:not([data-theme="light"]) .theme-logo--light,
+html.dark:not([data-theme="light"]) .theme-logo--default,
 html[data-theme="dark"] .theme-logo--light,
 html[data-theme="dark"] .theme-logo--default,
 :root[data-theme="dark"] .theme-logo--light,
@@ -515,18 +516,20 @@ html[data-theme="dark"] .theme-logo--default,
 }
 
 /* Icon visibility based on active theme */
-html.dark .theme-icon-sun,
+html.dark:not([data-theme="light"]) .theme-icon-sun,
 html[data-theme="dark"] .theme-icon-sun {
   display: inline-block !important;
 }
-html.dark .theme-icon-moon,
+html.dark:not([data-theme="light"]) .theme-icon-moon,
 html[data-theme="dark"] .theme-icon-moon {
   display: none !important;
 }
 
+html[data-theme="light"] .theme-icon-sun,
 html:not(.dark):not([data-theme="dark"]) .theme-icon-sun {
   display: none !important;
 }
+html[data-theme="light"] .theme-icon-moon,
 html:not(.dark):not([data-theme="dark"]) .theme-icon-moon {
   display: inline-block !important;
 }
