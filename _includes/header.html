@@ -38,10 +38,14 @@
       </nav>
       {%- endif -%}
 
-      {%- if site.search.provider -%}
-      <div class="header__search">
-        <button class="search-button js-search-toggle" aria-label="Zoeken"><i class="fas fa-search"></i></button>
+      <div class="header__actions header__search">
+        <button class="theme-toggle-button js-theme-toggle" aria-label="Thema wisselen" title="Thema wisselen">
+          <i class="fas fa-sun theme-icon-sun"></i>
+          <i class="fas fa-moon theme-icon-moon"></i>
+        </button>
+        {%- if site.search.provider -%}
+        <button class="search-button js-search-toggle" aria-label="Zoeken" title="Zoeken"><i class="fas fa-search"></i></button>
+        {%- endif -%}
       </div>
-      {%- endif -%}
     </div>
   </header>

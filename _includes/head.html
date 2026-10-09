@@ -92,13 +92,9 @@
 
 <script>
   (function() {
-    // 1. Check if the user has previously toggled the theme manually
     var savedSkin = localStorage.getItem('tex-t-skin');
-    
-    // 2. Check the OS/Browser Preference
     var osDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    // Helper to set the theme
     function applyTheme(isDark) {
       if (isDark) {
         document.documentElement.classList.add('dark');
@@ -109,19 +105,36 @@
       }
     }
 
-    // 3. Logic: If no manual save, use OS. Otherwise use manual save.
-    if (savedSkin) {
-      applyTheme(savedSkin === 'dark');
+    if (savedSkin === 'dark') {
+      applyTheme(true);
+    } else if (savedSkin === 'light') {
+      applyTheme(false);
     } else {
       applyTheme(osDark);
-      // Optional: Listen for OS changes while the page is open
-      if (window.matchMedia) {
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-          if (!localStorage.getItem('tex-t-skin')) {
-            applyTheme(event.matches);
-          }
-        });
-      }
     }
+
+    window.__toggleTheme = function() {
+      var currentIsDark = document.documentElement.classList.contains('dark') || document.documentElement.getAttribute('data-theme') === 'dark';
+      var newDark = !currentIsDark;
+      localStorage.setItem('tex-t-skin', newDark ? 'dark' : 'light');
+      applyTheme(newDark);
+    };
+
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(event) {
+        if (!localStorage.getItem('tex-t-skin')) {
+          applyTheme(event.matches);
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.js-theme-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.__toggleTheme();
+        });
+      });
+    });
   })();
 </script>
