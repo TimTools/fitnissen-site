@@ -1,48 +1,87 @@
 ---
-layout: landing
-mode: immersive
-full_width: true
+layout: base
 ---
 {%- include snippets/assign.html
   target = site.data.variables.default.page.sharing
   source0=layout.sharing source1=page.sharing -%}
 {%- assign _sharing = __return -%}
 
-<section class="post-container">
-  <article class="post-article" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta">
-        {% if page.date %}
-          <span class="post-meta-item"><i class="far fa-calendar-alt"></i> {{ page.date | date: "%d %B %Y" }}</span>
-        {% endif %}
-        <span class="post-meta-item"><i class="fas fa-user-edit"></i> {{ page.author | default: "Tim Nissen" }}</span>
-        {% if page.tags %}
-          {% for tag in page.tags %}
-            <span class="post-tag"><i class="fas fa-tag"></i> {{ tag }}</span>
-          {% endfor %}
-        {% endif %}
+<div class="layout--page page__viewport">
+  <div class="page__main js-page-main">
+    <div class="page__main-inner">
+      <div class="page__header d-print-none">
+        {%- include header.html -%}
       </div>
-      {% unless page.article_header %}
-        <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
-      {% endunless %}
-    </header>
 
-    <div class="post-body article__content js-article-content" itemprop="articleBody">
-      {{ content }}
-    </div>
+      <main class="page__content layout--article">
+        <div class="post-container">
+          <div class="post-top-nav">
+            <a href="{{ '/blog' | relative_url }}" class="post-back-link">
+              <i class="fas fa-arrow-left"></i> Terug naar blogoverzicht
+            </a>
+          </div>
 
-    <footer class="post-footer">
-      <div class="post-cta-box">
-        <h3>Klaar om serieus aan jezelf te bouwen?</h3>
-        <p>Ontdek hoe een doelgericht en wetenschappelijk onderbouwd coachingtraject jou helpt om blijvend resultaat te behalen.</p>
-        <div class="post-cta-buttons">
-          <a href="{{ '/contact' | relative_url }}" class="button button--pill button--primary button--lg">Plan een gratis intake</a>
-          <a href="{{ '/blog' | relative_url }}" class="button button--pill button--secondary button--lg">Alle blogs bekijken</a>
+          <article class="post-article" itemscope itemtype="http://schema.org/Article">
+            <header class="post-header">
+              {% if page.tags %}
+                <div class="post-tags-row">
+                  {% for tag in page.tags %}
+                    <span class="post-tag"><i class="fas fa-tag"></i> {{ tag }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
+
+              <div class="post-meta">
+                {% if page.date %}
+                  <span class="post-meta-item"><i class="far fa-calendar-alt"></i> {{ page.date | date: "%d %B %Y" }}</span>
+                {% endif %}
+                <span class="post-meta-item"><i class="fas fa-user-edit"></i> {{ page.author | default: "Tim Nissen" }}</span>
+                <span class="post-meta-item"><i class="far fa-clock"></i> 2 min leestijd</span>
+              </div>
+            </header>
+
+            {% if page.cover %}
+              <div class="post-cover-wrapper">
+                <img src="{{ page.cover | relative_url }}" alt="{{ page.title }}" class="post-cover-image">
+              </div>
+            {% endif %}
+
+            <div class="post-body article__content js-article-content" itemprop="articleBody">
+              {{ content }}
+            </div>
+
+            <footer class="post-footer">
+              <div class="post-cta-box">
+                <h3>Klaar om serieus aan jezelf te bouwen?</h3>
+                <p>Ontdek hoe een doelgericht en wetenschappelijk onderbouwd coachingtraject jou helpt om blijvend resultaat te behalen.</p>
+                <div class="post-cta-buttons">
+                  <a href="{{ '/contact' | relative_url }}" class="button button--pill button--primary button--lg">Plan een gratis intake</a>
+                  <a href="{{ '/blog' | relative_url }}" class="button button--pill button--secondary button--lg">Alle blogs bekijken</a>
+                </div>
+              </div>
+              <div class="post-navigation">
+                <a href="{{ '/blog' | relative_url }}" class="post-back-link"><i class="fas fa-arrow-left"></i> Terug naar blogoverzicht</a>
+              </div>
+            </footer>
+          </article>
         </div>
+      </main>
+
+      <div class="page__footer d-print-none">
+        {%- include footer.html -%}
       </div>
-      <div class="post-navigation">
-        <a href="{{ '/blog' | relative_url }}" class="post-back-link"><i class="fas fa-arrow-left"></i> Terug naar blogoverzicht</a>
-      </div>
-    </footer>
-  </article>
-</section>
+    </div>
+  </div>
+
+  <div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal">
+    {%- include search.html -%}
+  </div>
+</div>
+
+<script>{%- include scripts/lib/modal.js -%}</script>
+<script>
+  {%- include scripts/lib/scroll-to.js -%}
+  {%- include scripts/page.js -%}
+</script>
