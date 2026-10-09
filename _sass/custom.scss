@@ -272,19 +272,96 @@ textarea {
   flex-shrink: 0 !important;
 }
 
+/* --- THEME LOGO SWITCHING (DEFAULT: WHITE-BLUE, DARK: WHITE, LIGHT: BLACK) --- */
+.theme-logo--light,
+.theme-logo--dark,
+.theme-logo--default {
+  display: none !important;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+/* 1. Default (when no explicit theme is set or before JS sets data-theme) */
+:root:not([data-theme="light"]):not([data-theme="dark"]) .theme-logo--default {
+  display: inline-block !important;
+}
+
+/* 2. Light Theme: show black logo on light background */
+html[data-theme="light"] .theme-logo--light,
+:root[data-theme="light"] .theme-logo--light {
+  display: inline-block !important;
+}
+html[data-theme="light"] .theme-logo--dark,
+html[data-theme="light"] .theme-logo--default,
+:root[data-theme="light"] .theme-logo--dark,
+:root[data-theme="light"] .theme-logo--default {
+  display: none !important;
+}
+
+/* 3. Dark Theme: show white logo on dark background */
+html.dark .theme-logo--dark,
+html[data-theme="dark"] .theme-logo--dark,
+:root[data-theme="dark"] .theme-logo--dark {
+  display: inline-block !important;
+}
+html.dark .theme-logo--light,
+html.dark .theme-logo--default,
+html[data-theme="dark"] .theme-logo--light,
+html[data-theme="dark"] .theme-logo--default,
+:root[data-theme="dark"] .theme-logo--light,
+:root[data-theme="dark"] .theme-logo--default {
+  display: none !important;
+}
+
+/* 4. OS preference fallbacks */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .theme-logo--light {
+    display: inline-block !important;
+  }
+  :root:not([data-theme="dark"]) .theme-logo--dark,
+  :root:not([data-theme="dark"]) .theme-logo--default {
+    display: none !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-logo--dark {
+    display: inline-block !important;
+  }
+  :root:not([data-theme="light"]) .theme-logo--light,
+  :root:not([data-theme="light"]) .theme-logo--default {
+    display: none !important;
+  }
+}
+
 .header__brand-link {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 10px !important;
+  gap: 12px !important;
   text-decoration: none !important;
   color: var(--text-primary) !important;
 }
 
 .header__brand-icon {
-  border-radius: var(--radius-sm);
+  height: 40px !important;
+  width: 40px !important;
+  max-height: 40px !important;
+  max-width: 40px !important;
+  flex-shrink: 0;
   display: inline-block;
   vertical-align: middle;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  transition: transform var(--transition-fast);
+}
+
+.header__brand-icon.theme-logo--default {
+  border-radius: 50%;
+}
+
+.header__brand-link:hover .header__brand-icon {
+  transform: scale(1.06);
 }
 
 .header__brand-text {
@@ -295,6 +372,32 @@ textarea {
   background: linear-gradient(135deg, var(--text-primary) 60%, var(--accent-primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Footer Brand Link & Icon */
+.footer__brand-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.footer__brand-icon {
+  height: 60px !important;
+  width: 60px !important;
+  max-height: 60px !important;
+  max-width: 60px !important;
+  flex-shrink: 0;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.25));
+  transition: transform var(--transition-smooth);
+}
+
+.footer__brand-icon.theme-logo--default {
+  border-radius: 50%;
+}
+
+.footer__brand-link:hover .footer__brand-icon {
+  transform: scale(1.08);
 }
 
 /* Navigation items: Centered in header */

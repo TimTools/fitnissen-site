@@ -26,9 +26,12 @@
     {%- assign _locale_copyright_dates = __return -%}
     <div class="site-info mt-2">
       <div>
-        <div style="display: flex; flex-direction: column; align-items: center;">
-          <!-- <h3>SOCIALS:</h3>
-          <p></p> -->
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+          <a href="{{ '/' | relative_url }}" class="footer__brand-link" title="{{ site.title }}">
+            <img src="{{ '/assets/logos/logo_white-blue.png' | relative_url }}" alt="{{ site.title }}" class="footer__brand-icon theme-logo--default" width="60" height="60">
+            <img src="{{ '/assets/logos/logo_white.png' | relative_url }}" alt="{{ site.title }}" class="footer__brand-icon theme-logo--dark" width="60" height="60">
+            <img src="{{ '/assets/logos/logo_black.png' | relative_url }}" alt="{{ site.title }}" class="footer__brand-icon theme-logo--light" width="60" height="60">
+          </a>
           <ul class="menu" style="padding: 0; margin: 0;">
             <li style="list-style: none;">
               <a class="button button--outline-primary button--pill button--lg" href="https://www.instagram.com/fitnissen_pt/">

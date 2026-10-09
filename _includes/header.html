@@ -11,7 +11,9 @@
           {%- assign _paths_root = site.paths.root | default: site.data.variables.default.paths.root -%}
           {%- include snippets/get-nav-url.html path=_paths_root -%}
           <a class="header__brand-link" href="{{ __return }}" title="{%- if site.description -%}{{ site.description }}{%- else -%}{{ site.title }}{%- endif -%}">
-            <img src="{{ '/assets/favicon-96x96.png' | relative_url }}" height="32" width="32" alt="{{ site.title }}" class="header__brand-icon">
+            <img src="{{ '/assets/logos/logo_white-blue.png' | relative_url }}" alt="{{ site.title }}" class="header__brand-icon theme-logo--default" width="40" height="40">
+            <img src="{{ '/assets/logos/logo_white.png' | relative_url }}" alt="{{ site.title }}" class="header__brand-icon theme-logo--dark" width="40" height="40">
+            <img src="{{ '/assets/logos/logo_black.png' | relative_url }}" alt="{{ site.title }}" class="header__brand-icon theme-logo--light" width="40" height="40">
             {%- if site.title -%}
               <span class="header__brand-text">{{ site.title }}</span>
             {%- endif -%}
