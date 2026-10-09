@@ -66,7 +66,8 @@ body {
 a, 
 button, 
 .button, 
-.cell > div, 
+.grid--container .cell > div,
+#benefits .cell > div, 
 .article-item, 
 .posts-list__item,
 input, 
@@ -85,6 +86,15 @@ textarea {
   right: 0 !important;
   width: 100% !important;
   z-index: 1000 !important;
+}
+
+.page__main-inner {
+  background-color: var(--bg-primary) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  padding: 0 !important;
 }
 
 .page__main--immersive .hero__content {
@@ -497,8 +507,9 @@ textarea {
   margin: 0 !important;
 }
 
-/* Benefit Cards in section children */
-.cell > div {
+/* Benefit Cards in section children (strictly scoped so .page__main-inner is not affected) */
+.grid--container .cell > div,
+#benefits .cell > div {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -514,14 +525,16 @@ textarea {
   text-align: left;
 }
 
-.cell > div:hover {
+.grid--container .cell > div:hover,
+#benefits .cell > div:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-accent);
   transform: translateY(-5px);
   box-shadow: var(--shadow-glow);
 }
 
-.cell > div h4 {
+.grid--container .cell > div h4,
+#benefits .cell > div h4 {
   color: #ffffff;
   font-size: 1.25rem;
   font-weight: 700;
@@ -531,7 +544,8 @@ textarea {
   gap: 8px;
 }
 
-.cell > div h4::before {
+.grid--container .cell > div h4::before,
+#benefits .cell > div h4::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -541,7 +555,8 @@ textarea {
   box-shadow: 0 0 8px var(--accent-primary);
 }
 
-.cell > div p {
+.grid--container .cell > div p,
+#benefits .cell > div p {
   color: var(--text-secondary);
   line-height: 1.7;
   font-size: 0.98rem;
@@ -549,13 +564,15 @@ textarea {
   flex-grow: 1;
 }
 
-.cell > div .menu {
+.grid--container .cell > div .menu,
+#benefits .cell > div .menu {
   margin-top: auto;
   padding: 0;
   list-style: none;
 }
 
-.cell > div .button {
+.grid--container .cell > div .button,
+#benefits .cell > div .button {
   width: 100%;
   font-size: 0.95rem !important;
   padding: 10px 18px !important;
@@ -1115,7 +1132,8 @@ button:focus-visible,
     padding: 24px 12px;
   }
 
-  .cell > div {
+  .grid--container .cell > div,
+  #benefits .cell > div {
     padding: 24px 18px !important;
     margin-bottom: 0;
   }
