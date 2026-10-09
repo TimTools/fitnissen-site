@@ -12,43 +12,82 @@ key: page-about
 article_header:
   actions: 
     - text: Lees mijn verhaal
-      type: outline-theme-dark
+      type: primary
       url: "#moreinfo"
   height: 42vh
   theme: dark
   type: overlay
   background_image:
-    gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.45), rgba(11, 15, 23, 0.75))'
+    gradient: 'linear-gradient(180deg, rgba(11, 15, 23, 0.3) 0%, rgba(11, 15, 23, 0.82) 100%)'
     src: /assets/images/bike_compressed.jpg
-    
-data:
-  sections:
-    - title: ">WHOAMI"
-      height: 100vh
-      theme: null
-      type: cover
-      excerpt: |
-        Hoi! Mijn naam is Tim, ik ben <span id="myage"></span> jaar oud en woon in Overloon samen met mijn vriendin en onze hond.<br>
-        In het dagelijks leven werk ik als DevOps/Cloud Engineer — een vakgebied waarin alles draait om <strong>structuur, continue optimalisatie en betrouwbare systemen</strong>.<br><br>
-
-        <strong>Van IT-architectuur naar menselijke topprestaties:</strong><br>
-        Diezelfde ingenieursmentaliteit pas ik toe in fitness en coaching. Waar veel trainers leunen op vage theorieën of standaardschema's, geloof ik in een gestructureerd systeem dat écht werkt naast een drukke werkweek. Al meer dan 10 jaar ben ik intensief actief in krachtsport — van Olympisch gewichtheffen en powerliften tot voetbal (bij DSV in Sint Anthonis), fitness en mountainbiken. In die tijd heb ik talloze trainingsvormen en voedingsstrategieën getest én geoptimaliseerd.<br><br>
-
-        <strong>Wetenschappelijk onderbouwd: Milo Certified (EQF 3 & 4)</strong><br>
-        Omdat ik geloof in de hoogste standaard van coaching, heb ik de opleiding gevolgd bij het toonaangevende <a href="https://www.miloeducation.com/over-ons#manifest" target="_blank" rel="noopener">Milo Performance & Education</a> in Amsterdam. Eind 2025 behaalde ik met trots mijn diploma als <strong>Milo Certified Personal Trainer</strong> (Europees erkend EQF Level 3 & 4) — dé gouden standaard op het gebied van biomechanica, periodisering en gedragsverandering.<br>
-        <img src="/assets/images/milocertified.png" alt="Milo Certified Personal Trainer" class="about-cert-badge" style="max-width: 260px; margin: 1.2rem 0; border-radius: 8px;"><br><br>
-
-        <strong>Mijn filosofie: Consistentie wint van extremen</strong><br>
-        Duurzame vooruitgang draait niet om perfectie, uithongering of jezelf over de kop trainen. Het draait om een doordacht plan dat naadloos in jouw leven past en week na week vol te houden is.<br>
-        <strong>Want echte transformatie ontstaat niet door extremen, maar door consistentie.</strong><br><br>
-
-        Met die toewijding en wetenschappelijke kennis help ik jou nu om doelgericht, blessurevrij en met plezier te bouwen aan de sterkste versie van jezelf.
-      actions:
-        - text: "Plan een gratis intake"
-          type: outline-theme-dark
-          url: /contact
-      background_image:
-        gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(11, 15, 23, 0.7))'
-        src: "/assets/images/WHOAMI_compressed.jpeg"
-        full_width: true
 ---
+
+<section id="moreinfo" class="about-container">
+  <div class="about-grid">
+    <!-- Profile & Credentials Column -->
+    <div class="about-sidebar">
+      <div class="about-card">
+        <div class="about-photo-wrapper">
+          <img src="{{ '/assets/images/WHOAMI_compressed.jpeg' | relative_url }}" alt="Tim Nissen - Personal Trainer Overloon" class="about-photo">
+          <div class="about-photo-tag"><i class="fas fa-dumbbell"></i> Personal Trainer &amp; Coach</div>
+        </div>
+        <div class="about-cert-box">
+          <img src="{{ '/assets/images/milocertified.png' | relative_url }}" alt="Milo Certified Personal Trainer" class="about-cert-img">
+          <div class="about-cert-info">
+            <span class="cert-title">Milo Certified PT</span>
+            <span class="cert-sub">EQF Level 3 &amp; 4 Gecertificeerd</span>
+          </div>
+        </div>
+        <ul class="about-specs-list">
+          <li><i class="fas fa-map-marker-alt"></i> <span>Overloon &amp; Regio Land van Cuijk</span></li>
+          <li><i class="fas fa-heartbeat"></i> <span>10+ Jaar Ervaring in Krachtsport</span></li>
+          <li><i class="fas fa-microscope"></i> <span>Biomechanica &amp; Data-gedreven</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main Bio & Philosophy Column -->
+    <div class="about-main">
+      <div class="about-badge">&gt; WHOAMI</div>
+      <h2 class="about-headline">Van IT-architectuur naar menselijke topprestaties</h2>
+
+      <p class="about-intro">
+        Hoi! Mijn naam is Tim, ik ben <span id="myage"></span> jaar oud en woon in Overloon samen met mijn vriendin en onze hond. In het dagelijks leven werk ik als DevOps/Cloud Engineer — een vakgebied waarin alles draait om <strong>structuur, continue optimalisatie en betrouwbare systemen</strong>.
+      </p>
+
+      <div class="about-block">
+        <h3 class="about-subheading"><i class="fas fa-cogs"></i> De ingenieursmentaliteit in fitness</h3>
+        <p>
+          Diezelfde ingenieursmentaliteit pas ik toe in fitness en coaching. Waar veel trainers leunen op vage theorieën of standaardschema's, geloof ik in een gestructureerd systeem dat écht werkt naast een drukke werkweek. Al meer dan 10 jaar ben ik intensief actief in krachtsport — van Olympisch gewichtheffen en powerliften tot voetbal (bij DSV in Sint Anthonis), fitness en mountainbiken. In die tijd heb ik talloze trainingsvormen en voedingsstrategieën getest én geoptimaliseerd.
+        </p>
+      </div>
+
+      <div class="about-block">
+        <h3 class="about-subheading"><i class="fas fa-certificate"></i> Wetenschappelijk onderbouwd: Milo Certified (EQF 3 &amp; 4)</h3>
+        <p>
+          Omdat ik geloof in de hoogste standaard van coaching, heb ik de opleiding gevolgd bij het toonaangevende <a href="https://www.miloeducation.com/over-ons#manifest" target="_blank" rel="noopener">Milo Performance &amp; Education</a> in Amsterdam. Eind 2025 behaalde ik met trots mijn diploma als <strong>Milo Certified Personal Trainer</strong> (Europees erkend EQF Level 3 &amp; 4) — dé gouden standaard op het gebied van biomechanica, periodisering en gedragsverandering.
+        </p>
+      </div>
+
+      <div class="about-highlight-card">
+        <div class="highlight-icon">💡</div>
+        <div>
+          <h4>Mijn filosofie: Consistentie wint van extremen</h4>
+          <p>
+            Duurzame vooruitgang draait niet om perfectie, uithongering of jezelf over de kop trainen. Het draait om een doordacht plan dat naadloos in jouw leven past en week na week vol te houden is.<br>
+            <strong>Want echte transformatie ontstaat niet door extremen, maar door consistentie.</strong>
+          </p>
+        </div>
+      </div>
+
+      <p class="about-closing">
+        Met die toewijding en wetenschappelijke kennis help ik jou nu om doelgericht, blessurevrij en met plezier te bouwen aan de sterkste versie van jezelf.
+      </p>
+
+      <div class="about-cta-group">
+        <a href="{{ '/contact' | relative_url }}" class="button button--pill button--primary button--lg">Plan een gratis intake</a>
+        <a href="{{ '/#benefits' | relative_url }}" class="button button--pill button--secondary button--lg">Bekijk werkwijze</a>
+      </div>
+    </div>
+  </div>
+</section>

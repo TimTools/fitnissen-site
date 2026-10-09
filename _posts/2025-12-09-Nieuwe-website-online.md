@@ -15,7 +15,7 @@ article_header:
   height: 42vh
   background_color: '#0b0f17'
   background_image:
-    gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.45), rgba(11, 15, 23, 0.75))'
+    gradient: 'linear-gradient(180deg, rgba(11, 15, 23, 0.3) 0%, rgba(11, 15, 23, 0.82) 100%)'
     src: /assets/images/bike_compressed.jpg
 excerpt: >
   Na een flinke tijd lang zweten in de gym en achter het scherm is het zover: de vernieuwde Fit-Nissen website is live!
@@ -35,10 +35,10 @@ data:
         <strong>Welkom. Let’s get to work!</strong>
       actions:
         - text: "Plan een gratis intake"
-          type: outline-theme-dark
+          type: primary
           url: /contact
       background_image:
-        gradient: 'linear-gradient(135deg, rgba(11, 15, 23, 0.6), rgba(11, 15, 23, 0.85))'
+        gradient: 'linear-gradient(180deg, rgba(11, 15, 23, 0.6) 0%, rgba(11, 15, 23, 0.88) 100%)'
         src: /assets/images/posts/2025-07-09-Nieuwe-website-online.png
         full_width: true        
 ---
