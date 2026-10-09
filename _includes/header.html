@@ -17,9 +17,6 @@
             {%- endif -%}
           </a>
         </div>
-        {%- if site.search.provider -%}
-          <button class="search-button js-search-toggle header__search-mobile" aria-label="Zoeken"><i class="fas fa-search"></i></button>
-        {%- endif -%}
       </div>
 
       {%- if site.data.navigation.header -%}
@@ -37,11 +34,14 @@
               <li class="navigation__item"><a href="{{ _nav_url }}">{%- if _item.title -%}{{ _item.title }}{%- else -%}{{ __return }}{%- endif -%}</a></li>
             {%- endif -%}
           {%- endfor -%}
-          {%- if site.search.provider -%}
-            <li class="header__search-desktop"><button class="search-button js-search-toggle" aria-label="Zoeken"><i class="fas fa-search"></i></button></li>
-          {%- endif -%}
         </ul>
       </nav>
+      {%- endif -%}
+
+      {%- if site.search.provider -%}
+      <div class="header__search">
+        <button class="search-button js-search-toggle" aria-label="Zoeken"><i class="fas fa-search"></i></button>
+      </div>
       {%- endif -%}
     </div>
   </header>
