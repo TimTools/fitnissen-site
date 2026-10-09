@@ -114,11 +114,84 @@ html {
 }
 
 body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* --- MODERN PAGE TRANSITIONS & ANIMATIONS --- */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 0.25s cubic-bezier(0.4, 0, 0.2, 1) both fadeOutScale;
+}
+
+::view-transition-new(root) {
+  animation: 0.3s cubic-bezier(0, 0, 0.2, 1) both fadeInScale;
+}
+
+@keyframes fadeOutScale {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.995);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(1.005);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Fallback entrance animation for all browsers */
+.page__main,
+.page__content,
+.main__content {
+  animation: pageEntrance 0.35s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+@keyframes pageEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page__main,
+  .page__content,
+  .main__content {
+    animation: none !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }
 
 /* Targeted transitions (AVOID universal * selector for performance) */
@@ -380,9 +453,12 @@ html:not(.dark):not([data-theme="dark"]) .theme-icon-moon {
   min-height: unset;
 }
 
-.hero .hero__content h1,
-.hero .hero__content h2,
-.hero .hero__content h3,
+.hero--dark .hero__content h1,
+.hero--dark .hero__content h2,
+.hero--dark .hero__content h3,
+#hero-1 .hero__content h1,
+#hero-1 .hero__content h2,
+#hero-1 .hero__content h3,
 .overlay h1,
 .overlay h2,
 .overlay h3 {
@@ -405,10 +481,11 @@ html:not(.dark):not([data-theme="dark"]) .theme-icon-moon {
   margin-bottom: 1.25rem;
 }
 
-.hero .overlay__excerpt,
+/* Scoped strictly to dark/photo heroes so benefit cards and light sections are never forced to white text with drop-shadow */
+.hero--dark .overlay__excerpt,
 .overlay .overlay__excerpt,
-.hero__content p,
-.hero p {
+#hero-1 .hero__content p,
+#hero-1 p {
   color: #ffffff !important;
   font-size: clamp(1.05rem, 2vw, 1.25rem) !important;
   line-height: 1.65 !important;
@@ -416,6 +493,21 @@ html:not(.dark):not([data-theme="dark"]) .theme-icon-moon {
   max-width: 780px !important;
   margin: 0 auto 1.75rem auto !important;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8) !important;
+}
+
+.hero--dynamic .hero__content h2,
+.hero--dynamic .hero__content h3,
+.hero--dynamic .hero__content h4,
+#hero-2 .hero__content h2,
+#hero-2 .hero__content h3 {
+  color: var(--text-primary) !important;
+  text-shadow: none !important;
+}
+
+.hero--dynamic .hero__content p,
+#hero-2 .hero__content p {
+  color: var(--text-secondary) !important;
+  text-shadow: none !important;
 }
 
 /* --- HERO SECTION 2 ("Not for dreamers...") STYLING --- */
@@ -657,7 +749,8 @@ html[data-theme="light"] .about-cta-group .button--secondary:hover,
 
 .grid--container .cell > div p,
 #benefits .cell > div p {
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
+  text-shadow: none !important;
   line-height: 1.7;
   font-size: 0.98rem;
   margin-bottom: 20px;
@@ -743,7 +836,7 @@ html[data-theme="light"] .about-cta-group .button--secondary:hover,
 }
 
 .articles-list h2 {
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 1.8rem;
   font-weight: 800;
   margin-bottom: 24px;
@@ -776,14 +869,16 @@ html[data-theme="light"] .about-cta-group .button--secondary:hover,
 .article-item h3,
 .posts-list__item h3,
 .articles-list li h3 {
-  color: #ffffff !important;
+  color: var(--text-primary) !important;
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 8px;
+  transition: color var(--transition-fast);
 }
 
 .article-item:hover h3,
 .posts-list__item:hover h3,
+.articles-list li h3 a:hover,
 .articles-list li:hover h3 {
   color: var(--accent-primary) !important;
 }
@@ -830,9 +925,9 @@ html[data-theme="light"] .about-cta-group .button--secondary:hover,
 }
 
 .footer .button--outline-primary {
-  color: #ffffff !important;
-  border-color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.05) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-accent) !important;
+  background: var(--bg-card) !important;
 }
 
 .footer .button--outline-primary:hover {
@@ -982,9 +1077,21 @@ button:focus-visible,
 }
 
 .about-cert-img {
-  width: 58px;
-  height: auto;
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
   flex-shrink: 0;
+}
+
+.about-cert-img--round {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #000000;
+  border: 2px solid var(--border-accent);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  padding: 2px;
 }
 
 .about-cert-info {
@@ -1034,16 +1141,21 @@ button:focus-visible,
 }
 
 .about-badge {
-  display: inline-block;
-  font-family: monospace;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--accent-primary);
-  background: rgba(16, 185, 129, 0.12);
+  background: var(--accent-subtle);
   border: 1px solid var(--border-accent);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  padding: 4px 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
   border-radius: var(--radius-pill);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
 }
 
 .about-headline {
