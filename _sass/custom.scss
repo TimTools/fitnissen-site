@@ -256,6 +256,7 @@ textarea {
 /* Hero Positioning & Crisp Contrast */
 .article__header--overlay .overlay {
   background-position: center 20% !important;
+  min-height: unset;
 }
 
 .hero .hero__content h1,
@@ -957,6 +958,10 @@ button:focus-visible,
   .hero--fullwidth {
     padding: 3rem 1.25rem;
     min-height: auto;
+  }
+
+  .article__header--overlay .overlay {
+    min-height: unset;
   }
 
   .header .main {

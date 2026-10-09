@@ -10,13 +10,13 @@ header:
 
 article_header:
   type: overlay
-  theme: null
+  theme: dark
   align: center
   height: 42vh
   background_color: '#0b0f17'
   background_image:
-    gradient: 'linear-gradient(180deg, rgba(11, 15, 23, 0.3) 0%, rgba(11, 15, 23, 0.82) 100%)'
-    src: /assets/images/bike_compressed.jpg
+    gradient: 'linear-gradient(180deg, rgba(11, 15, 23, 0.4) 0%, rgba(11, 15, 23, 0.85) 100%)'
+    src: /assets/images/posts/2025-07-09-Nieuwe-website-online.png
 excerpt: >
   Na een flinke tijd lang zweten in de gym en achter het scherm is het zover: de vernieuwde Fit-Nissen website is live!
 

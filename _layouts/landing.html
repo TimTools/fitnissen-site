@@ -13,8 +13,11 @@ article_header:
 ---
 
 {%- for _section in page.data.sections -%}
-  {%- include snippets/get-nav-url.html path=_section.background_image.src -%}
-  {%- assign _url = __return -%}
+  {%- assign _url = nil -%}
+  {%- if _section.background_image.src -%}
+    {%- include snippets/get-nav-url.html path=_section.background_image.src -%}
+    {%- assign _url = __return -%}
+  {%- endif -%}
   {%- assign section_classes = 'hero hero--center' -%}
   
   {%- comment -%} 

@@ -50,19 +50,6 @@
   max-width: 100vw;
 }
 
-.hero--fullwidth::before,
-#hero-1::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 0;
-  background: linear-gradient(180deg, rgba(11, 15, 23, 0.45) 0%, rgba(11, 15, 23, 0.8) 100%);
-  pointer-events: none;
-}
-
 .hero--fullwidth .hero__content,
 #hero-1 .hero__content {
   position: relative;
@@ -95,7 +82,7 @@
 {%- include head/favicon.html -%}
 
 {%- include snippets/prepend-baseurl.html path='/assets/css/main.css' -%}
-<link rel="stylesheet" href="{{ __return }}">
+<link rel="stylesheet" href="{{ __return }}?v={{ site.time | date: '%s' }}">
 
 {%- include snippets/get-sources.html -%}
 {%- assign _sources = __return -%}
