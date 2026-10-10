@@ -27,34 +27,31 @@ article_header:
 
 <section class="contact-intro" id="contactContent">
   {%- if site.client_capacity.is_full -%}
-    <!-- Client Stop Announcement Card -->
+    <!-- Client Stop / Preparation Hub -->
     <div class="capacity-notice-card">
       <div class="capacity-notice-header">
         <span class="capacity-notice-badge">
-          <span class="capacity-dot-pulse"></span> {{ site.client_capacity.status_badge | default: 'Cliëntenstop' }}
+          <span class="capacity-dot-pulse"></span> {{ site.client_capacity.status_badge | default: 'In voorbereiding' }}
         </span>
-        <span class="capacity-notice-tag">{{ site.client_capacity.status_tag | default: 'Tijdelijk volgeboekt' }}</span>
+        <span class="capacity-notice-tag">{{ site.client_capacity.status_tag | default: 'Contact via Instagram' }}</span>
       </div>
-      <h3 class="capacity-notice-title">{{ site.client_capacity.banner_title | default: 'Momenteel geen ruimte voor nieuwe 1-op-1 cliënten' }}</h3>
+      <h3 class="capacity-notice-title">{{ site.client_capacity.banner_title | default: '1-op-1 coaching momenteel in voorbereiding' }}</h3>
       <p class="capacity-notice-desc">
-        {{ site.client_capacity.banner_message | default: 'Om maximale kwaliteit, persoonlijke aandacht en meetbaar resultaat voor bestaande sporters te garanderen, werk ik met een maximaal aantal atleten tegelijk en zit Fit-Nissen PT momenteel vol. Nieuwe intakes zijn daarom tijdelijk gepauzeerd.' }}
+        {{ site.client_capacity.banner_message }}
       </p>
-    </div>
 
-    <!-- Instagram Direct Contact Hub -->
-    <div class="capacity-contact-card">
+      <div class="capacity-notice-divider"></div>
+
       <div class="capacity-contact-header">
         <div class="capacity-contact-icon">
           <i class="fab fa-instagram"></i>
         </div>
         <div class="capacity-contact-headings">
-          <h3 class="capacity-contact-title">Contact via Instagram</h3>
-          <span class="capacity-contact-sub">Direct en persoonlijk bereikbaar via @fitnissen_pt</span>
+          <strong class="capacity-contact-title">Direct contact via Instagram</strong>
+          <span class="capacity-contact-sub">Stuur een bericht en ontdek wat er nu al mogelijk is</span>
         </div>
       </div>
-      <p class="capacity-contact-desc">
-        Vanwege de huidige cliëntenstop is het intakeformulier tijdelijk uitgeschakeld. Wil je toch contact opnemen, een vraag stellen over de trainingen of horen wanneer er weer ruimte ontstaat? Stuur me gerust een direct message (DM) op Instagram.
-      </p>
+
       <div class="capacity-contact-actions">
         <a href="https://ig.me/m/fitnissen_pt" target="_blank" rel="noopener" class="button button--pill button--primary">
           <i class="fab fa-instagram"></i> Stuur een DM (@fitnissen_pt)
@@ -63,8 +60,9 @@ article_header:
           <i class="fas fa-external-link-alt"></i> Naar Instagram profiel
         </a>
       </div>
+
       <div class="capacity-email-fallback">
-        <p>Geen Instagram? Je kunt ook altijd een e-mail sturen naar <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+        <p>Geen Instagram? Stuur gerust een e-mail naar <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
       </div>
     </div>
   {%- else -%}

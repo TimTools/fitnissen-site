@@ -2291,6 +2291,12 @@ html[data-theme="light"] .capacity-notice-badge {
   margin: 0;
 }
 
+.capacity-notice-divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 1.5rem 0 1.25rem 0;
+}
+
 /* Contact Page Instagram Alternate Hub (Active during client stop) */
 .capacity-contact-card {
   background: var(--bg-card);

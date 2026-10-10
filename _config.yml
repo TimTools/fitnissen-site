@@ -30,12 +30,12 @@ logo: "/assets/images/logo.svg"
 ## => Client Capacity & Availability Switch
 ##############################
 client_capacity:
-  is_full: true                 # Zet op true bij een cliëntenstop; zet op false wanneer er weer plekken vrij zijn!
-  status_badge: "Cliëntenstop"
-  status_tag: "Tijdelijk volgeboekt"
+  is_full: true                 # Zet op true bij een stop / in voorbereiding; zet op false wanneer 1-op-1 intakes weer open staan!
+  status_badge: "In voorbereiding"
+  status_tag: "Contact via Instagram"
   cta_text: "Contact opnemen"
-  banner_title: "Momenteel geen ruimte voor nieuwe 1-op-1 cliënten"
-  banner_message: "Om maximale kwaliteit, persoonlijke aandacht en meetbaar resultaat voor bestaande sporters te garanderen, werk ik met een maximaal aantal atleten tegelijk en zit Fit-Nissen PT momenteel vol. Nieuwe intakes zijn daarom tijdelijk gepauzeerd. Wil je kennismaken of contact leggen? Stuur gerust een bericht via Instagram."
+  banner_title: "1-op-1 coaching momenteel in voorbereiding"
+  banner_message: "Achter de schermen wordt momenteel volop gewerkt aan een vaste trainingsruimte voor Fit-Nissen PT. Reguliere 1-op-1 trajecten zijn daarom op dit moment nog niet direct in te plannen. Wil je alvast kennismaken, een vraag stellen of samen kijken wat er in de tussentijd wél al mogelijk is? Stuur me gerust een bericht via Instagram (@fitnissen_pt) — dan kijken we persoonlijk naar de mogelijkheden."
 
 
 ## => Language and Timezone
