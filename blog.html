@@ -59,11 +59,17 @@ article_header:
   </div>
 
   <div class="blog-cta-banner">
-    <h3>Klaar om jouw doelen waar te maken?</h3>
-    <p>Ontdek wat doelgerichte personal training voor jouw kracht en vitaliteit kan betekenen in een vrijblijvend kennismakingsgesprek.</p>
-    <a href="/contact" class="button button--primary button--pill button--lg">
+    {%- if site.client_capacity.is_full -%}
+      <h3>Vragen over training of doelen?</h3>
+      <p>Benieuwd naar wat er op dit moment mogelijk is of wil je sparren over jouw trainingsaanpak? Neem gerust contact op.</p>
+    {%- else -%}
+      <h3>Klaar om jouw doelen waar te maken?</h3>
+      <p>Ontdek wat doelgerichte personal training voor jouw kracht en vitaliteit kan betekenen in een vrijblijvend kennismakingsgesprek.</p>
+    {%- endif -%}
+    {%- assign _blog_cta_url = site.client_capacity.cta_url | default: '/contact' -%}
+    <a href="{{ _blog_cta_url | relative_url }}" class="button button--primary button--pill button--lg">
       {%- if site.client_capacity.is_full -%}
-        {{ site.client_capacity.cta_text | default: 'Aanmelden wachtlijst' }}
+        {{ site.client_capacity.cta_text | default: 'Contact opnemen' }}
       {%- else -%}
         Plan jouw gratis intake
       {%- endif -%}

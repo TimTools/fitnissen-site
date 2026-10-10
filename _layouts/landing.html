@@ -63,8 +63,13 @@ article_header:
         <div class="mb-5">
 
           <h3>{{ _section.title }}</h3>
-            {%- if _section.excerpt-%}
-          <p>{{ _section.excerpt }}</p>
+          {%- if _section.excerpt-%}
+            {%- assign _sec_excerpt = _section.excerpt -%}
+            {%- if site.client_capacity.is_full -%}
+              {%- assign _sec_excerpt = _sec_excerpt | replace: 'Zet vandaag de eerste stap en neem contact op voor een vrijblijvende intake!', 'Benieuwd wat er op dit moment mogelijk is? Neem gerust contact op om samen te kijken.' -%}
+              {%- assign _sec_excerpt = _sec_excerpt | replace: 'voor een vrijblijvende intake', 'voor de mogelijkheden' -%}
+            {%- endif -%}
+            <p>{{ _sec_excerpt }}</p>
           {%- endif -%}
 
           {%- if _section.actions -%}
@@ -74,8 +79,13 @@ article_header:
               {%- assign _url = __return -%}
               {%- assign _type = _action.type | default: 'outline-info' -%}
               {%- assign _action_text = _action.text -%}
-              {%- if site.client_capacity.is_full and _action.url == '/contact' -%}
-                {%- assign _action_text = site.client_capacity.cta_text | default: 'Contact opnemen' -%}
+              {%- if site.client_capacity.is_full -%}
+                {%- if _action.url == '/contact' or _action.url == '/contact.html' or _action.url == '/contact/' -%}
+                  {%- assign _action_text = site.client_capacity.cta_text | default: 'Contact opnemen' -%}
+                  {%- if site.client_capacity.cta_url -%}
+                    {%- assign _url = site.client_capacity.cta_url -%}
+                  {%- endif -%}
+                {%- endif -%}
               {%- endif -%}
               <li><a class="button button--{{ _type }} button--pill button--lg" href="{{ _url }}">{{ _action_text }}</a></li>
             {%- endfor -%}
@@ -120,7 +130,24 @@ article_header:
                           {%- include snippets/get-nav-url.html path=_action.url -%}
                           {%- assign _url = __return -%}
                           {%- assign _type = _action.type | default: 'outline-info' -%}
-                          <li><a class="button button--{{ _type }} button--pill button--lg" href="{{ _url }}">{{ _action.text }}</a></li>
+                          {%- assign _action_text = _action.text -%}
+                          {%- if site.client_capacity.is_full -%}
+                            {%- if _action.url == '/contact' or _action.url == '/contact.html' or _action.url == '/contact/' -%}
+                              {%- if _action.text contains 'intake' or _action.text contains 'Intake' -%}
+                                {%- assign _action_text = site.client_capacity.cta_text | default: 'Contact opnemen' -%}
+                              {%- elsif _action.text contains 'traject' or _action.text contains 'Traject' -%}
+                                {%- assign _action_text = 'Mogelijkheden bespreken' -%}
+                              {%- elsif _action.text contains 'Ervaar het zelf' -%}
+                                {%- assign _action_text = 'Stel een vraag' -%}
+                              {%- else -%}
+                                {%- assign _action_text = site.client_capacity.cta_text | default: 'Contact opnemen' -%}
+                              {%- endif -%}
+                              {%- if site.client_capacity.cta_url -%}
+                                {%- assign _url = site.client_capacity.cta_url -%}
+                              {%- endif -%}
+                            {%- endif -%}
+                          {%- endif -%}
+                          <li><a class="button button--{{ _type }} button--pill button--lg" href="{{ _url }}">{{ _action_text }}</a></li>
                         {%- endfor -%}
                       </ul>
                     {%- endif -%}

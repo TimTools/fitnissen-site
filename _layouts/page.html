@@ -168,8 +168,13 @@ layout: base
                           {%- assign _url = __return -%}
                           {%- assign _type = _action.type | default: 'info' -%}
                           {%- assign _action_text = _action.text -%}
-                          {%- if site.client_capacity.is_full and _action.url == '/contact' -%}
-                            {%- assign _action_text = site.client_capacity.cta_text | default: 'Contact opnemen' -%}
+                          {%- if site.client_capacity.is_full -%}
+                            {%- if _action.url == '/contact' or _action.url == '/contact.html' or _action.url == '/contact/' -%}
+                              {%- assign _action_text = site.client_capacity.cta_text | default: 'Contact opnemen' -%}
+                              {%- if site.client_capacity.cta_url -%}
+                                {%- assign _url = site.client_capacity.cta_url -%}
+                              {%- endif -%}
+                            {%- endif -%}
                           {%- endif -%}
                           <li><a class="button button--{{ _type }} button--rounded button--xl" href="{{ _url }}">{{ _action_text }}</a></li>
                         {%- endfor -%}

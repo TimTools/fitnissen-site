@@ -54,12 +54,18 @@ layout: base
 
             <footer class="post-footer">
               <div class="post-cta-box">
-                <h3>Klaar om serieus aan jezelf te bouwen?</h3>
-                <p>Ontdek hoe een doelgericht en wetenschappelijk onderbouwd coachingtraject jou helpt om blijvend resultaat te behalen.</p>
+                {%- if site.client_capacity.is_full -%}
+                  <h3>Vragen over jouw training of doelen?</h3>
+                  <p>Benieuwd naar wat er op dit moment mogelijk is of wil je sparren over jouw aanpak? Neem gerust contact op.</p>
+                {%- else -%}
+                  <h3>Klaar om serieus aan jezelf te bouwen?</h3>
+                  <p>Ontdek hoe een doelgericht en wetenschappelijk onderbouwd coachingtraject jou helpt om blijvend resultaat te behalen.</p>
+                {%- endif -%}
+                {%- assign _article_cta_url = site.client_capacity.cta_url | default: '/contact' -%}
                 <div class="post-cta-buttons">
-                  <a href="{{ '/contact' | relative_url }}" class="button button--pill button--primary button--lg">
+                  <a href="{{ _article_cta_url | relative_url }}" class="button button--pill button--primary button--lg">
                     {%- if site.client_capacity.is_full -%}
-                      {{ site.client_capacity.cta_text | default: 'Aanmelden wachtlijst' }}
+                      {{ site.client_capacity.cta_text | default: 'Contact opnemen' }}
                     {%- else -%}
                       Plan een gratis intake
                     {%- endif -%}
