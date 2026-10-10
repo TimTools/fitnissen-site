@@ -27,6 +27,17 @@ baseurl: ""
 url: "https://www.fit-nissen.nl"
 logo: "/assets/images/logo.svg"
 
+## => Client Capacity & Availability Switch
+##############################
+client_capacity:
+  is_full: true                 # Zet op true bij een cliëntenstop / volgeboekt; zet op false wanneer er weer plekken vrij zijn!
+  status_badge: "Cliëntenstop"
+  status_tag: "Wachtlijst geopend"
+  cta_text: "Aanmelden wachtlijst"
+  banner_title: "Momenteel geen ruimte voor nieuwe 1-op-1 cliënten"
+  banner_message: "Om maximale kwaliteit, persoonlijke aandacht en meetbaar resultaat voor bestaande sporters te garanderen, werk ik met een maximaal aantal atleten tegelijk en zit Fit-Nissen PT momenteel vol. Wil je starten zodra er een trainingsplek vrijkomt in Overloon? Schrijf je hieronder vrijblijvend in voor de wachtlijst; zodra er ruimte ontstaat neem ik direct contact met je op."
+
+
 ## => Language and Timezone
 ##############################
 lang: nl # the language of your site, default as "en"

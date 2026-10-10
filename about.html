@@ -204,7 +204,13 @@ article_header:
       </p>
 
       <div class="about-cta-group">
-        <a href="{{ '/contact' | relative_url }}" class="button button--pill button--primary button--lg">Plan een gratis intake</a>
+        <a href="{{ '/contact' | relative_url }}" class="button button--pill button--primary button--lg">
+          {%- if site.client_capacity.is_full -%}
+            {{ site.client_capacity.cta_text | default: 'Aanmelden wachtlijst' }}
+          {%- else -%}
+            Plan een gratis intake
+          {%- endif -%}
+        </a>
         <a href="{{ '/#benefits' | relative_url }}" class="button button--pill button--secondary button--lg">Bekijk werkwijze</a>
       </div>
     </main>

@@ -57,7 +57,13 @@ layout: base
                 <h3>Klaar om serieus aan jezelf te bouwen?</h3>
                 <p>Ontdek hoe een doelgericht en wetenschappelijk onderbouwd coachingtraject jou helpt om blijvend resultaat te behalen.</p>
                 <div class="post-cta-buttons">
-                  <a href="{{ '/contact' | relative_url }}" class="button button--pill button--primary button--lg">Plan een gratis intake</a>
+                  <a href="{{ '/contact' | relative_url }}" class="button button--pill button--primary button--lg">
+                    {%- if site.client_capacity.is_full -%}
+                      {{ site.client_capacity.cta_text | default: 'Aanmelden wachtlijst' }}
+                    {%- else -%}
+                      Plan een gratis intake
+                    {%- endif -%}
+                  </a>
                   <a href="{{ '/blog' | relative_url }}" class="button button--pill button--secondary button--lg">Alle blogs bekijken</a>
                 </div>
               </div>

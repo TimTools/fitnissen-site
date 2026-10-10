@@ -2160,6 +2160,176 @@ html[data-theme="light"] .experience-badge {
   margin: 0;
 }
 
+/* --- CAPACITY & CLIENT STOP STYLING --- */
+.capacity-dot-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f59e0b;
+  display: inline-block;
+  box-shadow: 0 0 0 rgba(245, 158, 11, 0.5);
+  animation: capacityPulse 2s infinite ease-in-out;
+}
+
+@keyframes capacityPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(245, 158, 11, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+  }
+}
+
+/* Homepage Hero Capacity Pill */
+.capacity-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(11, 15, 23, 0.75);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  margin-bottom: 1.25rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.capacity-hero-pill .capacity-pill-text {
+  color: #fbbf24;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.capacity-hero-pill .capacity-pill-sep {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.8rem;
+}
+
+.capacity-hero-pill .capacity-pill-sub {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+/* Contact Page Capacity Notice Card */
+.capacity-notice-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem 2rem;
+  margin: 0 auto 2.25rem auto;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.capacity-notice-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: #f59e0b;
+}
+
+.capacity-notice-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.capacity-notice-badge {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 3px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+html[data-theme="light"] .capacity-notice-badge {
+  color: #b45309;
+  background: #fef3c7;
+  border-color: #fcd34d;
+}
+
+.capacity-notice-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.capacity-notice-title {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.35;
+}
+
+.capacity-notice-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Intake Container Notice */
+.intake-capacity-notice {
+  max-width: 900px;
+  margin: 0 auto 1.5rem auto;
+  padding: 1rem 1.4rem;
+  border-radius: var(--radius-md);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+html[data-theme="light"] .intake-capacity-notice {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.intake-capacity-notice-icon {
+  color: #f59e0b;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.intake-capacity-notice-text {
+  line-height: 1.5;
+}
+
+.intake-capacity-notice-text strong {
+  color: var(--text-primary);
+}
+
+.intake-capacity-notice-text span {
+  color: var(--text-secondary);
+}
+
 /* --- 8.2 BLOG OVERVIEW & CARDS --- */
 .blog-overview-section {
   max-width: 1100px;

@@ -10,7 +10,7 @@ excerpt: >
   Klaar om te bouwen aan duurzame resultaten? Neem contact op of vul direct het onderstaande intakeformulier in.
 article_header:
   actions:
-    - text: Direct naar intake
+    - text: "{% if site.client_capacity.is_full %}Aanmelden voor wachtlijst{% else %}Direct naar intake{% endif %}"
       type: primary
       url: "#intakeContainer"
     - text: 📱 Instagram
@@ -26,28 +26,66 @@ article_header:
 ---
 
 <section class="contact-intro">
-  <h2 class="contact-title">Gratis kennismaking &amp; intake</h2>
-  <p class="contact-subtitle">
-    Ontdek hoe een doordacht personal training traject jouw fitheid en energie naar het volgende niveau tilt. Vul het intakeformulier hieronder in (ongeveer 2 minuten).
-  </p>
-  
-  <div class="contact-steps-grid">
-    <div class="contact-step-card">
-      <span class="contact-step-num">Stap 01</span>
-      <strong class="contact-step-title">Binnen 24 uur contact</strong>
-      <p class="contact-step-text">Ik neem persoonlijk contact met je op via WhatsApp of e-mail om een afspraak te plannen.</p>
+  {%- if site.client_capacity.is_full -%}
+    <div class="capacity-notice-card">
+      <div class="capacity-notice-header">
+        <span class="capacity-notice-badge">
+          <span class="capacity-dot-pulse"></span> {{ site.client_capacity.status_badge | default: 'Cliëntenstop' }}
+        </span>
+        <span class="capacity-notice-tag">{{ site.client_capacity.status_tag | default: 'Wachtlijst geopend' }}</span>
+      </div>
+      <h3 class="capacity-notice-title">{{ site.client_capacity.banner_title | default: 'Momenteel geen ruimte voor nieuwe 1-op-1 cliënten' }}</h3>
+      <p class="capacity-notice-desc">
+        {{ site.client_capacity.banner_message | default: 'Om maximale kwaliteit, persoonlijke aandacht en meetbaar resultaat voor bestaande sporters te garanderen, werk ik met een maximaal aantal atleten tegelijk en zit Fit-Nissen PT momenteel vol. Wil je starten zodra er een trainingsplek vrijkomt in Overloon? Schrijf je hieronder vrijblijvend in voor de wachtlijst; zodra er ruimte ontstaat neem ik direct contact met je op.' }}
+      </p>
     </div>
-    <div class="contact-step-card">
-      <span class="contact-step-num">Stap 02</span>
-      <strong class="contact-step-title">Koffie &amp; kennismaking</strong>
-      <p class="contact-step-text">We maken kennis onder het genot van een kop koffie in Overloon en bespreken jouw doelen, agenda en wensen.</p>
+
+    <h2 class="contact-title">Aanmelden voor de wachtlijst</h2>
+    <p class="contact-subtitle">
+      Vul het onderstaande formulier in (ongeveer 2 minuten). Je inschrijving wordt automatisch genoteerd op de wachtlijst. Zodra er een passende trainingsplek beschikbaar komt, neem ik direct contact met je op.
+    </p>
+
+    <div class="contact-steps-grid">
+      <div class="contact-step-card">
+        <span class="contact-step-num">Stap 01</span>
+        <strong class="contact-step-title">Plaatsing op wachtlijst</strong>
+        <p class="contact-step-text">Na het invullen van het formulier sta je direct genoteerd op volgorde van aanmelding.</p>
+      </div>
+      <div class="contact-step-card">
+        <span class="contact-step-num">Stap 02</span>
+        <strong class="contact-step-title">Bericht zodra er plek is</strong>
+        <p class="contact-step-text">Zodra er een trainingsplek vrijkomt die past bij jouw agenda, neem ik persoonlijk contact met je op via WhatsApp of e-mail.</p>
+      </div>
+      <div class="contact-step-card">
+        <span class="contact-step-num">Stap 03</span>
+        <strong class="contact-step-title">Vrijblijvende kennismaking</strong>
+        <p class="contact-step-text">We plannen een afspraak in Overloon voor een kop koffie en een persoonlijk actieplan.</p>
+      </div>
     </div>
-    <div class="contact-step-card">
-      <span class="contact-step-num">Stap 03</span>
-      <strong class="contact-step-title">Vrijblijvend actieplan</strong>
-      <p class="contact-step-text">Je krijgt direct helderheid over jouw persoonlijke stappenplan — 100% vrijblijvend.</p>
+  {%- else -%}
+    <h2 class="contact-title">Gratis kennismaking &amp; intake</h2>
+    <p class="contact-subtitle">
+      Ontdek hoe een doordacht personal training traject jouw fitheid en energie naar het volgende niveau tilt. Vul het intakeformulier hieronder in (ongeveer 2 minuten).
+    </p>
+    
+    <div class="contact-steps-grid">
+      <div class="contact-step-card">
+        <span class="contact-step-num">Stap 01</span>
+        <strong class="contact-step-title">Binnen 24 uur contact</strong>
+        <p class="contact-step-text">Ik neem persoonlijk contact met je op via WhatsApp of e-mail om een afspraak te plannen.</p>
+      </div>
+      <div class="contact-step-card">
+        <span class="contact-step-num">Stap 02</span>
+        <strong class="contact-step-title">Koffie &amp; kennismaking</strong>
+        <p class="contact-step-text">We maken kennis onder het genot van een kop koffie in Overloon en bespreken jouw doelen, agenda en wensen.</p>
+      </div>
+      <div class="contact-step-card">
+        <span class="contact-step-num">Stap 03</span>
+        <strong class="contact-step-title">Vrijblijvend actieplan</strong>
+        <p class="contact-step-text">Je krijgt direct helderheid over jouw persoonlijke stappenplan — 100% vrijblijvend.</p>
+      </div>
     </div>
-  </div>
+  {%- endif -%}
 </section>
 
 {% include intake.html %}

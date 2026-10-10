@@ -61,6 +61,12 @@ article_header:
   <div class="blog-cta-banner">
     <h3>Klaar om jouw doelen waar te maken?</h3>
     <p>Ontdek wat doelgerichte personal training voor jouw kracht en vitaliteit kan betekenen in een vrijblijvend kennismakingsgesprek.</p>
-    <a href="/contact" class="button button--primary button--pill button--lg">Plan jouw gratis intake</a>
+    <a href="/contact" class="button button--primary button--pill button--lg">
+      {%- if site.client_capacity.is_full -%}
+        {{ site.client_capacity.cta_text | default: 'Aanmelden wachtlijst' }}
+      {%- else -%}
+        Plan jouw gratis intake
+      {%- endif -%}
+    </a>
   </div>
 </section>

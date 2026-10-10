@@ -73,7 +73,11 @@ article_header:
               {%- include snippets/get-nav-url.html path=_action.url -%}
               {%- assign _url = __return -%}
               {%- assign _type = _action.type | default: 'outline-info' -%}
-              <li><a class="button button--{{ _type }} button--pill button--lg" href="{{ _url }}">{{ _action.text }}</a></li>
+              {%- assign _action_text = _action.text -%}
+              {%- if site.client_capacity.is_full and _action.url == '/contact' -%}
+                {%- assign _action_text = site.client_capacity.cta_text | default: 'Aanmelden wachtlijst' -%}
+              {%- endif -%}
+              <li><a class="button button--{{ _type }} button--pill button--lg" href="{{ _url }}">{{ _action_text }}</a></li>
             {%- endfor -%}
             </ul>
           {%- endif -%}

@@ -46,6 +46,15 @@
 </style>
 
 <div class="intake-full-bleed" id="intakeContainer">
+  {%- if site.client_capacity.is_full -%}
+    <div class="intake-capacity-notice">
+      <i class="fas fa-clipboard-list intake-capacity-notice-icon"></i>
+      <div class="intake-capacity-notice-text">
+        <strong>Aanmelding voor de wachtlijst:</strong>
+        <span>Jouw intake wordt automatisch op de wachtlijst geplaatst. Zodra er een passende trainingsplek vrijkomt, neem ik op volgorde van aanmelding contact met je op.</span>
+      </div>
+    </div>
+  {%- endif -%}
   <iframe id="intakeIframe"
           class="intake-iframe"
           src="https://intake.myotherfiles.nl/?embed=1"
