@@ -87,7 +87,9 @@ article_header:
 
               {%- for child in _section.children -%}
 
-                {%- if _size >= 2 -%}
+                {%- if _size == 3 -%}
+                  {%- assign _cell_md_col = 4 -%}
+                {%- elsif _size >= 2 -%}
                   {%- assign _cell_md_col = 6 -%}
                 {%- else -%}
                   {%- assign _cell_md_col = 12 | divided_by: _size -%}

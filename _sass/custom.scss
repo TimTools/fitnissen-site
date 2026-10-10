@@ -794,23 +794,40 @@ html[data-theme="light"] .contact-card .button--secondary:hover,
   padding: 48px 16px;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.grid--container .grid {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-  align-items: stretch !important;
+.grid--container .grid,
+#benefits .grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   gap: 24px !important;
+  width: 100% !important;
+  max-width: 1200px !important;
   margin: 0 auto !important;
+  padding: 0 !important;
+  list-style: none !important;
 }
 
-.grid--container .grid > .cell {
-  flex: 0 1 340px !important;
-  max-width: 360px !important;
+.grid--container .grid > .cell,
+#benefits .grid > .cell {
   width: 100% !important;
+  max-width: none !important;
+  flex: none !important;
   padding: 0 !important;
   margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+@media (max-width: 860px) {
+  .grid--container .grid,
+  #benefits .grid {
+    grid-template-columns: 1fr !important;
+    max-width: 520px !important;
+    gap: 20px !important;
+  }
 }
 
 /* Benefit Cards in section children (strictly scoped so .page__main-inner is not affected) */
@@ -821,6 +838,8 @@ html[data-theme="light"] .contact-card .button--secondary:hover,
   border-radius: var(--radius-md);
   padding: 32px 24px !important;
   height: 100%;
+  width: 100%;
+  margin-bottom: 0 !important;
   box-sizing: border-box;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
