@@ -776,6 +776,8 @@ html:not(.dark):not([data-theme="dark"]) .theme-icon-moon {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
+html[data-theme="light"] .about-instagram-card .button--secondary,
+:root:not([data-theme="dark"]) .about-instagram-card .button--secondary,
 html[data-theme="light"] .about-cta-group .button--secondary,
 :root:not([data-theme="dark"]) .about-cta-group .button--secondary,
 html[data-theme="light"] #benefits .button--secondary,
@@ -788,6 +790,8 @@ html[data-theme="light"] .contact-card .button--secondary,
   box-shadow: var(--shadow-sm) !important;
 }
 
+html[data-theme="light"] .about-instagram-card .button--secondary:hover,
+:root:not([data-theme="dark"]) .about-instagram-card .button--secondary:hover,
 html[data-theme="light"] .about-cta-group .button--secondary:hover,
 :root:not([data-theme="dark"]) .about-cta-group .button--secondary:hover,
 html[data-theme="light"] #benefits .button--secondary:hover,
