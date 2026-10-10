@@ -151,13 +151,15 @@ layout: base
                     {%- if page.excerpt -%}
                       <p class="overlay__excerpt">{{ page.excerpt | strip_html | strip_newlines | strip | truncate: _article_header_excerpt_truncate }}</p>
                     {%- endif -%}
-                    {%- if site.client_capacity.is_full and page.url == '/' or page.url == '/index.html' -%}
-                      <div class="capacity-hero-pill">
-                        <span class="capacity-dot-pulse"></span>
-                        <span class="capacity-pill-text">{{ site.client_capacity.status_badge | default: 'Cliëntenstop' }}</span>
-                        <span class="capacity-pill-sep">•</span>
-                        <span class="capacity-pill-sub">{{ site.client_capacity.status_tag | default: 'Wachtlijst geopend' }}</span>
-                      </div>
+                    {%- if site.client_capacity.is_full -%}
+                      {%- if page.url == '/' or page.url == '/index.html' -%}
+                        <div class="capacity-hero-pill">
+                          <span class="capacity-dot-pulse"></span>
+                          <span class="capacity-pill-text">{{ site.client_capacity.status_badge | default: 'Cliëntenstop' }}</span>
+                          <span class="capacity-pill-sep">•</span>
+                          <span class="capacity-pill-sub">{{ site.client_capacity.status_tag | default: 'Tijdelijk volgeboekt' }}</span>
+                        </div>
+                      {%- endif -%}
                     {%- endif -%}
                     {%- if page.article_header.actions -%}
                       <ul class="menu">
@@ -167,7 +169,7 @@ layout: base
                           {%- assign _type = _action.type | default: 'info' -%}
                           {%- assign _action_text = _action.text -%}
                           {%- if site.client_capacity.is_full and _action.url == '/contact' -%}
-                            {%- assign _action_text = site.client_capacity.cta_text | default: 'Aanmelden wachtlijst' -%}
+                            {%- assign _action_text = site.client_capacity.cta_text | default: 'Contact opnemen' -%}
                           {%- endif -%}
                           <li><a class="button button--{{ _type }} button--rounded button--xl" href="{{ _url }}">{{ _action_text }}</a></li>
                         {%- endfor -%}

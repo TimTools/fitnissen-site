@@ -75,7 +75,7 @@ article_header:
               {%- assign _type = _action.type | default: 'outline-info' -%}
               {%- assign _action_text = _action.text -%}
               {%- if site.client_capacity.is_full and _action.url == '/contact' -%}
-                {%- assign _action_text = site.client_capacity.cta_text | default: 'Aanmelden wachtlijst' -%}
+                {%- assign _action_text = site.client_capacity.cta_text | default: 'Contact opnemen' -%}
               {%- endif -%}
               <li><a class="button button--{{ _type }} button--pill button--lg" href="{{ _url }}">{{ _action_text }}</a></li>
             {%- endfor -%}
