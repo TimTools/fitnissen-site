@@ -2273,6 +2273,19 @@ html[data-theme="light"] .insta-topic {
   font-size: 0.9rem;
 }
 
+.about-instagram-actions .button--secondary {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1.5px solid var(--border-subtle) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.about-instagram-actions .button--secondary:hover {
+  border-color: var(--border-accent) !important;
+  color: var(--accent-primary) !important;
+  background: var(--accent-subtle) !important;
+}
+
 .about-closing {
   font-size: 1.05rem;
   line-height: 1.7;
