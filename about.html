@@ -31,24 +31,74 @@ article_header:
           <img src="{{ '/assets/images/WHOAMI_compressed.jpeg' | relative_url }}" alt="Tim Nissen - Personal Trainer Overloon" class="about-photo">
           <div class="about-photo-tag"><i class="fas fa-dumbbell"></i> Personal Trainer &amp; Coach</div>
         </div>
-        <div class="about-cert-box">
-          <img src="{{ '/assets/images/milocertified.png' | relative_url }}" alt="Milo Certified Personal Trainer" class="about-cert-img">
+
+        <!-- 1. Milo Certified PT -->
+        <div class="about-cert-box js-cert-toggle" tabindex="0" role="button" aria-label="Bekijk details Milo Certified Personal Trainer">
+          <div class="cert-img-wrap">
+            <img src="{{ '/assets/images/milocertified.png' | relative_url }}" alt="Milo Certified Personal Trainer" class="about-cert-img">
+          </div>
           <div class="about-cert-info">
-            <span class="cert-title">Milo Certified PT</span>
-            <span class="cert-sub">EQF Level 3 &amp; 4 Gecertificeerd</span>
+            <div class="cert-header-row">
+              <span class="cert-title">Milo Certified PT</span>
+              <span class="cert-info-pill"><i class="fas fa-info-circle"></i> Info</span>
+            </div>
+            <span class="cert-spec">EQF Level 3 &amp; 4 • Biomechanica</span>
+            <span class="cert-status"><i class="fas fa-certificate"></i> Gecertificeerd (2025)</span>
+          </div>
+
+          <!-- Tooltip Popup -->
+          <div class="cert-tooltip" role="tooltip">
+            <div class="cert-tooltip-header">
+              <span class="cert-tooltip-title">Milo Education</span>
+              <span class="cert-tooltip-tag">EQF Level 3 &amp; 4</span>
+            </div>
+            <p class="cert-tooltip-body">
+              Dé Europese standaard voor evidence-based coaching. Uitgebreide wetenschappelijke scholing in functionele anatomie, biomechanica, periodisering, programmering en duurzame gedragsverandering.
+            </p>
+            <div class="cert-tooltip-footer">
+              <a href="https://www.miloeducation.com/over-ons#manifest" target="_blank" rel="noopener" style="color: var(--accent-primary); text-decoration: none;">
+                <i class="fas fa-external-link-alt"></i> miloeducation.com
+              </a>
+            </div>
           </div>
         </div>
-        <div class="about-cert-box">
-          <img src="{{ '/assets/images/welift.png' | relative_url }}" alt="Welift Certified Weightlifting Coach" class="about-cert-img about-cert-img--round">
+
+        <!-- 2. Welift Weightlifting Coach -->
+        <div class="about-cert-box js-cert-toggle" tabindex="0" role="button" aria-label="Bekijk details Welift Certified Weightlifting Coach">
+          <div class="cert-img-wrap">
+            <img src="{{ '/assets/images/welift.png' | relative_url }}" alt="Welift Certified Weightlifting Coach" class="about-cert-img about-cert-img--round">
+          </div>
           <div class="about-cert-info">
-            <span class="cert-title">Welift Weightlifting Coach</span>
-            <span class="cert-sub">Gecertificeerd (per april 2026)</span>
+            <div class="cert-header-row">
+              <span class="cert-title">Welift Weightlifting Coach</span>
+              <span class="cert-info-pill"><i class="fas fa-info-circle"></i> Info</span>
+            </div>
+            <span class="cert-spec">Olympisch Gewichtheffen • Barbell</span>
+            <span class="cert-status"><i class="fas fa-certificate"></i> Gecertificeerd (2026)</span>
+          </div>
+
+          <!-- Tooltip Popup -->
+          <div class="cert-tooltip" role="tooltip">
+            <div class="cert-tooltip-header">
+              <span class="cert-tooltip-title">Welift Training</span>
+              <span class="cert-tooltip-tag">Weightlifting Specialist</span>
+            </div>
+            <p class="cert-tooltip-body">
+              Gespecialiseerde coachopleiding in de Olympische lifts (Snatch en Clean &amp; Jerk). Focus op technische precisie, mobiliteit, explosieve krachtontwikkeling en biomechanische bar-path analyse.
+            </p>
+            <div class="cert-tooltip-footer">
+              <a href="https://welift-training.nl/" target="_blank" rel="noopener" style="color: var(--accent-primary); text-decoration: none;">
+                <i class="fas fa-external-link-alt"></i> welift-training.nl
+              </a>
+            </div>
           </div>
         </div>
+
         <ul class="about-specs-list">
           <li><i class="fas fa-map-marker-alt"></i> <span>Overloon &amp; Regio Land van Cuijk</span></li>
           <li><i class="fas fa-heartbeat"></i> <span>10+ Jaar Ervaring in Krachtsport</span></li>
           <li><i class="fas fa-medal"></i> <span>Milo Certified PT &amp; Welift Coach</span></li>
+          <li><i class="fas fa-chalkboard-teacher"></i> <span>Coach bij GymTunnis &amp; Burn Gym</span></li>
           <li><i class="fas fa-microscope"></i> <span>Biomechanica &amp; Data-gedreven</span></li>
         </ul>
       </div>
@@ -80,6 +130,53 @@ article_header:
         </p>
       </div>
 
+      <!-- Ervaring in het lesgeven / Coachingpraktijk -->
+      <div class="about-block">
+        <h3 class="about-subheading"><i class="fas fa-users"></i> Praktijkervaring: Coaching &amp; Groepslessen</h3>
+        <p>
+          Echte coachingkwaliteit ontstaat door intensieve uren op de trainingsvloer met verschillende sporters. Naast 1-op-1 personal training in De Niche heb ik ruime ervaring opgedaan in het begeleiden en lesgeven bij vooraanstaande gyms in de regio:
+        </p>
+
+        <div class="experience-grid">
+          <div class="experience-card">
+            <div class="experience-header">
+              <span class="experience-year">2025</span>
+              <a href="https://gymtunnis.nl/" target="_blank" rel="noopener" class="experience-link" title="Bezoek website van GymTunnis (opent in een nieuw tabblad)">
+                GymTunnis <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <span class="experience-location"><i class="fas fa-map-marker-alt"></i> Sint Anthonis</span>
+            <span class="experience-role">Small Group Training &amp; Fitness Begeleiding</span>
+            <p class="experience-text">
+              Leden gecoacht bij functionele fitnesstrainingen en small group sessies. Veel aandacht voor zuivere bewegingstechniek, blessurevrij trainen en motiverende persoonlijke bijsturing.
+            </p>
+          </div>
+
+          <div class="experience-card experience-card--current">
+            <div class="experience-header">
+              <span class="experience-year experience-year--current">Per 2026</span>
+              <a href="https://burngym.nl/" target="_blank" rel="noopener" class="experience-link" title="Bezoek website van Burn Gym (opent in een nieuw tabblad)">
+                Burn Gym <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <span class="experience-location"><i class="fas fa-map-marker-alt"></i> Beugen</span>
+            <span class="experience-role">Groepslessen &amp; Krachttraining</span>
+            <p class="experience-text">
+              Het verzorgen van energieke groepslessen en doelgerichte krachtsessies in een moderne, hechte fitnesscommunity gericht op allround kracht, conditie en progressie.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core Expertise Tags -->
+      <div class="about-expertise-tags">
+        <span class="expertise-tag"><i class="fas fa-check"></i> Biomechanica</span>
+        <span class="expertise-tag"><i class="fas fa-check"></i> Kracht &amp; Hypertrofie</span>
+        <span class="expertise-tag"><i class="fas fa-check"></i> Olympisch Gewichtheffen</span>
+        <span class="expertise-tag"><i class="fas fa-check"></i> Periodisering &amp; Data</span>
+        <span class="expertise-tag"><i class="fas fa-check"></i> Voeding &amp; Leefstijl</span>
+      </div>
+
       <div class="about-highlight-card">
         <div class="highlight-icon">💡</div>
         <div>
@@ -92,7 +189,7 @@ article_header:
       </div>
 
       <p class="about-closing">
-        Met die toewijding en wetenschappelijke kennis help ik jou nu om doelgericht, blessurevrij en met plezier te bouwen aan de sterkste versie van jezelf.
+        Met die toewijding, praktijkervaring en wetenschappelijke kennis help ik jou om doelgericht, blessurevrij en met plezier te bouwen aan de sterkste versie van jezelf.
       </p>
 
       <div class="about-cta-group">
@@ -102,3 +199,24 @@ article_header:
     </div>
   </div>
 </section>
+
+<script>
+  // Mobile / Touch toggle support for certificate info tooltips
+  document.addEventListener('DOMContentLoaded', function() {
+    var certBoxes = document.querySelectorAll('.js-cert-toggle');
+    certBoxes.forEach(function(box) {
+      box.addEventListener('click', function(e) {
+        if (e.target.closest('a')) return;
+        var wasActive = box.classList.contains('is-active');
+        certBoxes.forEach(function(b) { b.classList.remove('is-active'); });
+        if (!wasActive) box.classList.add('is-active');
+      });
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.js-cert-toggle')) {
+        certBoxes.forEach(function(b) { b.classList.remove('is-active'); });
+      }
+    });
+  });
+</script>
